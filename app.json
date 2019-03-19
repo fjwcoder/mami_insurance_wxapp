@@ -1,0 +1,69 @@
+{
+  "pages": [
+    "pages/index/index",
+
+    "pages/category/index",
+    "pages/category/list",
+
+    "pages/goods/index",
+    "pages/goods/comment",
+
+    "pages/search/index",
+
+    "pages/flow/index",
+    "pages/flow/checkout",
+
+    "pages/user/index",
+    "pages/user/help",
+
+    "pages/order/index",
+    "pages/order/detail",
+
+    "pages/address/index",
+    "pages/address/create",
+    "pages/address/detail",
+
+    "pages/baby/index",
+    "pages/baby/create",
+    "pages/baby/detail",
+
+    "pages/login/login"
+
+    
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#fd4a5f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "保险",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/category/index",
+        "text": "疫苗",
+        "iconPath": "images/cate.png",
+        "selectedIconPath": "images/cate-active.png"
+      },
+
+      {
+        "pagePath": "pages/user/index",
+        "text": "我的",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user-active.png"
+      }
+    ],
+    "position": "bottom"
+  },
+  "debug": false 
+}
