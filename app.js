@@ -46,7 +46,7 @@ App({
   getWxappBase: function(callback) {
     let App = this;
     App._get('wxapp/base', {}, function(result) {
-      console.log(result);
+      //console.log(result);
       // 记录小程序基础信息
       wx.setStorageSync('wxapp', result.data.wxapp);
       callback && callback(result.data.wxapp);
