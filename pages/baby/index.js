@@ -21,7 +21,12 @@ Page({
    */
   getAddressList: function() {
     let _this = this;
-    App._get('address/lists', {}, function(result) {
+    var params = {
+      'access_token': App.access_token,
+      user_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNQU1JIEpXVCIsImlhdCI6MTU1MjUyNTQwNywiZXhwIjozMTA1MDUwODE0LCJhdWQiOiJNQU1JIiwic3ViIjoiTUFNSSIsImRhdGEiOnsidXNlcl9pZCI6ODUsIm1vYmlsZSI6IjE4NzA2NjgxMjE1IiwiYmFieW5hbWUiOiIiLCJiYWJ5X2JpcnRoZGF5IjpudWxsLCJkYXR1bSI6MCwicm9uZ3l1bl90b2tlbiI6bnVsbCwiY3JlYXRlX3RpbWUiOiIxOTcwLTAxLTAxIDA4OjAwOjAwIn19._He7XzMlfBVsQvBNAqMtvW7_dPeU6zkLAd_wYkF8Obo',
+    };
+    App._get('Insurance/wxappGetInsuranceList', params, function(result) {
+      console.log(result);
       _this.setData(result.data);
     });
   },
