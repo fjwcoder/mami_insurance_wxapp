@@ -1,6 +1,9 @@
 {
   "pages": [
     
+    "pages/user/detail",
+
+
     "pages/index/index",
     "pages/category/index",
     "pages/category/list",
@@ -19,7 +22,9 @@
     "pages/baby/index",
     "pages/baby/create",
     "pages/baby/detail",
-    "pages/login/login"
+    "pages/login/login",
+
+    "pages/insurance/detail"
 
   ],
   "window": {

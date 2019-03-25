@@ -5,6 +5,7 @@ App({
    */
   globalData: {
     user_id: null,
+    user_mobile: null,
     user_token: null,
   },
 
@@ -45,7 +46,7 @@ App({
    */
   setApiRoot: function() {
     // this.api_root = this.siteInfo.siteroot + 'index.php?s=/api/';
-    this.api_root = this.siteInfo.siteroot + 'api.php/';
+    this.api_root = this.siteInfo.siteroot;
   },
   /**
    * create by fjw in 19.3.21
@@ -168,14 +169,14 @@ App({
         },
         data: data,
         success: function(res) {
-          console.log(res);
+          // console.log(res);
           if (res.statusCode !== 200 || typeof res.data !== 'object') {
             App.showError('网络请求出错');
             return false;
           }
           if(res.data.code !== 200){ // add by fjw in 19.3.22: 如果接口返回状态码错误，就提示一下
             App.showError(res.data.msg);
-            return false;
+            // return false;
           }
           if (res.data.code === -1) {
             // 登录态失效, 重新登录
