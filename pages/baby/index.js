@@ -6,58 +6,58 @@ Page({
     default_id: null,
   },
 
-  onLoad: function(options) {
+  onLoad: function (options) {
     // 当前页面参数
     this.data.options = options;
   },
 
-  onShow: function() {
+  onShow: function () {
     // 获取收货地址列表
-    this.getAddressList();
+    this.getAddchildrenList();
   },
 
   /**
    * 获取收货地址列表
    */
-  getAddressList: function() {
+  getAddchildrenList: function () {
     let _this = this;
-    App._get('address/lists', {}, function(result) {
+    App._get('addchildren/lists', {}, function (result) {
       _this.setData(result.data);
     });
   },
 
   /**
-   * 添加baby信息
+   * 添加新地址
    */
-  createAddress: function() {
+  createAddchildren: function () {
     wx.navigateTo({
       url: './create'
     });
   },
 
   /**
-   * 编辑信息
+   * 编辑地址
    */
-  editAddress: function(e) {
+  editAddress: function (e) {
     wx.navigateTo({
       url: "./detail?address_id=" + e.currentTarget.dataset.id
     });
   },
 
   /**
-   * 移除baby信息
+   * 移除收货地址
    */
-  removeAddress: function(e) {
+  removeAddress: function (e) {
     let _this = this,
       address_id = e.currentTarget.dataset.id;
     wx.showModal({
       title: "提示",
-      content: "您确定要移除当前收货地址吗?",
-      success: function(o) {
-        o.confirm && App._post_form('address/delete', {
+      content: "您确定要移除当前宝宝址吗?",
+      success: function (o) {
+        o.confirm && App._post_form('addchildren/delete', {
           address_id
-        }, function(result) {
-          _this.getAddressList();
+        }, function (result) {
+          _this.getAddchildrenList();
         });
       }
     });
@@ -66,7 +66,7 @@ Page({
   /**
    * 设置为默认地址
    */
-  setDefault: function(e) {
+  setDefault: function (e) {
     let _this = this,
       address_id = e.detail.value;
     _this.setData({
@@ -74,7 +74,7 @@ Page({
     });
     App._post_form('address/setDefault', {
       address_id
-    }, function(result) {
+    }, function (result) {
       _this.data.options.from === 'flow' && wx.navigateBack();
     });
     return false;

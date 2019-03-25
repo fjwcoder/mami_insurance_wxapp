@@ -1,3 +1,4 @@
+<!--pages/addchildren/index.wxml-->
 <view class="container m-b6 p-bottom">
   <view class="common-header-xian"></view>
   <custom-ul class="addres-list" wx:if="{{list.length}}">
@@ -5,7 +6,7 @@
       <view class="address-header b-f m-top18">
         <view class="flow-header-left pl-12">
           <view class="flow-checkout-admin">{{item.name}}
-            <text>{{item.phone}}</text>
+            <text>{{item.date}}</text>
           </view>
           <view class="flow-checkout-address">
             {{item.region.province}} {{item.region.city}} {{item.region.region}} {{item.detail}}

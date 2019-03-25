@@ -42,8 +42,9 @@ Page({
           , function (result) {
             console.log(result);
             // 记录token user_id
-            wx.setStorageSync('user_token', result.data.user_token);
+            wx.setStorageSync('token', result.data.token);
             wx.setStorageSync('user_id', result.data.user_id);
+            wx.setStorageSync('user_token', result.data.user_token);
             // 跳转回原页面
             _this.navigateBack();
           }
@@ -59,6 +60,7 @@ Page({
    * 授权成功 跳转回原页面
    */
   navigateBack: function () {
+    // console.log('授权成功 跳转回原页面');
     wx.navigateBack();
     // let currentPage = wx.getStorageSync('currentPage');
     // wx.redirectTo({
