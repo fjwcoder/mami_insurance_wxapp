@@ -2,7 +2,7 @@
   <view class="user-header p-r">
     <view class="user-bg-box">
       <!-- <image class="header-bg" src="{{userInfo.avatarUrl}}"></image> -->
-       <open-data class="header-bg" type="userAvatarUrl"></open-data>
+      <open-data class="header-bg" type="userAvatarUrl"></open-data>
     </view>
   </view>
   <view>
@@ -23,11 +23,11 @@
         </view>
         <view class="p-r" style=" flex:1.4;">
           <view class="header-img-box">
-             <!-- <image src="{{userInfo.avatarUrl}}"></image>  -->
-             <open-data type="userAvatarUrl"></open-data> 
+            <!-- <image src="{{userInfo.avatarUrl}}"></image>  -->
+            <open-data type="userAvatarUrl"></open-data>
           </view>
           <!-- <text class="user-admin onelist-hidden">{{userInfo.nickName}}</text> -->
-           <open-data class="user-admin onelist-hidden" type="userNickName"></open-data>  
+          <open-data class="user-admin onelist-hidden" type="userNickName"></open-data>
         </view>
         <view class="flex-box p-r">
           <navigator hover-class="navigator-hover" url="../order/index?type=received">
@@ -85,5 +85,25 @@
       </view>
     </navigator>
   </view>
+  <!--
+    <view class="wx-popup" hidden="{{flag}}">
+    <view class='popup-container'>
+      <input  placeholder="请输入您的手机号" placeholder-style="color:#e2e2e2;" class='tel' maxlength='11'></input>
+      <button class='fasong'>发送</button>
+      <input  placeholder="请输入您接收到的验证码" placeholder-style="color:#e2e2e2;" class='tel1' maxlength='6'></input>
+      <button>确定绑定</button>
+    </view>
+    </view>
+  -->
+
+
+
+    <modal hidden="{{hiddenmodalput}}" title="完善资料" confirm-text="提交" cancel-text="取消" bindcancel="cancelM" bindconfirm="confirmM">
+      <input disabled='{{input_disabled}}' class='tel' bindinput='getPhoneValue' type='text' placeholder="请输入您的手机号" value='{{phone}}' auto-focus maxlength='11'/>
+      
+      <input class='yanzhengma' bindinput='getCodeValue' type='number' placeholder="验证码"  maxlength='6'/>
+      <button class='btn1' bindtap='getCode' disabled='{{disabled}}'>{{codename}}</button>
+      <view class='clearfix'></view>
+    </modal>
 
 </view>
