@@ -6,7 +6,7 @@ App({
   globalData: {
     user_id: null,
     user_mobile: null,
-    user_token: null,
+    user_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNQU1JIEpXVCIsImlhdCI6MTU1MzQ5NzY4OSwiZXhwIjozMTA2OTk1Mzc4LCJhdWQiOiJNQU1JIiwic3ViIjoiTUFNSSIsImRhdGEiOnsidXNlcl9pZCI6ODUsIm1vYmlsZSI6IiIsImFwcF9vcGVuaWQiOiJvSmp2WDVYa29DT21YbnM4eFRla0xjb3p6LUg4In19.oZ3FCtopY3VPPrAxkx0wpUVAeJskEm-edu1-RnSPGB8',
   },
 
   year: null,

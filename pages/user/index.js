@@ -12,7 +12,8 @@ Page({
     code:'',//验证码
     iscode: null,//用于存放验证码接口里获取到的code
     codename: '获取验证码',
-    input_disabled: false
+    input_disabled: false,
+    hiddenmodalput:false,//modal的隐藏
   },
   
 
@@ -20,7 +21,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.modalBtn()
   },
 
   /**
@@ -73,7 +73,6 @@ Page({
       code: e.detail.value
     })
   },
-  
   getCode: function () {
     var _this = this;
     var myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
@@ -116,57 +115,25 @@ Page({
         }, 1000)
       }
     });
-    
-    
-    
   },
 
   //提交表单信息
-  save: function () {
-    var myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
-    if (this.data.name == "") {
-      wx.showToast({
-        title: '姓名不能为空',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    }
-    if (this.data.phone == "") {
-      wx.showToast({
-        title: '手机号不能为空',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    } else if (!myreg.test(this.data.phone)) {
-      wx.showToast({
-        title: '请输入正确的手机号',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    }
-    if (this.data.code == "") {
-      wx.showToast({
-        title: '验证码不能为空',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    } else if (this.data.code != this.data.iscode) {
-      wx.showToast({
-        title: '验证码错误',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    } else {
-      wx.setStorageSync('name', this.data.name);
-      wx.setStorageSync('phone', this.data.phone);
-      wx.redirectTo({
-        url: '../add/add',
-      })
-    }
+
+  
+  
+  bindMobile: function () {
+    // App._post_form("user/wxappBindMobile", { user_token: App.globalData.user_token, mobile: this.data.phone, yzm: this.data.code }, function (result) {
+      //if (result.code === 200){
+        wx.showToast({
+          title: '绑定成功',
+          icon: 'success',
+          duration: 2000
+        })
+        var _this = this;
+        _this.setData({
+          hiddenmodalput:true
+        })
+      //}
+  //})
   },
 })
