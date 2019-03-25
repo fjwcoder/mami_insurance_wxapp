@@ -1,7 +1,7 @@
 {
   "pages": [
     
-    "pages/user/detail",
+    
 
 
     "pages/index/index",
@@ -14,6 +14,7 @@
     "pages/flow/checkout",
     "pages/user/index",
     "pages/user/help",
+    "pages/user/detail",
     "pages/order/index",
     "pages/order/detail",
     "pages/address/index",
