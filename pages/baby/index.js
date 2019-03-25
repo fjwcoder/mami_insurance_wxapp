@@ -21,11 +21,12 @@ Page({
    */
   getAddchildrenList: function () {
     let _this = this;
-    App._get('addchildren/lists', {}, function (result) {
+ 
+    App._get('Insurance/wxappGetInsuranceList', params, function(result) {
+      console.log(result);
       _this.setData(result.data);
     });
   },
-
   /**
    * 添加新地址
    */

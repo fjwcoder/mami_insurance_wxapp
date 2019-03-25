@@ -29,8 +29,16 @@ Page({
    * 获取当前用户信息
    */
   getUserDetail: function () {
+
+    if(App.globalData.user_token === null){ // create by fjw in 19.3.22: 如果用户没有登录，就重新登录
+      wx.hideNavigationBarLoading();
+      App.doLogin();
+      return false;
+    }
+
     let _this = this;
-    App._get('user.index/detail', {}, function (result) {
+
+    App._get('User/getUserDetail', {}, function (result) {
       _this.setData(result.data);
     });
   },

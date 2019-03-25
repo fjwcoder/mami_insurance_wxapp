@@ -8,6 +8,11 @@ App({
     user_token: null,
   },
 
+  year: null,
+  month: null,
+  day: null,
+  access_token: null,
+
   api_root: '', // api地址
   siteInfo: require('siteinfo.js'),
 
@@ -17,6 +22,8 @@ App({
   onLaunch: function() {
     // 设置api地址
     this.setApiRoot();
+    this.setYMD();
+    this.createAccessToken();
   },
 
   /**
@@ -24,29 +31,55 @@ App({
    */
   onShow: function(options) {
     // 获取小程序基础信息
-    this.getWxappBase(function(wxapp) {
+    // this.getWxappBase(function(wxapp) { // 注释 by fjw
       // 设置navbar标题、颜色
       wx.setNavigationBarColor({
         frontColor: '#ffffff',//wxapp.navbar.top_text_color.text,
         backgroundColor: '#ff664b',//wxapp.navbar.top_background_color
       })
-    });
+    // });
   },
 
   /**
    * 设置api地址
    */
   setApiRoot: function() {
-    this.api_root = this.siteInfo.siteroot + 'index.php?s=/api/';
+    // this.api_root = this.siteInfo.siteroot + 'index.php?s=/api/';
+    this.api_root = this.siteInfo.siteroot + 'api.php/';
+  },
+  /**
+   * create by fjw in 19.3.21
+   * 设置当前年月日
+   */
+  setYMD: function(){
+    var date = new Date(Date.parse(new Date()));
+    //获取年份  
+    this.year = date.getFullYear();
+    //获取月份  
+    this.month = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    //获取当日日期 
+    this.day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    
+  },
+  /**
+   * create by fjw in 19.3.21
+   * 创建access_token
+   */
+  createAccessToken: function () {
+    var access_token = null;
+    let api_key = 'l2V|gfZp{8`;jzR~6Y1_';
+    const md5_Obj = require('./utils/hex_md5.js');
+    this.access_token = md5_Obj.hexMD5('RuiTongMamiV2' + this.year + this.month + this.day + api_key);
   },
 
+
   /**
-   * 获取小程序基础信息
+   * 获取小程序基础信息 注释 by fjw
    */
   getWxappBase: function(callback) {
     let App = this;
     App._get('wxapp/base', {}, function(result) {
-      //console.log(result);
+      // console.log(result);
       // 记录小程序基础信息
       wx.setStorageSync('wxapp', result.data.wxapp);
       callback && callback(result.data.wxapp);
@@ -108,6 +141,7 @@ App({
       }
     });
   },
+  
 
   /**
    * get请求
@@ -124,17 +158,23 @@ App({
 
     // 构造get请求
     let request = function() {
-      data.token = wx.getStorageSync('token');
+      // data.token = wx.getStorageSync('token');
+      data.user_token = App.globalData.user_token,
       wx.request({
         url: App.api_root + url,
         header: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'access_token': App.access_token,
         },
         data: data,
         success: function(res) {
+          console.log(res);
           if (res.statusCode !== 200 || typeof res.data !== 'object') {
-            console.log(res);
             App.showError('网络请求出错');
+            return false;
+          }
+          if(res.data.code !== 200){ // add by fjw in 19.3.22: 如果接口返回状态码错误，就提示一下
+            App.showError(res.data.msg);
             return false;
           }
           if (res.data.code === -1) {
@@ -171,11 +211,13 @@ App({
     wx.showNavigationBarLoading();
     let App = this;
     data.wxapp_id = App.siteInfo.uniacid;
-    data.token = wx.getStorageSync('token');
+    // data.token = wx.getStorageSync('token');
+    data.user_token = App.globalData.user_token,
     wx.request({
       url: App.api_root + url,
       header: {
         'content-type': 'application/x-www-form-urlencoded',
+        'access_token': App.access_token,
       },
       method: 'POST',
       data: data,
@@ -221,6 +263,17 @@ App({
   },
 
   /**
+   * isLogin
+   */
+  // isLogin: function(){
+  //   let App = this;
+  //   if(App.globalData.user_token === null){
+  //     App.doLogin();
+  //     return false;
+  //   }
+  // },
+
+  /**
    * 对象转URL
    */
   urlEncode: function urlencode(data) {
@@ -244,15 +297,18 @@ App({
   setTitle: function() {
     let App = this,
       wxapp;
-    if (wxapp = wx.getStorageSync('wxapp')) {
+
+    // if (wxapp = wx.getStorageSync('wxapp')) {
       wx.setNavigationBarTitle({
         title: '妈咪爱天使疫苗保险',//wxapp.navbar.wxapp_title
       });
-    } else {
-      App.getWxappBase(function() {
-        App.setTitle();
-      });
-    }
+    // } else {
+    //   App.getWxappBase(function() {
+    //     App.setTitle();
+    //   });
+    // }
   },
+
+  
 
 });
