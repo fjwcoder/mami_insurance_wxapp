@@ -115,3 +115,66 @@
 .user-list-service .li {
   padding-bottom: 45rpx;
 }
+
+
+
+
+/* .wx-popup {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+}
+.popup-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+ 
+  width: 90%;
+  max-width: 600rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 10rpx;
+  box-sizing: bordre-box;
+  transform: translate(-50%, -50%); 
+  overflow: hidden;
+  background: #fff;
+}
+  .tel{
+    padding: 20rpx;
+    float: left;
+  }
+  .fasong{
+    float: left;
+  }
+  tel1{
+    padding: 20rpx;
+    clear: left;
+  } */
+
+  modal input{
+    padding: 0 20rpx;
+    border: 1px solid #eee;
+    height: 40px;
+  }
+  .tel{
+    margin-bottom: 10rpx
+  }
+  .btn1{
+    float: right;
+    width: 40%;
+    font-size: 0.8rem;
+    background-color: rgb(80, 223, 80);
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 10rpx;
+  }
+  .yanzhengma{
+    float: left;
+    width: 50%;
+  }
+  .clearfix{
+    clear: both;
+  }
