@@ -13,24 +13,24 @@ Page({
 
   onShow: function () {
     // 获取收货地址列表
-    this.getAddchildrenList();
+    this.getBabyList();
   },
 
   /**
    * 获取收货地址列表
    */
-  getAddchildrenList: function () {
+  getBabyList: function () {
     let _this = this;
  
-    App._get('Insurance/wxappGetInsuranceList', params, function(result) {
+    App._get('baby/addbabyinfo', access_token, function(result) {
       console.log(result);
       _this.setData(result.data);
     });
   },
   /**
-   * 添加新地址
+   * 添加新宝宝
    */
-  createAddchildren: function () {
+  createBaby: function () {
     wx.navigateTo({
       url: './create'
     });

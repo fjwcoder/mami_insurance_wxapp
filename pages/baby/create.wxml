@@ -9,26 +9,78 @@
           <text class="f-30">宝宝姓名</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="name" placeholder="请输入宝宝姓名"></input>
+          <input name="name" placeholder="{{babyName}}" bindinput='getBabyName'></input>
         </view>
       </view>
+
+      <view class="list address-box dis-flex b-b">
+        <view class="left-name">
+          <text class="f-30">宝宝性别</text>
+        </view>
+        <view class="right-cont dis-flex">
+          <picker bindchange="chengeBabyGender" value="{{index}}" range="{{gender_arrey}}">
+            <text wx:if="{{gender_arrey[index]}}" class="f-30">{{gender_arrey[index]}}</text>
+            <text wx:else class="f-30 col-7">选择性别</text>
+          </picker>
+        </view>
+      </view>
+
 
       <view class="list address-box dis-flex">
         <view class="left-name">
-         <text class="f-30">出生日期</text>
+          <text class="f-30">出生日期</text>
         </view>
         <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindDateChange">
-           <text wx:if="{{date}}" class="f-30">{{date}}</text>
-            <text wx:else class="f-30 col-7">出生日期</text>
+          <text wx:if="{{date}}" class="f-30">{{date}}</text>
+          <text wx:else class="f-30 col-7">出生日期</text>
         </picker>
       </view>
 
-     
+
+      <view class="list address-box dis-flex b-b">
+        <view class="left-name">
+          <text class="f-30">宝宝姓名</text>
+        </view>
+        <view class="right-cont dis-flex">
+          <input name="name" placeholder="{{babyName}}" bindinput='getBabyName'></input>
+        </view>
+      </view>
+
+      <view class="list address-box dis-flex b-b">
+        <view class="left-name">
+          <text class="f-30">宝宝姓名</text>
+        </view>
+        <view class="right-cont dis-flex">
+          <input name="name" placeholder="{{babyName}}" bindinput='getBabyName'></input>
+        </view>
+      </view>
+
+      <view class="list address-box dis-flex b-b">
+        <view class="left-name">
+          <text class="f-30">宝宝姓名</text>
+        </view>
+        <view class="right-cont dis-flex">
+          <input name="name" placeholder="{{babyName}}" bindinput='getBabyName'></input>
+        </view>
+      </view>
+
+      <view class="list address-box dis-flex b-b">
+        <view class="left-name">
+          <text class="f-30">宝宝姓名</text>
+        </view>
+        <view class="right-cont dis-flex">
+          <input name="name" placeholder="{{babyName}}" bindinput='getBabyName'></input>
+        </view>
+      </view>
+
+
+
+
     </view>
 
 
     <view class="address-cont-title b-f b-b">
-      
+
 
       <view class="dis-flex list address-box">
         <view class="left-name">

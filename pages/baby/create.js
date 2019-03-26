@@ -10,6 +10,10 @@ Page({
     nav_select: false, // 快捷导航
     region: '',
     date:'',
+    babyName:"请输入宝宝姓名",
+    babyGender:'',
+    gender_arrey:['男','女'],
+    index:0,
 
     error: '',
   },
@@ -94,6 +98,20 @@ Page({
       
     })
     console.log(e)
+  },
+
+
+  getBabyName: function (e) {
+    this.setData({
+      babyName: e.detail.value
+    })
+    console.log(this.data.babyName)
+  },
+
+  chengeBabyGender:function(e){
+    this.setData({
+      index:e.detail.value
+    })
   },
 
 
