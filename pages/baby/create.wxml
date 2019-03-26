@@ -17,12 +17,10 @@
         <view class="left-name">
           <text class="f-30">宝宝性别</text>
         </view>
-        <view class="right-cont dis-flex">
-          <picker bindchange="chengeBabyGender" value="{{index}}" range="{{gender_arrey}}" name="baby_sex">
-            <text wx:if="{{gender_arrey[index]}}" class="f-30">{{gender_arrey[index]}}</text>
-            <text wx:else class="f-30 col-7">选择性别</text>
-          </picker>
-        </view>
+        <picker bindchange="chengeBabyGender" value="{{index}}" range="{{gender_arrey}}" name="baby_sex" class='kuandu'>
+          <text wx:if="{{gender_arrey[index]}}" class="f-30 kuandu">{{gender_arrey[index]}}</text>
+          <text wx:else class="f-30 col-7">选择性别</text>
+        </picker>
       </view>
 
 
@@ -30,7 +28,7 @@
         <view class="left-name">
           <text class="f-30">出生日期</text>
         </view>
-        <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindDateChange" name="baby_birthday">
+        <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindDateChange" name="baby_birthday" class='kuandu'>
           <text wx:if="{{date}}" class="f-30">{{date}}</text>
           <text wx:else class="f-30 col-7">出生日期</text>
         </picker>

@@ -26,7 +26,7 @@ Page({
     App._get('baby/getbabylist', {user_token: App.getGlobalData('user_token')}, function(result) {
       console.log(result.data);
 
-      _this.setData(result.data);
+      _this.setData({ list: Object.values(result.data) });
     });
   },
   /**
