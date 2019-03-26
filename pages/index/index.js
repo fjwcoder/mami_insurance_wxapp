@@ -14,7 +14,8 @@ Page({
     items: {},
     newest: {},
     best: {},
-list: {},
+
+    list: {},
     scrollTop: 0,
   },
 
@@ -36,7 +37,10 @@ list: {},
     //   _this.setData(res.data);
     // });
     App._get('Insurance/wxappGetInsuranceList', {}, function(res) {
-      _this.setData(res.data);
+
+      _this.setData({
+        list: Object.values(res.data)
+      });
     });
   },
 
