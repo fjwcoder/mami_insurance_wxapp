@@ -99,6 +99,8 @@ Page({
    * 表单提交
    */
   saveData: function (e) {
+    console.log(e);
+    return false;
     let _this = this,
       values = e.detail.value
     values.date = this.data.date;
