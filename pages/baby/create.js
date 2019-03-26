@@ -14,7 +14,10 @@ Page({
     babyGender:'',
     gender_arrey:['男','女'],
     index:0,
-
+    mother_name:'请输入母亲姓名',
+    father_name: '请输入父亲姓名',
+    exigence_name:'请输入紧急联系人姓名',
+    exigence_mobile: '请输入紧急联系人电话',
     error: '',
   },
 
@@ -25,10 +28,79 @@ Page({
 
   },
 
+
+  /**
+     * 修改出生日期
+     */
+  bindDateChange: function (e) {
+    this.setData({
+      date: e.detail.value
+
+    })
+    console.log(e)
+  },
+
+  /**
+   * 填写宝宝姓名
+   */
+  getBabyName: function (e) {
+    this.setData({
+      babyName: e.detail.value
+    })
+  },
+  /**
+   * 修改宝宝性别
+   */
+  chengeBabyGender: function (e) {
+    this.setData({
+      index: e.detail.value
+    })
+  },
+  /**
+   * 填写宝妈姓名
+   */
+  getMotherName: function (e) {
+    this.setData({
+      mother_name: e.detail.value
+    })
+  },
+
+  /**
+ * 填写宝爸姓名
+ */
+  getFatherName: function (e) {
+    this.setData({
+      father_name: e.detail.value
+    })
+  },
+
+  /**
+  * 填写紧急联系人姓名
+  */
+  getExigenceName: function (e) {
+    this.setData({
+      exigence_name: e.detail.value
+    })
+  },
+
+  /**
+  * 填写紧急联系人手机号
+  */
+  getExigenceMobile: function (e) {
+    this.setData({
+      exigence_mobile: e.detail.value
+    })
+    console.log(this.data.exigence_mobile)
+  },
+
+
+
   /**
    * 表单提交
    */
   saveData: function (e) {
+    console.log(e);
+    return false;
     let _this = this,
       values = e.detail.value
     values.date = this.data.date;
@@ -45,7 +117,7 @@ Page({
     });
 
     // 提交到后端
-    App._post_form('address/add', values, function (result) {
+    App._post_form('baby/addbabyinfo', values, function (result) {
       App.showSuccess(result.msg, function () {
         wx.navigateBack();
       });
@@ -62,7 +134,7 @@ Page({
    */
   validation: function (values) {
     if (values.name === '') {
-      this.data.error = '收件人不能为空';
+      this.data.error = '宝宝姓名不能为空';
       return false;
     }
     if (values.phone.length < 1) {
@@ -89,32 +161,7 @@ Page({
     return true;
   },
 
-  /**
-   * 修改出生日期
-   */
-  bindDateChange: function (e) {
-    this.setData({
-      date: e.detail.value
-      
-    })
-    console.log(e)
-  },
-
-
-  getBabyName: function (e) {
-    this.setData({
-      babyName: e.detail.value
-    })
-    console.log(this.data.babyName)
-  },
-
-  chengeBabyGender:function(e){
-    this.setData({
-      index:e.detail.value
-    })
-  },
-
-
+  
   /**
    * 快捷导航 显示/隐藏
    */
