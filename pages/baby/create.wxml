@@ -26,7 +26,7 @@
       </view>
 
 
-      <view class="list address-box dis-flex" style='margin-botom:10rpx;'>
+      <view class="list address-box dis-flex">
         <view class="left-name">
           <text class="f-30">出生日期</text>
         </view>
