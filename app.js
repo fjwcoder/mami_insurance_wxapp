@@ -4,9 +4,10 @@ App({
    * 全局变量
    */
   globalData: {
-    user_id: null,
+    user_id: 0,
     user_mobile: null,
-    user_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNQU1JIEpXVCIsImlhdCI6MTU1MzQ5NzY4OSwiZXhwIjozMTA2OTk1Mzc4LCJhdWQiOiJNQU1JIiwic3ViIjoiTUFNSSIsImRhdGEiOnsidXNlcl9pZCI6ODUsIm1vYmlsZSI6IiIsImFwcF9vcGVuaWQiOiJvSmp2WDVYa29DT21YbnM4eFRla0xjb3p6LUg4In19.oZ3FCtopY3VPPrAxkx0wpUVAeJskEm-edu1-RnSPGB8',
+    user_token: null,
+    // user_token:  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNQU1JIEpXVCIsImlhdCI6MTU1MzU2MjY5MiwiZXhwIjozMTA3MTI1Mzg0LCJhdWQiOiJNQU1JIiwic3ViIjoiTUFNSSIsImRhdGEiOnsidXNlcl9pZCI6bnVsbCwibW9iaWxlIjpudWxsLCJhcHBfb3BlbmlkIjoib0pqdlg1WGtvQ09tWG5zOHhUZWtMY296ei1IOCIsInVuaW9uaWQiOiIiLCJjcmVhdGVfdGltZSI6bnVsbH19.c_f-IUwBZrsz3g4TzGRIOCmLiXorMuSPnSTs1lCPF40',
   },
 
   year: null,
@@ -105,11 +106,22 @@ App({
   },
 
   /**
-   * 当前用户id
+   * 判断是否登录
    */
-  getUserId: function() {
-    return wx.getStorageSync('user_id');
+  isLogin: function(){
+    if (wx.getStorageSync('user_token') === '' || wx.getStorageSync('user_token') === null){
+      return false;
+    }else{
+      return true;
+    }
   },
+  /**
+   * 获取 App.globalData数据
+   */
+  getGlobalData: function(param){
+    return wx.getStorageSync(param);
+  },
+
 
   /**
    * 显示成功提示框
@@ -262,17 +274,6 @@ App({
     let user_info = wx.getStorageSync('user_info');
     return !!wx.getStorageSync('user_info');
   },
-
-  /**
-   * isLogin
-   */
-  // isLogin: function(){
-  //   let App = this;
-  //   if(App.globalData.user_token === null){
-  //     App.doLogin();
-  //     return false;
-  //   }
-  // },
 
   /**
    * 对象转URL

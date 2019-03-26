@@ -13,7 +13,7 @@ Page({
     iscode: null,//用于存放验证码接口里获取到的code
     codename: '获取验证码',
     input_disabled: false,
-    hiddenmodalput:false,//modal的隐藏
+    hiddenmodalput: true, //modal的隐藏
   },
   
 
@@ -21,6 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
   },
 
   /**
@@ -29,6 +30,12 @@ Page({
   onShow: function () {
     // 获取当前用户信息
     this.getUserDetail();
+
+    if (this.isBindMobile() === false) { // 如果未绑定手机，则显示绑定手机
+      this.setData({
+        hiddenmodalput: false
+      })
+    }
   },
 
   /**
@@ -36,7 +43,7 @@ Page({
    */
   getUserDetail: function () {
 
-    if(App.globalData.user_token === null){ // create by fjw in 19.3.22: 如果用户没有登录，就重新登录
+    if (App.isLogin() === false) { // create by fjw in 19.3.22: 如果用户没有登录，就重新登录
       wx.hideNavigationBarLoading();
       App.doLogin();
       return false;
@@ -45,7 +52,7 @@ Page({
     let _this = this;
 
     // App._get('User/getUserDetail', {}, function (result) {
-    //   _this.setData(result.data);
+    //   this.setData(result.data);
     // });
   },
   shows: function () {
@@ -58,6 +65,16 @@ Page({
       display: "none"
     })
   } ,
+  /**
+   * 是否绑定手机号
+   */
+  isBindMobile: function(){
+    if (wx.getStorageSync('user_mobile') === '' || wx.getStorageSync('user_mobile') === null || wx.getStorageSync('user_mobile') === undefined){
+      return false;
+    }else{
+      return true;
+    }
+  },
 
   /***
    * 获取手机号码
@@ -122,7 +139,7 @@ Page({
   
   
   bindMobile: function () {
-    // App._post_form("user/wxappBindMobile", { user_token: App.globalData.user_token, mobile: this.data.phone, yzm: this.data.code }, function (result) {
+    // App._post_form("User/wxappBindMobile", { user_token: App.globalData.user_token, mobile: this.data.phone, yzm: this.data.code }, function (result) {
       //if (result.code === 200){
         wx.showToast({
           title: '绑定成功',
