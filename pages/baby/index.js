@@ -17,12 +17,12 @@ Page({
   },
 
   /**
-   * 获取收货地址列表
+   * 获取宝宝列表
    */
   getBabyList: function () {
     let _this = this;
  
-    App._get('baby/addbabyinfo', access_token, function(result) {
+    App._get('baby/getbabylist', App.getGlobalData('user_token'), function(result) {
       console.log(result);
       _this.setData(result.data);
     });
@@ -53,9 +53,9 @@ Page({
       address_id = e.currentTarget.dataset.id;
     wx.showModal({
       title: "提示",
-      content: "您确定要移除当前宝宝址吗?",
+      content: "您确定要移除当前宝宝吗?",
       success: function (o) {
-        o.confirm && App._post_form('addchildren/delete', {
+        o.confirm && App._post_form('baby/delete', {
           address_id
         }, function (result) {
           _this.getAddchildrenList();
