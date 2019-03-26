@@ -178,7 +178,7 @@ App({
     // 构造get请求
     let request = function() {
       // data.token = wx.getStorageSync('token');
-      data.user_token = App.globalData.user_token,
+      data.user_token = App.getGlobalData('user_token'),
       wx.request({
         url: App.api_root + url,
         header: {
@@ -231,7 +231,7 @@ App({
     let App = this;
     data.wxapp_id = App.siteInfo.uniacid;
     // data.token = wx.getStorageSync('token');
-    data.user_token = App.globalData.user_token,
+    data.user_token = App.getGlobalData('user_token'),
     wx.request({
       url: App.api_root + url,
       header: {

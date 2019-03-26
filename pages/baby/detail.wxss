@@ -1,3 +1,4 @@
+/* pages/addchildren/create.wxss */
 .profile-list .admin {
   padding-left: 15px;
   font-size: 30rpx;
@@ -182,4 +183,7 @@ picker-view-column view {
 
 .m-top35 {
   margin-top: 35rpx;
+}
+.kuandu{
+  width: 60%;
 }

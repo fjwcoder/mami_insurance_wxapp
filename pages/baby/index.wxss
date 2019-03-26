@@ -96,7 +96,7 @@
 .address-header .flow-checkout-address {
   font-size: 26rpx;
   color: #777;
-  margin-top: 6rpx;
+  margin-top: 12rpx;
 }
 
 .radio-group raido {

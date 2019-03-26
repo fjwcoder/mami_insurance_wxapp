@@ -12,9 +12,8 @@ Page({
   },
 
   onShow: function () {
-    // 获取收货地址列表
+    // 获取收货baby列表
     this.getBabyList();
-    console.log(App.getGlobalData('user_token'));
   },
 
   /**
@@ -39,16 +38,16 @@ Page({
   },
 
   /**
-   * 编辑地址
+   * 编辑baby
    */
-  editAddress: function (e) {
+  editBabyInfo: function (e) {
     wx.navigateTo({
-      url: "./detail?address_id=" + e.currentTarget.dataset.id
+      url: "./detail?baby_id=" + e.currentTarget.dataset.id
     });
   },
 
   /**
-   * 移除收货地址
+   * 移除收货baby
    */
   removeAddress: function (e) {
     let _this = this,
@@ -67,7 +66,7 @@ Page({
   },
 
   /**
-   * 设置为默认地址
+   * 设置为默认baby
    */
   setDefault: function (e) {
     let _this = this,
