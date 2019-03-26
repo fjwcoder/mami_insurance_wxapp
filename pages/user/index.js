@@ -163,16 +163,13 @@ Page({
     //   })
     //   return false;
     // }
-    // console.log(App.getGlobalData('user_token'));
-    // console.log(this.data.phone);
-    // console.log(this.data.code);
-    // return false;
+
     App._post_form("User/wxappBindMobile", {
       user_token: App.getGlobalData('user_token'),
       mobile: this.data.phone,
       yzm: this.data.code
     }, function(result) {
-      console.log(result);
+
       if (result.code === 200) {
         App.globalData.user_id = result.data.user_id;
         wx.setStorageSync('user_id', result.data.user_id);
