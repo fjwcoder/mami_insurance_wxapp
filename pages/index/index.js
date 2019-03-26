@@ -14,7 +14,7 @@ Page({
     items: {},
     newest: {},
     best: {},
-
+list: {},
     scrollTop: 0,
   },
 
@@ -31,6 +31,10 @@ Page({
    */
   getIndexData: function() {
     let _this = this;
+    // App._get('index/page', {}, function (res) {
+    //   console.log(res);
+    //   _this.setData(res.data);
+    // });
     App._get('Insurance/wxappGetInsuranceList', {}, function(res) {
       _this.setData(res.data);
     });
