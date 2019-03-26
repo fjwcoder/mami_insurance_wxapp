@@ -31,12 +31,13 @@ Page({
 
     // 获取当前用户信息
     this.getUserDetail();
+    // console.log(wx.getStorageSync('user_id'));
+    // console.log(wx.getStorageSync('user_token'));
 
-    if (this.isBindMobile() === false) { // 如果未绑定手机，则显示绑定手机
-      this.setData({
-        hiddenmodalput: false
-      })
-    }
+    this.setData({
+      hiddenmodalput: this.isBindMobile()
+    })
+    
   },
 
   /**
@@ -69,8 +70,9 @@ Page({
   /**
    * 是否绑定手机号
    */
-  isBindMobile: function() {
-    if (wx.getStorageSync('user_mobile') === '' || wx.getStorageSync('user_mobile') === null || wx.getStorageSync('user_mobile') === undefined) {
+  isBindMobile: function(){
+    // console.log(wx.getStorageSync('user_mobile'));
+    if (wx.getStorageSync('user_mobile') === '' || wx.getStorageSync('user_mobile') === null || wx.getStorageSync('user_mobile') === undefined){
       return false;
     } else {
       return true;

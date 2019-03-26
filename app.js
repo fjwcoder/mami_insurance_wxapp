@@ -7,7 +7,7 @@ App({
     user_id: 0,
     user_mobile: null,
     user_token: null,
-    // user_token:  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNQU1JIEpXVCIsImlhdCI6MTU1MzU2MjY5MiwiZXhwIjozMTA3MTI1Mzg0LCJhdWQiOiJNQU1JIiwic3ViIjoiTUFNSSIsImRhdGEiOnsidXNlcl9pZCI6bnVsbCwibW9iaWxlIjpudWxsLCJhcHBfb3BlbmlkIjoib0pqdlg1WGtvQ09tWG5zOHhUZWtMY296ei1IOCIsInVuaW9uaWQiOiIiLCJjcmVhdGVfdGltZSI6bnVsbH19.c_f-IUwBZrsz3g4TzGRIOCmLiXorMuSPnSTs1lCPF40',
+    // user_token:  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNQU1JIEpXVCIsImlhdCI6MTU1MzU3NzYxOSwiZXhwIjozMTA3MTU1MjM4LCJhdWQiOiJNQU1JIiwic3ViIjoiTUFNSSIsImRhdGEiOnsidXNlcl9pZCI6MSwibW9iaWxlIjoiMTg3MDY2ODEyMTAiLCJhcHBfb3BlbmlkIjoib0pqdlg1WGtvQ09tWG5zOHhUZWtMY296ei1IOCIsInVuaW9uaWQiOiIiLCJjcmVhdGVfdGltZSI6MTU1MzU3NzYxOX19.AZSKgYAlj-u0dEpwWxj68IUusqmMrnSFLNWEGL7ukFg',
   },
 
   year: null,

@@ -1,5 +1,5 @@
 let App = getApp(),
-  wxParse = require("../../wxParse/wxParse.js");
+  WxParse = require("../../wxParse/wxParse.js");
 
 Page({
 
@@ -19,7 +19,8 @@ Page({
     showView: true, // 显示商品规格
 
     detail: {}, // 商品详情信息
-    goods_price: 0, // 商品价格
+    insurance_price: 0, // 商品价格
+    pay_limit: 0, // 保险保额
     line_price: 0, // 划线价格
     stock_num: 0, // 库存数量
 
@@ -38,21 +39,23 @@ Page({
   onLoad: function(options) {
     let _this = this;
     // 商品id
-    _this.data.goods_id = options.goods_id;
+    _this.data.insurance_id = options.insurance_id;
     // 获取商品信息
-    _this.getGoodsDetail();
+    _this.getInsuranceDetail();
   },
 
   /**
    * 获取商品信息
    */
-  getGoodsDetail: function() {
+  getInsuranceDetail: function() {
     let _this = this;
-    App._get('goods/detail', {
-      goods_id: _this.data.goods_id
+    App._get('Insurance/wxappGetInsuranceInfo', {
+      insurance_id: _this.data.insurance_id
     }, function(result) {
+      // console.log(result);
       // 初始化商品详情数据
       let data = _this.initGoodsDetailData(result.data);
+
       _this.setData(data);
     });
   },
@@ -62,19 +65,21 @@ Page({
    */
   initGoodsDetailData: function(data) {
     let _this = this;
+
     // 富文本转码
-    if (data.detail.content.length > 0) {
-      wxParse.wxParse('content', 'html', data.detail.content, _this, 0);
+    if (data.content.length > 0) {
+
+      WxParse.wxParse('content', 'html', data.content, _this, 0);
     }
     // 商品价格/划线价/库存
-    data.goods_sku_id = data.detail.spec[0].spec_sku_id;
-    data.goods_price = data.detail.spec[0].goods_price;
-    data.line_price = data.detail.spec[0].line_price;
-    data.stock_num = data.detail.spec[0].stock_num;
+    // data.goods_sku_id = data.detail.spec[0].spec_sku_id;
+    data.insurance_price = data.price;
+    // data.line_price = data.detail.spec[0].line_price;
+    // data.stock_num = data.detail.spec[0].stock_num;
     // 初始化商品多规格
-    if (data.detail.spec_type === 20) {
-      data.specData = _this.initManySpecData(data.specData);
-    }
+    // if (data.detail.spec_type === 20) {
+    //   data.specData = _this.initManySpecData(data.specData);
+    // }
     return data;
   },
 
@@ -135,7 +140,7 @@ Page({
     if (typeof skuItem === 'object') {
       this.setData({
         goods_sku_id: skuItem.spec_sku_id,
-        goods_price: skuItem.form.goods_price,
+        insurance_price: skuItem.form.insurance_price,
         line_price: skuItem.form.line_price,
         stock_num: skuItem.form.stock_num,
       });
@@ -241,7 +246,7 @@ Page({
       wx.navigateTo({
         url: '../flow/checkout?' + App.urlEncode({
           order_type: 'buyNow',
-          goods_id: _this.data.goods_id,
+          insurance_id: _this.data.insurance_id,
           goods_num: _this.data.goods_num,
           goods_sku_id: _this.data.goods_sku_id,
         })
@@ -249,7 +254,7 @@ Page({
     } else if (submitType === 'addCart') {
       // 加入购物车
       App._post_form('cart/add', {
-        goods_id: _this.data.goods_id,
+        insurance_id: _this.data.insurance_id,
         goods_num: _this.data.goods_num,
         goods_sku_id: _this.data.goods_sku_id,
       }, function(result) {
