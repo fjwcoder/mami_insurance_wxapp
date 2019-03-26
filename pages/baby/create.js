@@ -12,7 +12,7 @@ Page({
     date:'',
     babyName:"请输入宝宝姓名",
     babyGender:'',
-    gender_arrey:['男','女'],
+    gender_arrey: ['男','女'],
     index:0,
     mother_name:'请输入母亲姓名',
     father_name: '请输入父亲姓名',
@@ -99,11 +99,13 @@ Page({
    * 表单提交
    */
   saveData: function (e) {
-    console.log(e);
-    return false;
+    
     let _this = this,
-      values = e.detail.value
+    values = e.detail.value
     values.date = this.data.date;
+
+    // 处理性别
+    values.baby_sex = (values.baby_sex === 0)?1:2;
 
     // 表单验证
     if (!_this.validation(values)) {

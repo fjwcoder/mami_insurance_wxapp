@@ -9,7 +9,7 @@
           <text class="f-30">宝宝姓名</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="name" placeholder="{{babyName}}" bindinput='getBabyName'></input>
+          <input name="baby_name	" placeholder="{{babyName}}" bindinput='getBabyName'></input>
         </view>
       </view>
 
@@ -18,7 +18,7 @@
           <text class="f-30">宝宝性别</text>
         </view>
         <view class="right-cont dis-flex">
-          <picker bindchange="chengeBabyGender" value="{{index}}" range="{{gender_arrey}}">
+          <picker bindchange="chengeBabyGender" value="{{index}}" range="{{gender_arrey}}" name="baby_sex">
             <text wx:if="{{gender_arrey[index]}}" class="f-30">{{gender_arrey[index]}}</text>
             <text wx:else class="f-30 col-7">选择性别</text>
           </picker>
@@ -30,7 +30,7 @@
         <view class="left-name">
           <text class="f-30">出生日期</text>
         </view>
-        <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindDateChange">
+        <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindDateChange" name="baby_birthday">
           <text wx:if="{{date}}" class="f-30">{{date}}</text>
           <text wx:else class="f-30 col-7">出生日期</text>
         </picker>
@@ -42,7 +42,7 @@
           <text class="f-30">母亲姓名</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="name" placeholder="{{mother_name}}" bindinput='getMotherName'></input>
+          <input name="mother_name" placeholder="{{mother_name}}" bindinput='getMotherName'></input>
         </view>
       </view>
 
@@ -51,7 +51,7 @@
           <text class="f-30">父亲姓名</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="name" placeholder="{{father_name}}" bindinput='getFatherName'></input>
+          <input name="father_name" placeholder="{{father_name}}" bindinput='getFatherName'></input>
         </view>
       </view>
 
@@ -60,7 +60,7 @@
           <text class="f-30">紧急联系人</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="name" placeholder="{{exigence_name}}" bindinput='getExigenceName'></input>
+          <input name="exigence_name" placeholder="{{exigence_name}}" bindinput='getExigenceName'></input>
         </view>
       </view>
 
@@ -69,7 +69,7 @@
           <text class="f-30">电话</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="name" placeholder="{{exigence_mobile}}" bindinput='getExigenceMobile' maxlength='11' type='number'></input>
+          <input name="exigence_mobile" placeholder="{{exigence_mobile}}" bindinput='getExigenceMobile' maxlength='11' type='number'></input>
         </view>
       </view>
     </view>
@@ -83,7 +83,7 @@
           <text class="f-30">接种点</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="detail" placeholder="请选择接种点" type="text"></input>
+          <input name="baby_jiezhong" placeholder="请选择接种点" type="text"></input>
         </view>
       </view>
 
