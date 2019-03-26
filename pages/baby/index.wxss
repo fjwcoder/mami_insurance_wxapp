@@ -27,10 +27,6 @@
   height: 28rpx;
 }
 
-.address-left {
-  flex: 6;
-}
-
 .address-right {
   flex: 3.2;
 }
@@ -105,4 +101,8 @@
 
 .radio-group raido {
   color: #f42424;
+}
+.shengri{
+  margin-left: 100rpx;
+  font-size: 28rpx;
 }

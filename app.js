@@ -73,6 +73,12 @@ App({
     const md5_Obj = require('./utils/hex_md5.js');
     this.access_token = md5_Obj.hexMD5('RuiTongMamiV2' + this.year + this.month + this.day + api_key);
   },
+  /**
+   * 
+   */
+  objToArr: function(obj){
+    return Object.values(obj);
+  },
 
 
   /**
