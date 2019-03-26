@@ -14,6 +14,7 @@ Page({
   onShow: function () {
     // 获取收货地址列表
     this.getBabyList();
+    console.log(App.getGlobalData('user_token'));
   },
 
   /**
@@ -23,7 +24,8 @@ Page({
     let _this = this;
  
     App._get('baby/getbabylist', {user_token: App.getGlobalData('user_token')}, function(result) {
-      console.log(result);
+      console.log(result.data);
+
       _this.setData(result.data);
     });
   },

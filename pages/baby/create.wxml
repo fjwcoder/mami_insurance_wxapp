@@ -9,7 +9,7 @@
           <text class="f-30">宝宝姓名</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="baby_name	" placeholder="{{babyName}}" bindinput='getBabyName'></input>
+          <input name="baby_name" placeholder="{{babyName}}" bindinput='getBabyName'></input>
         </view>
       </view>
 
