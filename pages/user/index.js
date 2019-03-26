@@ -31,12 +31,13 @@ Page({
 
     // 获取当前用户信息
     this.getUserDetail();
+    // console.log(wx.getStorageSync('user_id'));
+    // console.log(wx.getStorageSync('user_token'));
 
-    if (this.isBindMobile() === false) { // 如果未绑定手机，则显示绑定手机
-      this.setData({
-        hiddenmodalput: false
-      })
-    }
+    this.setData({
+      hiddenmodalput: this.isBindMobile()
+    })
+    
   },
 
   /**
@@ -70,6 +71,7 @@ Page({
    * 是否绑定手机号
    */
   isBindMobile: function(){
+    // console.log(wx.getStorageSync('user_mobile'));
     if (wx.getStorageSync('user_mobile') === '' || wx.getStorageSync('user_mobile') === null || wx.getStorageSync('user_mobile') === undefined){
       return false;
     }else{
@@ -140,8 +142,8 @@ Page({
   
   
   bindMobile: function () {
-    // App._post_form("User/wxappBindMobile", { user_token: App.globalData.user_token, mobile: this.data.phone, yzm: this.data.code }, function (result) {
-      //if (result.code === 200){
+    App._post_form("User/wxappBindMobile", { user_token: wx.getStorageSync('user_token'), mobile: this.data.phone, yzm: this.data.code }, function (result) {
+      if (result.code === 200){
         wx.showToast({
           title: '绑定成功',
           icon: 'success',
@@ -151,7 +153,7 @@ Page({
         _this.setData({
           hiddenmodalput:true
         })
-      //}
-  //})
+      }
+    })
   },
 })

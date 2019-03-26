@@ -1,3 +1,5 @@
+@import "../../wxParse/wxParse.wxss";
+
 .slide-image {
   background: #fff;
 }
