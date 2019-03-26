@@ -12,7 +12,7 @@ Page({
     date:'',
     babyName:"请输入宝宝姓名",
     babyGender:'',
-    gender_arrey:['男','女'],
+    gender_arrey: ['男','女'],
     index:0,
     mother_name:'请输入母亲姓名',
     father_name: '请输入父亲姓名',
@@ -99,11 +99,13 @@ Page({
    * 表单提交
    */
   saveData: function (e) {
-    console.log(e);
-    return false;
+    
     let _this = this,
-      values = e.detail.value
+    values = e.detail.value
     values.date = this.data.date;
+
+    // 处理性别
+    values.baby_sex = (values.baby_sex === 0)?1:2;
 
     // 表单验证
     if (!_this.validation(values)) {
@@ -115,9 +117,11 @@ Page({
     _this.setData({
       disabled: true
     });
-
+    // console.log(values);
+    // return false;
     // 提交到后端
     App._post_form('baby/addbabyinfo', values, function (result) {
+
       App.showSuccess(result.msg, function () {
         wx.navigateBack();
       });
@@ -133,31 +137,31 @@ Page({
    * 表单验证
    */
   validation: function (values) {
-    if (values.name === '') {
+    if (values.baby_name === '') {
       this.data.error = '宝宝姓名不能为空';
       return false;
     }
-    if (values.phone.length < 1) {
+    if (values.exigence_mobile.length < 1) {
       this.data.error = '手机号不能为空';
       return false;
     }
-    if (values.phone.length !== 11) {
+    if (values.exigence_mobile.length !== 11) {
       this.data.error = '手机号长度有误';
       return false;
     }
     let reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
-    if (!reg.test(values.phone)) {
+    if (!reg.test(values.exigence_mobile)) {
       this.data.error = '手机号不符合要求';
       return false;
     }
-    if (!this.data.region) {
-      this.data.error = '省市区不能空';
-      return false;
-    }
-    if (values.detail === '') {
-      this.data.error = '详细地址不能为空';
-      return false;
-    }
+    // if (!this.data.region) {
+    //   this.data.error = '省市区不能空';
+    //   return false;
+    // }
+    // if (values.detail === '') {
+    //   this.data.error = '详细地址不能为空';
+    //   return false;
+    // }
     return true;
   },
 

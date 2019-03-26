@@ -51,7 +51,7 @@
   </form>
 
   <!-- 快捷导航 -->
-  <view class="filter-menu {{nav_select?'active':''}}">
+  <!-- <view class="filter-menu {{nav_select?'active':''}}">
     <view class="filter-menu-list ts-5">
       <custom-ul>
         <custom-li bindtap="nav" data-index="home">
@@ -70,5 +70,5 @@
       </custom-ul>
     </view>
     <view bindtap="commonNav" class="filter-menu-title"></view>
-  </view>
+  </view> -->
 </view>
