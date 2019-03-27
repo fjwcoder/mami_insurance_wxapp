@@ -23,7 +23,7 @@ Page({
     let _this = this;
  
     App._get('baby/getbabylist', {user_token: App.getGlobalData('user_token')}, function(result) {
-      console.log(result.data);
+     // console.log(result.data);
 
       _this.setData({ list: Object.values(result.data) });
     });
