@@ -45,7 +45,7 @@
     </view>
   </view>
   <view class="m-top20">
-    <navigator url="../address/index">
+    <!-- <navigator url="../address/index">
       <view class="user-order-title dis-flex b-f m-top20">
         <view class="flex-box">
           <text class="iconfont icon-map common-icon"></text>
@@ -57,7 +57,23 @@
           </view>
         </view>
       </view>
+    </navigator> -->
+
+    <navigator url="../user/detail">
+      <view class="user-order-title dis-flex b-f m-top20">
+        <view class="flex-box">
+          <text class="iconfont icon-map common-icon"></text>
+          <text class="user-orderName h4">我的信息</text>
+        </view>
+        <view class="flex-box">
+          <view class="user-orderContBox">
+            <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+          </view>
+        </view>
+      </view>
     </navigator>
+
+
     <navigator url="../baby/index">
       <view class="user-order-title dis-flex b-f m-top20">
         <view class="flex-box">
