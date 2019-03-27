@@ -5,29 +5,20 @@
     <custom-li wx:for="{{list}}" wx:for-item="item" wx:key="this">
       <view class="address-header b-f m-top18">
         <view class="flow-header-left pl-12">
-          <view class="flow-checkout-admin">{{item.name}}
-            <text>{{item.date}}</text>
+          <view class="flow-checkout-admin">{{item.baby_name}}
+            <text>{{item.date}}<text class='shengri'>生日：{{item.baby_birthday}}</text></text>
           </view>
           <view class="flow-checkout-address">
-            {{item.region.province}} {{item.region.city}} {{item.region.region}} {{item.detail}}
+             疫苗接种点：{{item.baby_jiezhong}}
           </view>
         </view>
       </view>
       <view class="address-list dis-flex b-f">
-        <view class="list address-left">
-          <radio-group bindchange="setDefault" class="radio-group">
-            <label class="radio">
-              <radio checked="{{item.address_id === default_id}}" color="#ff495e" value="{{item.address_id}}"></radio>
-              <text class="cont" wx:if="{{item.address_id === default_id}}">默认</text>
-              <text class="cont" wx:else>选择</text>
-            </label>
-          </radio-group>
-        </view>
         <view class="list address-right">
           <text class="iconfont icon-edit1"></text>
-          <text bindtap="editAddress" class="title" data-id="{{item.address_id}}">编辑</text>
-          <text class="iconfont icon-lajixiang"></text>
-          <text bindtap="removeAddress" class="title" data-id="{{item.address_id}}">删除</text>
+          <text bindtap="editBabyInfo" class="title" data-id="{{item.baby_id}}">编辑</text>
+          <!-- <text class="iconfont icon-lajixiang"></text>
+          <text bindtap="removeAddress" class="title" data-id="{{item.address_id}}">删除</text> -->
         </view>
       </view>
     </custom-li>

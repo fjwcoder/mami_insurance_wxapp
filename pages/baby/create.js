@@ -10,14 +10,15 @@ Page({
     nav_select: false, // 快捷导航
     region: '',
     date:'',
-    babyName:"请输入宝宝姓名",
-    babyGender:'',
+    baby_name:"请输入宝宝姓名",
+    baby_sex:'',
     gender_arrey: ['男','女'],
     index:0,
     mother_name:'请输入母亲姓名',
     father_name: '请输入父亲姓名',
     exigence_name:'请输入紧急联系人姓名',
     exigence_mobile: '请输入紧急联系人电话',
+    baby_jiezhong:'请选择接种点',
     error: '',
   },
 
@@ -51,7 +52,7 @@ Page({
   /**
    * 修改宝宝性别
    */
-  chengeBabyGender: function (e) {
+  chengeBabySex: function (e) {
     this.setData({
       index: e.detail.value
     })
@@ -90,10 +91,16 @@ Page({
     this.setData({
       exigence_mobile: e.detail.value
     })
-    console.log(this.data.exigence_mobile)
   },
 
-
+  /**
+   * 填写接种点信息
+   */
+  getBabyJieZhong: function (e) {
+    this.setData({
+      baby_jiezhong: e.detail.value
+    })
+  },
 
   /**
    * 表单提交
@@ -154,14 +161,18 @@ Page({
       this.data.error = '手机号不符合要求';
       return false;
     }
-    // if (!this.data.region) {
-    //   this.data.error = '省市区不能空';
-    //   return false;
-    // }
-    // if (values.detail === '') {
-    //   this.data.error = '详细地址不能为空';
-    //   return false;
-    // }
+    if (valus.father_name === ''){
+      this.data.error = '父亲姓名不能为空';
+      return false;
+    }
+    if (valus.mother_name === '') {
+      this.data.error = '母亲姓名不能为空';
+      return false;
+    }
+    if (valus.baby_jiezhong === '') {
+      this.data.error = '接种点名称不能为空';
+      return false;
+    }
     return true;
   },
 

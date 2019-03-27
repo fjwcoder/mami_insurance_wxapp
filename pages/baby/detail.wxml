@@ -3,44 +3,91 @@
   <!-- 表单 -->
   <form bindreset="formReset" bindsubmit="saveData">
     <view class="address-cont-title b-f b-b">
+
       <view class="list address-box dis-flex b-b">
         <view class="left-name">
-          <text class="f-30">收货人</text>
+          <text class="f-30">宝宝姓名</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="name" placeholder="请输入收货人姓名" value="{{detail.name}}"></input>
+          <input name="baby_name" value="{{baby_name}}" bindinput='getBabyName'></input>
         </view>
       </view>
-      <view class="list address-box dis-flex">
+
+      <view class="list address-box dis-flex  b-b">
         <view class="left-name">
-          <text class="f-30">手机号</text>
+          <text class="f-30">宝宝性别</text>
+        </view>
+        <picker bindchange="chengeBabySex" value="{{index}}" range="{{gender_arrey}}" name="baby_sex" class='kuandu'>
+          <text wx:if="{{gender_arrey[index]}}" class="f-30 kuandu">{{gender_arrey[index]}}</text>
+          <text wx:else class="f-30 col-7">选择性别</text>
+        </picker>
+      </view>
+
+
+      <view class="list address-box dis-flex  b-b">
+        <view class="left-name">
+          <text class="f-30">出生日期</text>
+        </view>
+        <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindDateChange" name="baby_birthday" class='kuandu'>
+          <text wx:if="{{date}}" class="f-30">{{date}}</text>
+          <text wx:else class="f-30 col-7">出生日期</text>
+        </picker>
+      </view>
+
+
+      <view class="list address-box dis-flex b-b">
+        <view class="left-name">
+          <text class="f-30">母亲姓名</text>
         </view>
         <view class="right-cont dis-flex">
-          <input maxlength="11" name="phone" placeholder="请输入收货人联系电话" type="number" value="{{detail.phone}}"></input>
+          <input name="mother_name" value="{{mother_name}}" bindinput='getMotherName'></input>
+        </view>
+      </view>
+
+      <view class="list address-box dis-flex b-b">
+        <view class="left-name">
+          <text class="f-30">父亲姓名</text>
+        </view>
+        <view class="right-cont dis-flex">
+          <input name="father_name" value="{{father_name}}" bindinput='getFatherName'></input>
+        </view>
+      </view>
+
+      <view class="list address-box dis-flex b-b">
+        <view class="left-name">
+          <text class="f-30">紧急联系人</text>
+        </view>
+        <view class="right-cont dis-flex">
+          <input name="exigence_name" value="{{exigence_name}}" bindinput='getExigenceName'></input>
+        </view>
+      </view>
+
+      <view class="list address-box dis-flex b-b">
+        <view class="left-name">
+          <text class="f-30">电话</text>
+        </view>
+        <view class="right-cont dis-flex">
+          <input name="exigence_mobile" value="{{exigence_mobile}}" bindinput='getExigenceMobile' maxlength='11' type='number'></input>
         </view>
       </view>
     </view>
+
+
     <view class="address-cont-title b-f b-b">
-      <view class="dis-flex list address-box m-top20 b-b">
-        <view class="left-name">
-          <text class="f-30">所在地区</text>
-        </view>
-        <view class="address-cont-box dis-flex">
-          <picker mode="region" bindchange="bindRegionChange">
-            <text wx:if="{{region}}" class="f-30">{{region}}</text>
-            <text wx:else class="f-30 col-7">选择省、市、区</text>
-          </picker>
-        </view>
-      </view>
+
+
       <view class="dis-flex list address-box">
         <view class="left-name">
-          <text class="f-30">详细地址</text>
+          <text class="f-30">接种点</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="detail" placeholder="请输入街道小区楼层" type="text" value="{{detail.detail}}"></input>
+          <input name="baby_jiezhong" value="{{baby_jiezhong}}" type="text" bindinput='getBabyJieZhong'></input>
         </view>
       </view>
+
     </view>
+
+
     <view class="padding-box m-top35 profile-btn">
       <button formType="submit" disabled="{{disabled}}">保存</button>
     </view>
@@ -50,7 +97,7 @@
 
   </form>
 
-  <!-- 快捷导航 -->
+  <!-- 快捷导航
   <view class="filter-menu {{nav_select?'active':''}}">
     <view class="filter-menu-list ts-5">
       <custom-ul>
@@ -70,5 +117,5 @@
       </custom-ul>
     </view>
     <view bindtap="commonNav" class="filter-menu-title"></view>
-  </view>
+  </view> -->
 </view>
