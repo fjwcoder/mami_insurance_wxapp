@@ -25,9 +25,9 @@ Page({
     stock_num: 0, // 库存数量
 
     goods_num: 1, // 商品数量
-    goods_sku_id: 0, // 规格id
-    cart_total_num: 0, // 购物车商品总数量
-    specData: {}, // 多规格信息
+    // goods_sku_id: 0, // 规格id
+    // cart_total_num: 0, // 购物车商品总数量
+    // specData: {}, // 多规格信息
   },
 
   // 记录规格的数组
@@ -101,51 +101,51 @@ Page({
   /**
    * 点击切换不同规格
    */
-  modelTap: function(e) {
-    let attrIdx = e.currentTarget.dataset.attrIdx,
-      itemIdx = e.currentTarget.dataset.itemIdx,
-      specData = this.data.specData;
-    for (let i in specData.spec_attr) {
-      for (let j in specData.spec_attr[i].spec_items) {
-        if (attrIdx == i) {
-          specData.spec_attr[i].spec_items[j].checked = false;
-          if (itemIdx == j) {
-            specData.spec_attr[i].spec_items[itemIdx].checked = true;
-            this.goods_spec_arr[i] = specData.spec_attr[i].spec_items[itemIdx].item_id;
-          }
-        }
-      }
-    }
-    this.setData({
-      specData
-    });
-    // 更新商品规格信息
-    this.updateSpecGoods();
-  },
+  // modelTap: function(e) {
+  //   let attrIdx = e.currentTarget.dataset.attrIdx,
+  //     itemIdx = e.currentTarget.dataset.itemIdx,
+  //     specData = this.data.specData;
+  //   for (let i in specData.spec_attr) {
+  //     for (let j in specData.spec_attr[i].spec_items) {
+  //       if (attrIdx == i) {
+  //         specData.spec_attr[i].spec_items[j].checked = false;
+  //         if (itemIdx == j) {
+  //           specData.spec_attr[i].spec_items[itemIdx].checked = true;
+  //           this.goods_spec_arr[i] = specData.spec_attr[i].spec_items[itemIdx].item_id;
+  //         }
+  //       }
+  //     }
+  //   }
+  //   this.setData({
+  //     specData
+  //   });
+  //   // 更新商品规格信息
+  //   this.updateSpecGoods();
+  // },
 
   /**
    * 更新商品规格信息
    */
-  updateSpecGoods: function() {
-    let spec_sku_id = this.goods_spec_arr.join('_');
+  // updateSpecGoods: function() {
+  //   let spec_sku_id = this.goods_spec_arr.join('_');
 
-    // 查找skuItem
-    let spec_list = this.data.specData.spec_list,
-      skuItem = spec_list.find((val) => {
-        return val.spec_sku_id == spec_sku_id;
-      });
+  //   // 查找skuItem
+  //   let spec_list = this.data.specData.spec_list,
+  //     skuItem = spec_list.find((val) => {
+  //       return val.spec_sku_id == spec_sku_id;
+  //     });
 
-    // 记录goods_sku_id
-    // 更新商品价格、划线价、库存
-    if (typeof skuItem === 'object') {
-      this.setData({
-        goods_sku_id: skuItem.spec_sku_id,
-        insurance_price: skuItem.form.insurance_price,
-        line_price: skuItem.form.line_price,
-        stock_num: skuItem.form.stock_num,
-      });
-    }
-  },
+  //   // 记录goods_sku_id
+  //   // 更新商品价格、划线价、库存
+  //   if (typeof skuItem === 'object') {
+  //     this.setData({
+  //       goods_sku_id: skuItem.spec_sku_id,
+  //       insurance_price: skuItem.form.insurance_price,
+  //       line_price: skuItem.form.line_price,
+  //       stock_num: skuItem.form.stock_num,
+  //     });
+  //   }
+  // },
 
   /**
    * 设置轮播图当前指针 数字
@@ -186,31 +186,31 @@ Page({
   /**
    * 增加商品数量
    */
-  up: function() {
-    this.setData({
-      goods_num: ++this.data.goods_num
-    })
-  },
+  // up: function() {
+  //   this.setData({
+  //     goods_num: ++this.data.goods_num
+  //   })
+  // },
 
   /**
    * 减少商品数量
    */
-  down: function() {
-    if (this.data.goods_num > 1) {
-      this.setData({
-        goods_num: --this.data.goods_num
-      });
-    }
-  },
+  // down: function() {
+  //   if (this.data.goods_num > 1) {
+  //     this.setData({
+  //       goods_num: --this.data.goods_num
+  //     });
+  //   }
+  // },
 
   /**
    * 跳转购物车页面
    */
-  flowCart: function() {
-    wx.switchTab({
-      url: "../flow/index"
-    });
-  },
+  // flowCart: function() {
+  //   wx.switchTab({
+  //     url: "../flow/index"
+  //   });
+  // },
 
   /**
    * 快捷导航 显示/隐藏
@@ -221,18 +221,18 @@ Page({
     });
   },
 
-  nav: function(e) {
-    let index = e.currentTarget.dataset.index;
-    "home" == index ? wx.switchTab({
-      url: "../index/index"
-    }) : "fenlei" == index ? wx.switchTab({
-      url: "../category/index"
-    }) : "cart" == index ? wx.switchTab({
-      url: "../flow/index"
-    }) : "profile" == index && wx.switchTab({
-      url: "../user/index"
-    });
-  },
+  // nav: function(e) {
+  //   let index = e.currentTarget.dataset.index;
+  //   "home" == index ? wx.switchTab({
+  //     url: "../index/index"
+  //   }) : "fenlei" == index ? wx.switchTab({
+  //     url: "../category/index"
+  //   }) : "cart" == index ? wx.switchTab({
+  //     url: "../flow/index"
+  //   }) : "profile" == index && wx.switchTab({
+  //     url: "../user/index"
+  //   });
+  // },
 
   /**
    * 加入购物车and立即购买
