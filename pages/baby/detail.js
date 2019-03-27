@@ -20,6 +20,7 @@ Page({
     exigence_mobile: '请输入紧急联系人电话',
     baby_jiezhong:'请选择接种点',
     error: '',
+    babyId:''
   },
 
   /**
@@ -49,8 +50,10 @@ Page({
         baby_jiezhong: result.data.baby_jiezhong,
         exigence_name: result.data.exigence_name,
         exigence_mobile: result.data.exigence_mobile,
-        date: result.data.baby_birthday
+        date: result.data.baby_birthday,
+        babyId: result.data.baby_id
       })
+      console.log(_this.data.babyId)
     });
   },
 
@@ -136,8 +139,9 @@ Page({
       values = e.detail.value
       
     values.date = this.data.date;
+    values.baby_id = _this.data.babyId
     console.log(values);
-    return false;
+    
 
     // 处理性别
     values.baby_sex = (values.baby_sex === 0) ? 1 : 2;
