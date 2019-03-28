@@ -1,6 +1,6 @@
 /* common.wxss */
 @import "/utils/common.wxss";
-@import "./wxParse/wxParse.wxss";
+/* @import "./wxParse/wxParse.wxss"; */
 .common-header-xian {
   border-top: 1rpx solid #eee;
   position: fixed;

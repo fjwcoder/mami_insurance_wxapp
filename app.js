@@ -32,6 +32,7 @@ App({
    * 当小程序启动，或从后台进入前台显示，会触发 onShow
    */
   onShow: function(options) {
+    // console.log(this.access_token);
     // 获取小程序基础信息
     // this.getWxappBase(function(wxapp) { // 注释 by fjw
       // 设置navbar标题、颜色
