@@ -10,7 +10,7 @@
           <text class="f-30">姓名</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="us_name" placeholder="请输入真实姓名" value="{{us_name}}" maxlength='4'></input>
+          <input name="user_name" placeholder="请输入真实姓名" value="{{user_name}}" maxlength='4'></input>
         </view>
       </view>
 
@@ -31,7 +31,7 @@
           <text class="f-30">年龄</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="us_age" placeholder="请输入年龄" value="{{age}}" maxlength='2' type='number'></input>
+          <input name="user_age" placeholder="请输入年龄" value="{{user_age}}" maxlength='2' type='number'></input>
         </view>
       </view>
 
@@ -49,7 +49,7 @@
           <text class="f-30">手机号</text>
         </view>
         <view class="right-cont dis-flex">
-          <input maxlength="11" name="us_mobile" placeholder="请输入联系电话" type="number" value="{{mobile}}"></input>
+          <input maxlength="11" name="user_mobile" placeholder="请输入联系电话" type="number" value="{{user_mobile}}"  ></input>
         </view>
       </view>
 
@@ -58,7 +58,7 @@
           <text class="f-30">身份证号</text>
         </view>
         <view class="right-cont dis-flex">
-          <input maxlength="18" name="id_card" placeholder="请输入身份证号" value="{{id_card}}"></input>
+          <input maxlength="18" name="us_id_card" placeholder="请输入身份证号" value="{{us_id_card}}" ></input>
         </view>
       </view>
 
@@ -69,13 +69,13 @@
         </view>
         <view class="right-cont dis-flex" style='width: 32%;'>
           <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindIdCardSDateChange" name="id_card_begintime">
-            <text wx:if="{{s_date}}" class="f-30">{{s_date}}</text>
+            <text wx:if="{{us_s_date}}" class="f-30">{{us_s_date}}</text>
             <text wx:else class="f-30 col-7">开始时间</text>
           </picker>
         </view>
         <view class="right-cont dis-flex" style='width: 32%;'>
           <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindIdCardODateChange" name="id_card_endtime">
-            <text wx:if="{{o_date}}" class="f-30">{{o_date}}</text>
+            <text wx:if="{{us_o_date}}" class="f-30">{{us_o_date}}</text>
             <text wx:else class="f-30 col-7">结束时间</text>
           </picker>
         </view>
@@ -100,8 +100,8 @@
           <text class="f-30">所在地区</text>
         </view>
         <view class="address-cont-box dis-flex kuandu">
-          <picker mode="region" bindchange="bindRegionChange" name="area" style='width:100%'>
-            <text wx:if="{{region}}" class="f-30">{{region}}</text>
+          <picker mode="region" bindchange="bindRegionChange" name="us_region" style='width:100%'>
+            <text wx:if="{{us_region}}" class="f-30">{{us_region}}</text>
             <text wx:else class="f-30 col-7">选择省、市、区</text>
           </picker>
         </view>
@@ -111,7 +111,7 @@
           <text class="f-30">详细地址</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="user_address" placeholder="请输入街道小区楼层" type="text" value="{{detail}}"></input>
+          <input name="user_address" placeholder="请输入街道小区楼层" type="text" value="{{user_address}}"style='color:#000;'></input>
         </view>
       </view>
     </view>
@@ -142,7 +142,7 @@
           <text class="f-30">姓名</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="baby_name" placeholder="请输入真实姓名" value="{{name}}" maxlength='4'></input>
+          <input name="baby_name" placeholder="请输入真实姓名" value="{{baby_name}}" maxlength='10'></input>
         </view>
       </view>
 
@@ -163,7 +163,7 @@
           <text class="f-30">年龄</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="baby_age" placeholder="请输入年龄" value="{{age}}" maxlength='2' type='number'></input>
+          <input name="baby_age" placeholder="请输入年龄" value="{{baby_age}}" maxlength='2' type='number'></input>
         </view>
       </view>
 
@@ -178,19 +178,10 @@
 
       <view class="list address-box dis-flex b-b">
         <view class="left-name">
-          <text class="f-30">手机号</text>
-        </view>
-        <view class="right-cont dis-flex">
-          <input maxlength="11" name="mobile" placeholder="请输入联系电话" type="number" value="{{mobile}}"></input>
-        </view>
-      </view>
-
-      <view class="list address-box dis-flex b-b">
-        <view class="left-name">
           <text class="f-30">身份证号</text>
         </view>
         <view class="right-cont dis-flex">
-          <input maxlength="18" name="baby_id_card" placeholder="请输入身份证号" value="{{id_card}}"></input>
+          <input maxlength="18" name="baby_id_card" placeholder="请输入身份证号" value="{{baby_id_card}}"></input>
         </view>
       </view>
 
@@ -200,14 +191,14 @@
           <text class="f-30">证件期限</text>
         </view>
         <view class="right-cont dis-flex" style='width: 32%;'>
-          <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindIdCardSDateChange" name="id_card_begintime">
-            <text wx:if="{{s_date}}" class="f-30">{{s_date}}</text>
+          <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindIdCardSDateChangeBaby" name="baby_id_card_begintime">
+            <text wx:if="{{baby_s_date}}" class="f-30">{{baby_s_date}}</text>
             <text wx:else class="f-30 col-7">开始时间</text>
           </picker>
         </view>
         <view class="right-cont dis-flex" style='width: 32%;'>
-          <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindIdCardODateChange" name="id_card_endtime">
-            <text wx:if="{{o_date}}" class="f-30">{{o_date}}</text>
+          <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindIdCardODateChangeBaby" name="baby_id_card_endtime">
+            <text wx:if="{{baby_o_date}}" class="f-30">{{baby_o_date}}</text>
             <text wx:else class="f-30 col-7">结束时间</text>
           </picker>
         </view>
@@ -232,8 +223,8 @@
           <text class="f-30">所在地区</text>
         </view>
         <view class="address-cont-box dis-flex kuandu">
-          <picker mode="region" bindchange="bindRegionChange" name="area" style='width:100%'>
-            <text wx:if="{{region}}" class="f-30">{{region}}</text>
+          <picker mode="region" bindchange="bindRegionChangeBaby" name="baby_region" style='width:100%'>
+            <text wx:if="{{baby_region}}" class="f-30">{{baby_region}}</text>
             <text wx:else class="f-30 col-7">选择省、市、区</text>
           </picker>
         </view>
@@ -243,7 +234,7 @@
           <text class="f-30">详细地址</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="baby_address" placeholder="请输入街道小区楼层" type="text" value="{{detail}}"></input>
+          <input name="baby_address" placeholder="请输入街道小区楼层" type="text" value="{{baby_address}}"style='color:#000;'></input>
         </view>
       </view>
     </view>

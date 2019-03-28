@@ -144,6 +144,7 @@ Page({
    * 表单验证
    */
   validation: function (values) {
+    console.log(values);
     if (values.baby_name === '') {
       this.data.error = '宝宝姓名不能为空';
       return false;
@@ -161,15 +162,15 @@ Page({
       this.data.error = '手机号不符合要求';
       return false;
     }
-    if (valus.father_name === ''){
+    if (values.father_name === ''){
       this.data.error = '父亲姓名不能为空';
       return false;
     }
-    if (valus.mother_name === '') {
+    if (values.mother_name === '') {
       this.data.error = '母亲姓名不能为空';
       return false;
     }
-    if (valus.baby_jiezhong === '') {
+    if (values.baby_jiezhong === '') {
       this.data.error = '接种点名称不能为空';
       return false;
     }
