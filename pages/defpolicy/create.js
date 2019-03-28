@@ -8,7 +8,6 @@ Page({
     relation_arrey: ['父子', '父女', '母子', '母女'],
     region:'',  
     
-    // relation_arrey: [["a", "b"], ["c", "d"]],
     gender_arrey: ['男', '女'],
     baby_list: ["diyige", 'dierge'],
     
@@ -24,6 +23,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.getUserDetail();
     this.getBabyList();
   },
 
@@ -37,15 +37,35 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  // onShow: function() {
 
-    // this.setData({
-    //   baby_list: (this.getBabyName(this.data.baby_info) != []) ? this.getBabyName(this.data.baby_info): this.data.baby_list,
-    // });
 
-    // console.log(this.data.baby_list);
+  // },
+  /**
+   * 获取投保人信息
+   */
+  getUserDetail: function(){
+
   },
 
+  /**
+   * 获取宝宝列表
+   */
+  getBabyList: function () {
+    let _this = this;
+
+    App._get('baby/getbabylist', { user_token: App.getGlobalData('user_token') }, function (result) {
+      console.log(result);
+      _this.setData({
+        baby_info: Object.values(result.data)
+      });
+
+      _this.setData({
+        baby_list: _this.getBabyName(_this.data.baby_info)
+      })
+    });
+
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -127,28 +147,7 @@ console.log(this.data.index_d)
     })
   },
 
-  /**
-   * 获取宝宝列表
-   */
-  getBabyList: function() {
-    let _this = this;
-
-    App._get('baby/getbabylist', {
-      user_token: App.getGlobalData('user_token')
-    }, function(result) {
-
-      _this.setData({
-        baby_info: Object.values(result.data)
-      });
-      // _this.data.baby_info = Object.values(result.data);
-      // console.log(_this.data.baby_info)
-
-      _this.setData({
-        baby_list: _this.getBabyName(_this.data.baby_info)
-      })
-    });
-    
-  },
+  
   /**
    * 自定义获取baby_list
    */
@@ -160,7 +159,7 @@ console.log(this.data.index_d)
       arr.forEach(item => {
 
         Object.keys(item).forEach(k => {
-          if (k === 'name') {
+          if (k === 'baby_name') {
             result.push(item[k]);
           }
 

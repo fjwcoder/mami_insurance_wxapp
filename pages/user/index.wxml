@@ -88,7 +88,7 @@
       </view>
     </navigator>
 
-    <navigator url="../Insurance/index">
+    <navigator url="../defpolicy/index">
       <view class="user-order-title dis-flex b-f m-top20">
         <view class="flex-box">
           <text class="iconfont icon-map common-icon"></text>

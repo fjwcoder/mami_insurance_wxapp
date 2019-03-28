@@ -31,6 +31,7 @@ Page({
     // 获取当前地址信息
     // this.getAddressDetail(options.address_id);
     this.getUserInfo();
+    // console.log(this.data.name);
   },
 
   /**
@@ -134,7 +135,7 @@ Page({
     App._get('user/getuserdetail', {
       user_token: App.getGlobalData('user_token'),
     }, function(result) {
-      console.log(result.data);
+      // console.log(result.data);
       _this.setData({
         name: result.data.us_name,
         index: result.data.sex - 1,
