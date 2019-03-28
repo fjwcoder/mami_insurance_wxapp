@@ -55,7 +55,7 @@ Page({
       // console.log(result);
       // 初始化商品详情数据
       let data = _this.initGoodsDetailData(result.data);
-
+// console.log(data);
       _this.setData(data);
     });
   },
@@ -86,17 +86,17 @@ Page({
   /**
    * 初始化商品多规格
    */
-  initManySpecData: function(data) {
-    for (let i in data.spec_attr) {
-      for (let j in data.spec_attr[i].spec_items) {
-        if (j < 1) {
-          data.spec_attr[i].spec_items[0].checked = true;
-          this.goods_spec_arr[i] = data.spec_attr[i].spec_items[0].item_id;
-        }
-      }
-    }
-    return data;
-  },
+  // initManySpecData: function(data) {
+  //   for (let i in data.spec_attr) {
+  //     for (let j in data.spec_attr[i].spec_items) {
+  //       if (j < 1) {
+  //         data.spec_attr[i].spec_items[0].checked = true;
+  //         this.goods_spec_arr[i] = data.spec_attr[i].spec_items[0].item_id;
+  //       }
+  //     }
+  //   }
+  //   return data;
+  // },
 
   /**
    * 点击切换不同规格

@@ -1,8 +1,6 @@
 {
   "pages": [
     
-    "pages/defpolicy/index",
-    
     
     "pages/index/index",
     "pages/category/index",
@@ -26,7 +24,8 @@
     "pages/login/login",
     
     "pages/insurance/detail",
-
+    
+    "pages/defpolicy/index",
     "pages/defpolicy/create"
     
   ],
