@@ -72,7 +72,8 @@ Page({
    */
   isBindMobile: function(){
     // console.log(wx.getStorageSync('user_mobile'));
-    if (wx.getStorageSync('user_mobile') === '' || wx.getStorageSync('user_mobile') === null || wx.getStorageSync('user_mobile') === undefined){
+
+    if (App.isLogin() && wx.getStorageSync('user_mobile') === '' || wx.getStorageSync('user_mobile') === null || wx.getStorageSync('user_mobile') === undefined){
       return false;
     } else {
       return true;
