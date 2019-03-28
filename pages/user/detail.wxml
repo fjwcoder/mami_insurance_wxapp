@@ -87,7 +87,7 @@
         <view class="left-name">
           <text class="f-30">所在地区</text>
         </view>
-        <view class="address-cont-box dis-flex kuandu" >
+        <view class="address-cont-box dis-flex kuandu">
           <picker mode="region" bindchange="bindRegionChange" name="area" style='width:100%'>
             <text wx:if="{{region}}" class="f-30">{{region}}</text>
             <text wx:else class="f-30 col-7">选择省、市、区</text>
@@ -103,6 +103,7 @@
         </view>
       </view>
     </view>
+    
     <view class="padding-box m-top35 profile-btn">
       <button formType="submit" disabled="{{disabled}}">保存</button>
     </view>

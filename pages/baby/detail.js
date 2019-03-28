@@ -41,7 +41,6 @@ Page({
     // return false;
     App._get('baby/getbabyinfo', {user_token: App.getGlobalData('user_token'), baby_id}, function (result) {
       console.log(result.data);
-
       _this.setData({
         baby_name: result.data.baby_name,
         index: result.data.baby_sex - 1,

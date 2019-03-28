@@ -1,6 +1,7 @@
 {
   "pages": [
-
+    "pages/Insurance/index",
+    
     "pages/index/index",
     "pages/category/index",
     "pages/category/list",
@@ -21,9 +22,9 @@
     "pages/baby/create",
     "pages/baby/detail",
     "pages/login/login",
-
-    "pages/insurance/detail"
-
+    
+    "pages/Insurance/detail",
+    "pages/Insurance/create"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

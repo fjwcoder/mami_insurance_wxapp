@@ -19,7 +19,7 @@ Page({
     s_date: '',
     o_date: '',
     gender_arrey: ['男', '女'],
-    index: '',
+    index: 0,
 
     error: '',
   },
