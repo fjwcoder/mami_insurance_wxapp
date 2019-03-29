@@ -5,18 +5,18 @@
     <custom-li wx:for="{{list}}" wx:for-item="item" wx:key="this">
       <view class="address-header b-f m-top18">
         <view class="flow-header-left pl-12">
-          <view class="flow-checkout-admin">{{item.baby_name}}
-            <text>{{item.date}}<text class='shengri'>生日：{{item.baby_birthday}}</text></text>
+          <view class="flow-checkout-admin">投保人：{{item.user_name}}
+            <text class='shengri'>被保人：{{item.baby_name}}</text>
           </view>
           <view class="flow-checkout-address">
-             疫苗接种点：{{item.baby_jiezhong}}
+            被保人身份证号：{{item.baby_id_card}}
           </view>
         </view>
       </view>
       <view class="address-list dis-flex b-f">
         <view class="list address-right">
           <text class="iconfont icon-edit1"></text>
-          <text bindtap="editBabyInfo" class="title" data-id="{{item.baby_id}}">编辑</text>
+          <text bindtap="editInsuranceInfo" class="title" data-id="{{item.id}}">编辑</text>
           <!-- <text class="iconfont icon-lajixiang"></text>
           <text bindtap="removeAddress" class="title" data-id="{{item.address_id}}">删除</text> -->
         </view>

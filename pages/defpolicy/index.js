@@ -23,14 +23,14 @@ Page({
     let _this = this;
 
     App._get('baby/getDefInsuranceInfoList', {user_token: App.getGlobalData('user_token'), baby_id}, function (result) {
-      //console.log(result.data);
+      console.log(result.data);
 
       _this.setData({ list: Object.values(result.data) });
     });
     // console.log(_this.data.list)
   },
   /**
-   * 添加新宝宝
+   * 添加新保单
    */
   createBaby: function () {
     wx.navigateTo({
@@ -39,11 +39,13 @@ Page({
   },
 
   /**
-   * 编辑baby
+   * 编辑保单
    */
-  editBabyInfo: function (e) {
+  editInsuranceInfo: function (e) {
+    let _this = this
     wx.navigateTo({
-      url: "./detail?baby_id=" + e.currentTarget.dataset.id
+      url: "./detail?def_id=" + e.currentTarget.dataset.id
+      
     });
   },
 

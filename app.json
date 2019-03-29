@@ -1,7 +1,5 @@
 {
   "pages": [
-    
-    
     "pages/index/index",
     "pages/category/index",
     "pages/category/list",
@@ -24,12 +22,10 @@
     "pages/baby/create",
     "pages/baby/detail",
     "pages/login/login",
-    
     "pages/insurance/detail",
-    
     "pages/defpolicy/index",
-    "pages/defpolicy/create"
-    
+    "pages/defpolicy/create",
+    "pages/defpolicy/detail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

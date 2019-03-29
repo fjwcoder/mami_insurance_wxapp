@@ -74,7 +74,7 @@
           </picker>
         </view>
         <view class="right-cont dis-flex" style='width: 32%;'>
-          <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindIdCardODateChange" name="user_id_card_endtime">
+          <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindIdCardODateChange" name=" user_id_card_endtime">
             <text wx:if="{{user_o_date}}" class="f-30">{{user_o_date}}</text>
             <text wx:else class="f-30 col-7">结束时间</text>
           </picker>
@@ -124,7 +124,7 @@
 
 
       <view class='header_title'>被保人信息</view>
-      <view class="dis-flex list address-box  b-b">
+      <!-- <view class="dis-flex list address-box  b-b">
         <view class="left-name">
           <text class="f-30">选择被保人</text>
         </view>
@@ -134,7 +134,7 @@
             <text wx:else class="f-30 col-7">请选择被保人</text>
           </picker>
         </view>
-      </view>
+      </view> -->
 
 
       <view class="list address-box dis-flex b-b">

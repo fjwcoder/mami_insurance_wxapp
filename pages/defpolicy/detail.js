@@ -9,7 +9,7 @@ Page({
     gender_arrey: ['男', '女'],
     baby_list: [],
     index_a: 0, //与被保人关系
-    index_b: 0, //投保人性别
+    // index_b: 0, //投保人性别
     index_c: 0, //宝宝性别
     index_d: 0, //选择宝宝
     baby_info: [], //储存拉取的数据
@@ -32,52 +32,67 @@ Page({
     baby_address: '',
     baby_id_card: '',
     baby_s_date: '',
-    baby_o_date: ''
+    baby_o_date: '',
+
+    def_id:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    this.getUserDetail();
-    this.getBabyList();
+  onLoad: function (options) {
+    this.getInsuranceInfo(options.def_id);
+    //this.getBabyList();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     //this.getBabyInfo(0);
 
   },
   /**
-   * 获取投保人信息
+   * 获取保单信息
    */
-  getUserDetail: function() {
+  getInsuranceInfo: function (def_id) {
     let _this = this;
-    App._get('user/getuserdetail', {
-      user_token: App.getGlobalData('user_token'),
-    }, function(result) {
+    App._post_form('baby/getDefInsuranceInfo', {user_token: App.getGlobalData('user_token'), def_id}, function (result) {
       console.log(result.data);
+
+      
+      
       _this.setData({
-        user_name: result.data.us_name,
-        index_b: result.data.sex - 1,
-        user_age: result.data.us_age,
-        user_o_date: result.data.id_card_endtime,
-        user_s_date: result.data.id_card_begintime,
-        user_id_card: result.data.id_card,
-        user_address: result.data.address_detail,
-        user_mobile: result.data.mobile,
-        user_region: result.data.us_sheng + ',' + result.data.us_shi + ',' + result.data.us_qu 
+        user_name: result.data.user_name,
+        index_b: result.data.user_sex - 1,
+        user_age: result.data.user_age,
+        user_o_date: result.data.user_id_card_endtime,
+        user_s_date: result.data.user_id_card_begintime,
+        user_id_card: result.data.user_id_card,
+        user_address: result.data.user_address.split(",")[3],
+        user_mobile: result.data.user_mobile,
+        user_region: result.data.user_address.split(",")[0] + ',' + result.data.user_address.split(",")[1] + ',' + result.data.user_address.split(",")[2],
+        baby_name: result.data.baby_name,
+        baby_age: result.data.baby_age,
+        baby_id_card: result.data.baby_id_card,
+        baby_o_date: result.data.baby_id_card_endtime,
+        baby_s_date: result.data.baby_id_card_begintime,
+        index_c: result.data.baby_sex - 1,
+        baby_address: result.data.baby_address.split(",")[3],
+        baby_region: result.data.baby_address.split(",")[0] + ',' + result.data.baby_address.split(",")[1] + ',' + result.data.baby_address.split(",")[2],
+
+
+        def_id:def_id,
+        babyid:result.data.baby_id,
       })
-      //console.log(_this.data.user_region);
+      console.log(_this.data.def_id)
       if (_this.data.user_region === "null,null,null") {
         _this.setData({
           user_region: "请选择地区"
@@ -85,71 +100,71 @@ Page({
       }
     });
   },
-  /**
-   * 获取宝宝列表
-   */
-  getBabyList: function() {
-    let _this = this;
+  // /**
+  //  * 获取宝宝列表
+  //  */
+  // getBabyList: function () {
+  //   let _this = this;
 
-    App._get('baby/getbabylist', {
-      user_token: App.getGlobalData('user_token')
-    }, function(result) {
-      _this.setData({
-        baby_info: Object.values(result.data)
-      });
+  //   App._get('baby/getbabylist', {
+  //     user_token: App.getGlobalData('user_token')
+  //   }, function (result) {
+  //     _this.setData({
+  //       baby_info: Object.values(result.data)
+  //     });
 
-      _this.setData({
-        baby_list: _this.getBabyName(_this.data.baby_info),
-      })
+  //     _this.setData({
+  //       baby_list: _this.getBabyName(_this.data.baby_info),
+  //     })
 
-      //console.log(_this.data.baby_info)
-      // _this.setData({
-      //   index_d: 0
-      // })
-      _this.getBabyInfo(0); // 显示默认的宝宝姓名
-    });
+  //     //console.log(_this.data.baby_info)
+  //     // _this.setData({
+  //     //   index_d: 0
+  //     // })
+  //     _this.getBabyInfo(0); // 显示默认的宝宝姓名
+  //   });
 
-  },
+  // },
 
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
   /**
    * 修改投保人与被保人关系
    */
-  chengeRelation: function(e) {
+  chengeRelation: function (e) {
     this.setData({
       index_a: e.detail.value
     })
@@ -158,7 +173,7 @@ Page({
   /**
    * 修改投保人性别
    */
-  chengeUserSex: function(e) {
+  chengeUserSex: function (e) {
     this.setData({
       index_b: e.detail.value
     })
@@ -167,7 +182,7 @@ Page({
   /**
    * 选择被保人（baby）
    */
-  chengeChooseBaby: function(e) {
+  chengeChooseBaby: function (e) {
     //console.log(e);
     this.setData({
       index_d: e.detail.value
@@ -177,7 +192,7 @@ Page({
   /**
    * 修改宝宝性别
    */
-  chengeBabySex: function(e) {
+  chengeBabySex: function (e) {
     this.setData({
       index_c: e.detail.value
     })
@@ -187,7 +202,7 @@ Page({
   /**
    * 修改投保人地区
    */
-  bindRegionChange: function(e) {
+  bindRegionChange: function (e) {
     this.setData({
       user_region: e.detail.value
     })
@@ -197,7 +212,7 @@ Page({
   /**
    * 修改投保人身份证开始日期
    */
-  bindIdCardSDateChange: function(e) {
+  bindIdCardSDateChange: function (e) {
     this.setData({
       user_s_date: e.detail.value
 
@@ -207,16 +222,16 @@ Page({
   /**
    * 修改投保人身份证结束日期
    */
-  bindIdCardODateChange: function(e) {
+  bindIdCardODateChange: function (e) {
     this.setData({
       user_o_date: e.detail.value
     })
-    
+
   },
   /**
    * 修改被保人身份证开始日期
    */
-  bindIdCardSDateChangeBaby: function(e) {
+  bindIdCardSDateChangeBaby: function (e) {
     this.setData({
       baby_s_date: e.detail.value
 
@@ -226,7 +241,7 @@ Page({
   /**
    * 修改被保人身份证结束日期
    */
-  bindIdCardODateChangeBaby: function(e) {
+  bindIdCardODateChangeBaby: function (e) {
     this.setData({
       baby_o_date: e.detail.value
     })
@@ -234,7 +249,7 @@ Page({
   /**
    * 修改被保人地区
    */
-  bindRegionChangeBaby: function(e) {
+  bindRegionChangeBaby: function (e) {
     this.setData({
       baby_region: e.detail.value
     })
@@ -244,7 +259,7 @@ Page({
   /**
    * 自定义获取baby_list
    */
-  getBabyName: function(arr) {
+  getBabyName: function (arr) {
 
 
     let result = [];
@@ -262,27 +277,27 @@ Page({
     return result;
 
   },
-  /**
-   *  拉取当前选择宝宝信息
-   */
-  getBabyInfo: function(index) {
-    // console.log(index);
+  // /**
+  //  *  拉取当前选择宝宝信息
+  //  */
+  // getBabyInfo: function (index) {
+  //   // console.log(index);
 
-    let _this = this;
-    // console.log(_this.data.baby_info[index]);
-    // return false;
-    _this.setData({
-      baby_name: _this.data.baby_info[index].baby_name,
-      index_c: _this.data.baby_info[index].baby_sex - 1,
-    })
-    //console.log(_this.data.baby_info)
-  },
+  //   let _this = this;
+  //   // console.log(_this.data.baby_info[index]);
+  //   // return false;
+  //   _this.setData({
+  //     baby_name: _this.data.baby_info[index].baby_name,
+  //     index_c: _this.data.baby_info[index].baby_sex - 1,
+  //   })
+  //   //console.log(_this.data.baby_info)
+  // },
 
 
   /**
    * 表单提交
    */
-  saveData: function(e) {
+  saveData: function (e) {
 
     let _this = this,
       values = e.detail.value
@@ -309,10 +324,13 @@ Page({
     values.baby_id_card_endtime = _this.data.baby_o_date;
 
     //baby_id赋值
-    values.baby_id = _this.data.baby_info[values.baby_id].baby_id;
+    values.baby_id = _this.data.babyid;
 
     //user_token赋值到values
     values.user_token = App.getGlobalData('user_token');
+
+    //def_id赋值到values
+    values.def_id = _this.data.def_id;
 
     // 表单验证
     if (!_this.validation(values)) {
@@ -327,12 +345,12 @@ Page({
     // console.log(values);
     // return false;
     // 提交到后端
-    App._post_form('baby/addDefInsuranceInfo', values, function(result) {
+    App._post_form('baby/editDefInsuranceInfo', values, function (result) {
 
-      App.showSuccess(result.msg, function() {
+      App.showSuccess(result.msg, function () {
         wx.navigateBack();
       });
-    }, false, function() {
+    }, false, function () {
       // 解除禁用
       _this.setData({
         disabled: false
@@ -343,7 +361,7 @@ Page({
   /**
    * 表单验证
    */
-  validation: function(values) {
+  validation: function (values) {
     console.log(values);
     if (values.user_name === '') {
       this.data.error = '投保人姓名不能为空';
