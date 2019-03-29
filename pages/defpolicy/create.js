@@ -22,9 +22,9 @@ Page({
     user_age: '',
     user_mobile: '',
     user_id_card: '',
-    us_s_date: '', //投保人身份证开始时间
-    us_o_date: '', //投保人身份证结束时间
-    us_region: [], //投保人省市区
+    user_s_date: '', //投保人身份证开始时间
+    user_o_date: '', //投保人身份证结束时间
+    user_region: [], //投保人省市区
 
     baby_name: '',
     baby_age: '',
@@ -65,22 +65,22 @@ Page({
     App._get('user/getuserdetail', {
       user_token: App.getGlobalData('user_token'),
     }, function(result) {
-      // console.log(result.data);
+      console.log(result.data);
       _this.setData({
         user_name: result.data.us_name,
         index_b: result.data.sex - 1,
         user_age: result.data.us_age,
-        us_o_date: result.data.id_card_begintime,
-        us_s_date: result.data.id_card_endtime,
-        us_id_card: result.data.id_card,
+        user_o_date: result.data.id_card_begintime,
+        user_s_date: result.data.id_card_endtime,
+        user_id_card: result.data.id_card,
         user_address: result.data.address_detail,
         user_mobile: result.data.mobile,
-        us_region: result.data.us_sheng + ',' + result.data.us_shi + ',' + result.data.us_qu 
+        user_region: result.data.us_sheng + ',' + result.data.us_shi + ',' + result.data.us_qu 
       })
-      //console.log(_this.data.us_region);
-      if (_this.data.us_region === "null,null,null") {
+      //console.log(_this.data.user_region);
+      if (_this.data.user_region === "null,null,null") {
         _this.setData({
-          us_region: "请选择地区"
+          user_region: "请选择地区"
         })
       }
     });
@@ -100,9 +100,13 @@ Page({
 
       _this.setData({
         baby_list: _this.getBabyName(_this.data.baby_info),
-        //babyid: _this.data.baby_info[_this.data.index_d].baby_id
       })
+
       //console.log(_this.data.baby_info)
+      // _this.setData({
+      //   index_d: 0
+      // })
+      _this.getBabyInfo(0); // 显示默认的宝宝姓名
     });
 
   },
@@ -185,7 +189,7 @@ Page({
    */
   bindRegionChange: function(e) {
     this.setData({
-      us_region: e.detail.value
+      user_region: e.detail.value
     })
   },
 
@@ -195,7 +199,7 @@ Page({
    */
   bindIdCardSDateChange: function(e) {
     this.setData({
-      us_s_date: e.detail.value
+      user_s_date: e.detail.value
 
     })
   },
@@ -205,9 +209,9 @@ Page({
    */
   bindIdCardODateChange: function(e) {
     this.setData({
-      us_o_date: e.detail.value
+      user_o_date: e.detail.value
     })
-    // console.log(this.data.baby_info[this.data.index_d].baby_sex)
+    
   },
   /**
    * 修改被保人身份证开始日期
@@ -283,23 +287,24 @@ Page({
     let _this = this,
       values = e.detail.value
     //return false;
-    values.date = this.data.date;
+    // values.date = this.data.date;
 
     //省市区+详细地址合并
-    values.user_address = _this.data.us_region + ',' + values.user_address;
+    values.user_address = _this.data.user_region + ',' + values.user_address;
     values.baby_address = _this.data.baby_region + ',' + values.baby_address
-
+    delete values.baby_region;
+    delete values.user_region;
     // 处理性别
-    values.user_sex = (values.user_sex === 0) ? 1 : 2;
-    values.baby_sex = (values.baby_sex === 0) ? 1 : 2;
+    values.user_sex = values.user_sex + 1; //(values.user_sex === 0) ? 1 : 2;
+    values.baby_sex = values.baby_sex + 1; //(values.baby_sex === 0) ? 1 : 2;
 
     //处理投保人与被保人关系
-    values.relationship_to_baby = _this.data.relation_arrey[values.relationship_to_baby];
-    values.relationship_to_user = _this.data.relation_arrey[values.relationship_to_user];
+    values.relationship_to_baby = values.relationship_to_baby + 1; //_this.data.relation_arrey[values.relationship_to_baby];
+    values.relationship_to_user = values.relationship_to_user + 1; //_this.data.relation_arrey[values.relationship_to_user];
 
     //处理证件有效期
-    values.id_card_begintime = _this.data.us_s_date;
-    values.id_card_endtime = _this.data.us_o_date;
+    values.user_id_card_begintime = _this.data.user_s_date;
+    values.user_id_card_endtime = _this.data.user_o_date;
     values.baby_id_card_begintime = _this.data.baby_s_date;
     values.baby_id_card_endtime = _this.data.baby_o_date;
 
@@ -361,19 +366,19 @@ Page({
       this.data.error = '手机号不符合要求';
       return false;
     }
-    if (values.us_id_card === '') {
+    if (values.user_id_card === '') {
       this.data.error = '投保人身份证号不能为空';
       return false;
     }
-    if (values.us_id_card.length < 18 || values.baby_id_card.length < 18) {
+    if (values.user_id_card.length < 18 || values.baby_id_card.length < 18) {
       this.data.error = '身份证号应为18位';
       return false;
     }
-    if (values.us_s_date === '' || values.us_o_date === '') {
+    if (values.user_s_date === '' || values.user_o_date === '') {
       this.data.error = '身份证有效期限不能为空';
       return false;
     }
-    if (values.us_region === '' || values.baby_region === '') {
+    if (values.user_region === '' || values.baby_region === '') {
       this.data.error = '所在地区不能为空';
       return false;
     }
@@ -407,28 +412,3 @@ Page({
 })
 
 
-
-/**
- * 获取要修改的宝宝信息
- */
-// getBabyInfo: function() {
-//   let _this = this;
-//  // let babyid= _this.data.baby_info[_this.data.index_d].baby_id
-
-//    //return false;
-//   App._get('baby/getbabyinfo', { user_token: App.getGlobalData('user_token'), baby_id: _this.data.baby_info[_this.data.index_d].baby_id}, function(result) {
-//     console.log(result.data);
-//     _this.setData({
-//       baby_name: result.data.baby_name,
-//       index: result.data.baby_sex - 1,
-//       mother_name: result.data.mother_name,
-//       father_name: result.data.father_name,
-//       baby_jiezhong: result.data.baby_jiezhong,
-//       exigence_name: result.data.exigence_name,
-//       exigence_mobile: result.data.exigence_mobile,
-//       date: result.data.baby_birthday,
-//       babyId: result.data.baby_id
-//     })
-
-//   });
-// },
