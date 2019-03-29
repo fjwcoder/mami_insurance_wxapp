@@ -24,18 +24,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 设置图片宽高
-    let windowWidth = wx.getSystemInfoSync().windowWidth;
-    console.log(windowWidth);
-    let calWinWidth = windowWidth * 0.2;
+    // 设置图片宽高：高度=宽度=屏幕宽度的1/5
     this.setData({
-      img_width: calWinWidth
-      // img_height: calWinWidth
+      img_width: wx.getSystemInfoSync().windowWidth * 0.2
     });
+
     // 当前页面参数
+
     this.data.options = options;
+
     this.data.insurance_id = options.insurance_id; // 保险ID
-console.log(this.data.insurance_id);
+
     // 获取商品（保险）详细信息
     this.getInsuranceDetail(options.insurance_id);
     // console.log(options);

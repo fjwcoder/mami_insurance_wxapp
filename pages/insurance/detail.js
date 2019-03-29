@@ -28,6 +28,7 @@ Page({
     // goods_sku_id: 0, // 规格id
     // cart_total_num: 0, // 购物车商品总数量
     // specData: {}, // 多规格信息
+    insurance_id: 0, 
   },
 
   // 记录规格的数组
@@ -39,6 +40,7 @@ Page({
   onLoad: function(options) {
     let _this = this;
     // 商品id
+
     _this.data.insurance_id = options.insurance_id;
     // 获取商品信息
     _this.getInsuranceDetail();
@@ -52,7 +54,7 @@ Page({
     App._get('Insurance/wxappGetInsuranceInfo', {
       insurance_id: _this.data.insurance_id
     }, function(result) {
-      // console.log(result);
+
       // 初始化商品详情数据
       let data = _this.initGoodsDetailData(result.data);
 // console.log(data);
@@ -221,18 +223,6 @@ Page({
     });
   },
 
-  // nav: function(e) {
-  //   let index = e.currentTarget.dataset.index;
-  //   "home" == index ? wx.switchTab({
-  //     url: "../index/index"
-  //   }) : "fenlei" == index ? wx.switchTab({
-  //     url: "../category/index"
-  //   }) : "cart" == index ? wx.switchTab({
-  //     url: "../flow/index"
-  //   }) : "profile" == index && wx.switchTab({
-  //     url: "../user/index"
-  //   });
-  // },
 
   /**
    * 加入购物车and立即购买
@@ -244,11 +234,11 @@ Page({
     if (submitType === 'buyNow') {
       // 立即购买
       wx.navigateTo({
-        url: '../flow/checkout?' + App.urlEncode({
+        url: '../order/preview?' + App.urlEncode({
           order_type: 'buyNow',
           insurance_id: _this.data.insurance_id,
           goods_num: _this.data.goods_num,
-          goods_sku_id: _this.data.goods_sku_id,
+          // goods_sku_id: _this.data.goods_sku_id,
         })
       });
     } else if (submitType === 'addCart') {
