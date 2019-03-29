@@ -8,6 +8,7 @@ Page({
   data: {
     order_id: null,
     order: {},
+    oid:'',
   },
 
   /**
@@ -15,16 +16,25 @@ Page({
    */
   onLoad: function (options) {
     this.data.order_id = options.order_id;
-    this.getOrderDetail(options.order_id);
+    this.data.o_id = options.o_id;
+    console.log(this.data.o_id)
+    this.getOrderDetail(options.order_id, options.o_id);
   },
 
   /**
    * 获取订单详情
    */
-  getOrderDetail: function (order_id) {
+  getOrderDetail: function (order_id,o_id) {
+    console.log(order_id);
+    console.log(o_id);
+   
     let _this = this;
-    App._get('user.order/detail', { order_id }, function (result) {
-      _this.setData(result.data);
+    // let values;
+    // values.order_id = order_id;
+    // values.oid = o_id;
+    // values.user_token = App.getGlobalData('user_token')
+    App._post_form('insurance/getInsuranceOrderDetail', { user_token : App.getGlobalData('user_token'), order_id :order_id, oid :o_id }, function (result) {
+      console.log(result)
     });
   },
 

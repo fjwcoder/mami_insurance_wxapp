@@ -135,7 +135,7 @@ Page({
     App._get('user/getuserdetail', {
       user_token: App.getGlobalData('user_token'),
     }, function(result) {
-      // console.log(result.data);
+       console.log(result.data);
       _this.setData({
         name: result.data.us_name,
         index: result.data.sex - 1,
