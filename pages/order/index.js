@@ -31,11 +31,13 @@ Page({
    */
   getOrderList: function (dataType) {
     let _this = this;
-    App._get('user.order/lists', { dataType }, function (result) {
-      _this.setData(result.data);
-      result.data.list.length && wx.pageScrollTo({
-        scrollTop: 0
-      });
+    App._post_form('insurance/getInsuranceOrderList', { user_token: App.getGlobalData('user_token') }, function (result) {
+      console.log(result)
+     
+      _this.setData({
+        list:result.data
+      })
+      console.log(_this.data.list)
     });
   },
 

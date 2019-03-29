@@ -2,15 +2,37 @@
   <scroll-view scroll-y="true">
 
     <!-- 保单信息 -->
-    <view class="b-f" >
+    <view class="b-f">
 
-      <view class="flow-checkout-header b-f dis-flex" >
-        <view class="flow-header-left padding-box" wx:if="{{define_list.length == 0}}">
-          <view class="flow-checkout-admin f-26 col-3">名称
-            <text class="f-26 col-m">电话</text>
+      <view class="flow-checkout-header b-f dis-flex">
+        <view class="flow-header-left padding-box" wx:if="{{define_list.length > 0}}">
+          <view class="list address-box dis-flex " style="padding:0rpx 0rpx 50rpx 10rpx">
+            <view class="left-name" style='width:40%'>
+              <text class="f-30" style='font-size:32rpx;'>请选择被保人：</text>
+            </view>
+            <view class="right-cont dis-flex kuandu">
+              <picker bindchange="chengeBaby" value="{{index}}" range="{{baby__name}}" name="?" style='width:100%'>
+                <text wx:if="{{baby__name[index]}}" class="f-30 kuandu">{{baby__name[index]}}</text>
+                <text wx:else class="f-30 col-7">选择被保人</text>
+              </picker>
+            </view>
           </view>
-          <view class="flow-checkout-address">
-            详细地址
+          <view class='folding-box'>
+            <view class='title_details'>投保人信息</view>
+            <view class='insurance_details'>投保人姓名:{{user_name}}</view>
+            <view class='insurance_details'>投保人性别：{{user_sex}}</view>
+            <view class='insurance_details'>投保人年龄：{{user_age}}</view>
+            <view class='insurance_details'>投保人电话：{{user_mobile}}</view>
+            <view class='insurance_details'>投保人身份证号：{{user_id_card}}</view>
+            <view class='insurance_details'>投保人身份证期限：{{user_s_date}}—{{user_o_date}}</view>
+            <view class='insurance_details'>与被保人关系:{{relationship_to_baby[index_a]}}</view>
+            <view class='title_details'>被保人信息</view>
+            <view class='insurance_details'>被保人姓名：{{baby_name}}</view>
+            <view class='insurance_details'>被保人性别：{{baby_sex}}</view>
+            <view class='insurance_details'>被保人年龄：{{baby_age}}</view>
+            <view class='insurance_details'>被保人身份证号：{{baby_id_card}}</view>
+            <view class='insurance_details'>被保人身份证期限：{{baby_s_date}}—{{baby_o_date}}</view>
+            <view class='insurance_details'>与投保人关系：{{relationship_to_baby[index_a]}}</view>
           </view>
         </view>
 
@@ -24,11 +46,11 @@
       </view>
 
     </view>
-    
-    
 
-    
-    
+
+
+
+
 
 
 
@@ -43,13 +65,16 @@
       </view>
 
 
-      
-      <view class="padding-box b-f">
 
-        <image mode="scaleToFill" src="{{insurance_img}}" style='height: {{img_width}}px; width: {{img_width}}px; margin-top: 5px;'></image>
-        <div style="width: 30vw;  background: red;">hahahahahahahah</div>
-        <div style="width: 30vw;  background: green;">hahahahahahahah</div>
+      <view class="padding-box b-f" style=' overflow: hidden'>
 
+        <view class='baoxian'>
+          <image mode="scaleToFill" src="{{insurance_img}}" style='height: {{img_width}}px; width: {{img_width}}px; margin-top: 5px;margin-right:50rpx;'></image>
+        </view>
+        <view class='baoxian1'style="padding-top:20rpx">
+          <view class='mingcheng'>{{insurance_name}}</view>
+          <view class='xiangqing'>{{insurance_description}}</view>
+        </view>
       </view>
 
     </view>
@@ -71,7 +96,7 @@
   <view class="flow-fixed-footer b-f">
 
     <view class="flow-btn h3">
-      <view bindtap="receipt">生成订单</view>
+      <view bindtap="receipt" disabled="{{disabled}}" bindtap='saveData'>生成订单</view>
     </view>
   </view>
 

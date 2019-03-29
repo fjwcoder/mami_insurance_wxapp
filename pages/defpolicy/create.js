@@ -94,10 +94,11 @@ Page({
     App._get('baby/getbabylist', {
       user_token: App.getGlobalData('user_token')
     }, function(result) {
+      console.log(result.data);
       _this.setData({
         baby_info: Object.values(result.data)
       });
-
+      console.log(_this.data.baby_info);
       _this.setData({
         baby_list: _this.getBabyName(_this.data.baby_info),
       })

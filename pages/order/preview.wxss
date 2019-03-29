@@ -138,3 +138,33 @@
 .chackout-left-detail {
   line-height: 44px;
 }
+.insurance_details{
+  font-size: 26rpx;
+  line-height: 48rpx;
+  color: #444;
+}
+.title_details{
+  width: 100%;
+  text-align: center;
+  line-height: 50rpx;
+  color: #ff495e;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+.baoxian{
+  float: left;
+}
+.baoxian1{
+  float: left;
+  width: 60%;
+}
+.mingcheng{
+  font-size: 30rpx;
+  color: #333;
+  padding-bottom: 10rpx
+}
+.xiangqing{
+  font-size: 26rpx;
+  color: #444;
+  width: 100%;
+}
