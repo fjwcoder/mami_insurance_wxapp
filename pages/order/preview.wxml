@@ -23,6 +23,7 @@
             <view class='insurance_details'>投保人性别：{{user_sex}}</view>
             <view class='insurance_details'>投保人年龄：{{user_age}}</view>
             <view class='insurance_details'>投保人电话：{{user_mobile}}</view>
+            <view class='insurance_details'>投保人详细地址：{{user_address}}</view>
             <view class='insurance_details'>投保人身份证号：{{user_id_card}}</view>
             <view class='insurance_details'>投保人身份证期限：{{user_s_date}}—{{user_o_date}}</view>
             <view class='insurance_details'>与被保人关系:{{relationship_to_baby[index_a]}}</view>
@@ -30,6 +31,7 @@
             <view class='insurance_details'>被保人姓名：{{baby_name}}</view>
             <view class='insurance_details'>被保人性别：{{baby_sex}}</view>
             <view class='insurance_details'>被保人年龄：{{baby_age}}</view>
+            <view class='insurance_details'>投保人详细地址：{{baby_address}}</view>
             <view class='insurance_details'>被保人身份证号：{{baby_id_card}}</view>
             <view class='insurance_details'>被保人身份证期限：{{baby_s_date}}—{{baby_o_date}}</view>
             <view class='insurance_details'>与投保人关系：{{relationship_to_baby[index_a]}}</view>

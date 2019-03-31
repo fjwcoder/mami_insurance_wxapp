@@ -196,7 +196,7 @@ Page({
     // return false;
     // 提交到后端
     App._post_form('Insurance/insuranceOrderCreate', values, function (result) {
-     console.log(result);
+     console.log(values);
       App.showSuccess(result.msg, function () {
         wx.navigateBack();
       });

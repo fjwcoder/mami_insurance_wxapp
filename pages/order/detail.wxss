@@ -138,3 +138,23 @@
 .chackout-left-detail {
   line-height: 44px;
 }
+.insurance_details{
+  font-size: 26rpx;
+  line-height: 48rpx;
+  color: #444;
+}
+.title_details{
+  width: 100%;
+  text-align: center;
+  line-height: 50rpx;
+  color: #ff495e;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+.col_r{
+   color: #ff495e;
+   margin-left: 10rpx;
+}
+.folding-box{
+  padding: 20rpx;
+}

@@ -9,6 +9,35 @@ Page({
     order_id: null,
     order: {},
     oid:'',
+
+
+    relationship_to_baby: ["父子", "父女", "母子", "母女"],//与被保人关系
+    user_name: '',
+    index_a:'',
+    user_sex: '',
+    user_address: '',
+    user_age: '',
+    user_mobile: '',
+    user_id_card: '',
+    user_s_date: '', //投保人身份证开始时间
+    user_o_date: '', //投保人身份证结束时间
+    user_region: [], //投保人省市区
+    relationship_to_baby: ["父子", "父女", "母子", "母女"],//与被保人关系
+
+    baby_name: '',
+    baby_sex: '',
+    baby_age: '',
+    baby_region: '',
+    baby_address: '',
+    baby_id_card: '',
+    baby_s_date: '',
+    baby_o_date: '',
+    relationship_to_user: '',//与投保人关系
+
+    insurance_name:'',
+    insurance_description:'',
+    pay_money:'',
+    insurance_order_id:'',
   },
 
   /**
@@ -35,6 +64,30 @@ Page({
     // values.user_token = App.getGlobalData('user_token')
     App._post_form('insurance/getInsuranceOrderDetail', { user_token : App.getGlobalData('user_token'), order_id :order_id, oid :o_id }, function (result) {
       console.log(result)
+      _this.setData({
+        user_name: result.data.user_name,
+        user_sex: (result.data.user_sex === 1)?"男":"女" ,
+        user_age: result.data.user_age,
+        user_o_date: result.data.user_id_card_endtime,
+        user_s_date: result.data.user_id_card_begintime,
+        user_id_card: result.data.user_id_card,
+        user_address: result.data.user_address.split(",")[3],
+        user_mobile: result.data.user_mobile,
+        index_a: result.data.relationship_to_baby - 1,
+        user_address: result.data.user_address,
+        baby_name: result.data.baby_name,
+        baby_age: result.data.baby_age,
+        baby_id_card: result.data.baby_id_card,
+        baby_o_date: result.data.baby_id_card_endtime,
+        baby_s_date: result.data.baby_id_card_begintime,
+        baby_sex: (result.data.baby_sex === 1) ? "男" : "女",
+        baby_address: result.data.baby_address,
+        pay_money: result.data.pay_money,
+        insurance_name: result.data.insurance_name, 
+        insurance_description: result.data.insurance_description,
+        insurance_order_id: result.data.insurance_order_id,
+        pay_limit: result.data.pay_limit,
+      })
     });
   },
 
