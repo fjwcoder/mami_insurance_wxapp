@@ -96,7 +96,7 @@
 .address-header .flow-checkout-address {
   font-size: 26rpx;
   color: #777;
-  margin-top: 12rpx;
+  margin-top: 20rpx;
 }
 
 .radio-group raido {
@@ -105,4 +105,15 @@
 .shengri{
   margin-left: 100rpx;
   font-size: 28rpx;
+}
+.a_item{
+  width: 94%;
+  margin: 0 auto;
+}
+.bianji{
+  width: 100%;
+  text-align: center;
+}
+.order-bt{
+  border-radius: 999px;
 }

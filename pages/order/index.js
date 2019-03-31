@@ -72,33 +72,38 @@ Page({
   /**
    * 确认收货
    */
-  receipt: function (e) {
-    let _this = this;
-    let order_id = e.currentTarget.dataset.id;
-    wx.showModal({
-      title: "提示",
-      content: "确认收到商品？",
-      success: function (o) {
-        if (o.confirm) {
-          App._post_form('user.order/receipt', { order_id }, function (result) {
-            _this.getOrderList(_this.data.dataType);
-          });
-        }
-      }
-    });
-  },
+  // receipt: function (e) {
+  //   let _this = this;
+  //   let order_id = e.currentTarget.dataset.id;
+  //   wx.showModal({
+  //     title: "提示",
+  //     content: "确认收到商品？",
+  //     success: function (o) {
+  //       if (o.confirm) {
+  //         App._post_form('user.order/receipt', { order_id }, function (result) {
+  //           _this.getOrderList(_this.data.dataType);
+  //         });
+  //       }
+  //     }
+  //   });
+  // },
 
   /**
    * 发起付款
    */
   payOrder: function (e) {
-    let _this = this;
-    let order_id = e.currentTarget.dataset.id;
 
+    let _this = this;
+    let post = [];
+    let order_id = e.currentTarget.dataset.id;
     // 显示loading
     wx.showLoading({ title: '正在处理...', });
-    App._post_form('user.order/pay', { order_id }, function (result) {
-      if (result.code === -10) {
+    App._post_form('payment/insurancePay', { 
+      user_token: App.getGlobalData('user_token'),
+      order_id: order_id
+     }, function (result) {
+console.log(result);
+      if (result.code !== 200) {
         App.showError(result.msg);
         return false;
       }
@@ -106,7 +111,7 @@ Page({
       wx.requestPayment({
         timeStamp: result.data.timeStamp,
         nonceStr: result.data.nonceStr,
-        package: 'prepay_id=' + result.data.prepay_id,
+        package: result.data.package,
         signType: 'MD5',
         paySign: result.data.paySign,
         success: function (res) {
@@ -125,16 +130,16 @@ Page({
   /**
    * 跳转订单详情页
    */
-  detail: function (e) {
-    let order_id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../order/detail?order_id=' + order_id
-    });
-  },
+  // detail: function (e) {
+  //   let order_id = e.currentTarget.dataset.id;
+  //   wx.navigateTo({
+  //     url: '../order/detail?order_id=' + order_id
+  //   });
+  // },
 
-  onPullDownRefresh: function () {
-    wx.stopPullDownRefresh();
-  }
+  // onPullDownRefresh: function () {
+  //   wx.stopPullDownRefresh();
+  // }
 
 
 });

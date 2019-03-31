@@ -2,7 +2,7 @@
 <view class="container m-b6 p-bottom">
   <view class="common-header-xian"></view>
   <custom-ul class="addres-list" wx:if="{{list.length}}">
-    <custom-li wx:for="{{list}}" wx:for-item="item" wx:key="this">
+    <custom-li wx:for="{{list}}" wx:for-item="item" wx:key="this" class='a_item'>
       <view class="address-header b-f m-top18">
         <view class="flow-header-left pl-12">
           <view class="flow-checkout-admin">投保人：{{item.user_name}}
@@ -13,7 +13,7 @@
           </view>
         </view>
       </view>
-      <view class="address-list dis-flex b-f">
+      <view class="address-list dis-flex b-f bianji">
         <view class="list address-right">
           <text class="iconfont icon-edit1"></text>
           <text bindtap="editInsuranceInfo" class="title" data-id="{{item.id}}">编辑</text>

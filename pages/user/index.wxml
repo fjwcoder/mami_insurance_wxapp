@@ -62,7 +62,7 @@
     <navigator url="../user/detail">
       <view class="user-order-title dis-flex b-f m-top20">
         <view class="flex-box">
-          <text class="iconfont icon-map common-icon"></text>
+          <text class="iconfont icon-wode common-icon"></text>
           <text class="user-orderName h4">我的信息</text>
         </view>
         <view class="flex-box">
@@ -77,7 +77,7 @@
     <navigator url="../baby/index">
       <view class="user-order-title dis-flex b-f m-top20">
         <view class="flex-box">
-          <text class="iconfont icon-map common-icon"></text>
+          <text class="iconfont icon-yinger common-icon"></text>
           <text class="user-orderName h4">宝宝列表</text>
         </view>
         <view class="flex-box">
@@ -91,7 +91,7 @@
     <navigator url="../defpolicy/index">
       <view class="user-order-title dis-flex b-f m-top20">
         <view class="flex-box">
-          <text class="iconfont icon-map common-icon"></text>
+          <text class="iconfont icon-baodan common-icon"></text>
           <text class="user-orderName h4">保单列表</text>
         </view>
         <view class="flex-box">

@@ -1,9 +1,9 @@
 <!--pages/addchildren/index.wxml-->
-<view class="container m-b6 p-bottom">
+<view class="container m-b6 p-bottom ">
   <view class="common-header-xian"></view>
   <custom-ul class="addres-list" wx:if="{{list.length}}">
-    <custom-li wx:for="{{list}}" wx:for-item="item" wx:key="this">
-      <view class="address-header b-f m-top18">
+    <custom-li wx:for="{{list}}" wx:for-item="item" wx:key="this" class='a_item'>
+      <view class="address-header b-f m-top18 ">
         <view class="flow-header-left pl-12">
           <view class="flow-checkout-admin">{{item.baby_name}}
             <text>{{item.date}}<text class='shengri'>生日：{{item.baby_birthday}}</text></text>
@@ -13,7 +13,7 @@
           </view>
         </view>
       </view>
-      <view class="address-list dis-flex b-f">
+      <view class="address-list dis-flex b-f bianji">
         <view class="list address-right">
           <text class="iconfont icon-edit1"></text>
           <text bindtap="editBabyInfo" class="title" data-id="{{item.baby_id}}">编辑</text>

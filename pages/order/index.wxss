@@ -115,6 +115,8 @@
   font-size: 28rpx;
   color: #555;
   float: right;
+   margin-top: 10px;
+   margin-bottom: 10px;
 }
 
 .btn-main {
@@ -125,6 +127,8 @@
   color: #fd4a5f;
   margin-left: 10rpx;
   float: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .user-orderJtou {
@@ -151,4 +155,24 @@
   width: 100%;
   margin-top: -46rpx;
   line-height: 1.6;
+}
+.a_item{
+  width: 94%;
+  margin: 20rpx auto;
+ 
+}
+.title{
+  font-size: 18px;
+  display: block;
+  width: 100%;
+}
+.top_box{
+  padding: 15px;
+}
+.in_line{
+  display: inline
+}
+.user-orderContBox{
+  float: right;
+  padding: 0;
 }
