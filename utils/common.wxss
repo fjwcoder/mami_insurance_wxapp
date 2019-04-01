@@ -198,7 +198,8 @@ page {
 }
 
 .col-m {
-  color: #ff495e !important;
+  color: #1ac189 !important;
+  /* color: #ff495e !important; */
 }
 
 .col-s {

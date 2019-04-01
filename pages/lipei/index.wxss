@@ -43,7 +43,21 @@
   text-align: center;
   line-height: 30px;
 }
+.upload_btn{
+  display: flex;
+}
 .upload_btn image{
-  
-  
+  margin: 0 auto;
+  justify-content: center;
+  width: 50%;
+}
+.order-bt {
+  width: 90%;
+  margin: 20px auto;
+  border-radius: 999px;
+  color: #fff;
+  line-height: 46px;
+  text-align: center;
+  font-size: 34rpx;
+   box-shadow: 1px 5px 15px rgba(50, 50, 50, 0.3);
 }

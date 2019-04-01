@@ -12,7 +12,7 @@
           <view class="m-top20 " wx:for="{{list}}" wx:key="this" wx:for-item='item' class='a_item'>
             <navigator url='detail?order_id={{item.order_id}}&o_id={{item.id}}'>
               <view class="order-box b-f class='top_box'">
-                <text class="title">{{item.insurance_name}}</text>
+                <text class="title">{{item.order_id}}</text>
                 <view class="flex-box">
                   <view class="user-orderContBox">
                     <text class="iconfont icon-fanhui"></text>
@@ -29,9 +29,9 @@
               </view>
               <view class="order-box b-f">
                 <view class="order-cont dis-flex">
-                  <view class="order-num">
-                    <text>订单号：{{item.order_id}}</text>
-                  </view>
+                  
+                    <text style='color：#4c4c4c;font-size:16px;'>保险名称：{{item.insurance_name}}</text>
+               
                   <!-- <view class="order-time">
                     <text>{{item.create_time}}</text>
                   </view> -->

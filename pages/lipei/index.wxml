@@ -3,8 +3,8 @@
     <view class='box_a'>
       <view class='title_details'>订单信息</view>
       <view class='insurance_details'>保险名称:<text class='col_r'>{{insurance_name}}</text></view>
-      <view class='insurance_details'>投保人：<text class='col_r'>{{insurance_description}}</text></view>
-      <view class='insurance_details'>被保人：<text class='col_r'>{{insurance_order_id}}</text></view>
+      <view class='insurance_details'>投保人：<text class='col_r'>{{user_name}}</text></view>
+      <view class='insurance_details'>被保人：<text class='col_r'>{{baby_name}}</text></view>
       <view class='insurance_details'>保单号：<text class='col_r'>{{pay_money}}</text></view>
       <view class='insurance_img'>保单预览图显示区域<text class='col_r'>{{pay_limit}}</text></view>
     </view>
@@ -13,23 +13,33 @@
   <view class='upload_box'>
     <view class='upload_item'>
       <view class='upload_title'>请上传身份证人像面</view> 
-      <view class='upload_btn' bindtap='uploadIdCardImageZ'><image src='../../images/shangchuan.png'></image> </view>
+      <view class='upload_btn' bindtap='uploadIdCardImageZ'><image src='../../images/id_card0.png'mode='widthFix'></image> </view>
     </view>
 
     <view class='upload_item'>
       <view class='upload_title'>请上传身份证国徽面</view> 
-      <view class='upload_btn' bindtap='uploadIdCardImageF'><image src='../../images/shangchuan.png'></image> </view>
+      <view class='upload_btn' bindtap='uploadIdCardImageF'><image src='../../images/id_card1.png' mode='widthFix'></image> </view>
     </view>
 
     <view class='upload_item'>
       <view class='upload_title'>请上传抗体检测报告</view> 
-      <view class='upload_btn'><image src='../../images/shangchuan.png'></image> </view>
+      <view class='upload_btn'><image src='../../images/baogao.png'mode='widthFix'></image> </view>
     </view>
 
     <view class='upload_item'>
       <view class='upload_title'>请上传银行卡正面</view> 
-      <view class='upload_btn'><image src='../../images/shangchuan.png'></image> </view>
+      <view class='upload_btn'><image src='../../images/bank.png'mode='widthFix'></image> </view>
     </view>
-  </view>
 
+    <form>
+     <view class='upload_item'>
+      <input value='{{user_id_card}}'placeholder='请输入您的身份证号' name = '?' bindinput='getIDCard'></input>
+      </view>
+
+      <view class='upload_item'>
+      <input placeholder='请输入您的银行卡号' name = '?'></input>
+      </view>
+    </form>  
+  </view>
+  <view class="order-bt" form-type='submit' >确定申请</view>
 </view>

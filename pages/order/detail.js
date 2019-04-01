@@ -95,11 +95,12 @@ Page({
   /**
    * 跳转理赔页面
    */
-  claimApplication:function(){
-    wx.navigateTo({
-      url: '../lipei/index',
-    })
-  },
+  // claimApplication:function(){
+  //   wx.navigateTo({
+      
+  //     url: '../lipei/index'
+  //   })
+  // },
   /**
    * 取消订单
    */

@@ -34,13 +34,10 @@
     </view> -->
 
     <!-- 全部保险 -->
-    <view class='chang_jx'>
     
-    <!-- <image src='../../images/chang_jx.png'></image> -->
-    </view>
     <view class="title-hrbg" style="margin-top:10rpx">
       <text class="cont">
-        <text class="iconfont icon-huo col-m"></text>全部保险
+        <text class="iconfont icon-huo " style='color:red;'></text>全部保险
       </text>
       <view class="hr"></view>
     </view>

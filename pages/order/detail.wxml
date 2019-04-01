@@ -33,7 +33,7 @@
       <view class='insurance_details'>与投保人关系：<text class='col_r'>{{relationship_to_baby[index_a]}}</text></view>
     </view>
 
-    
-        <view bindtap="claimApplication" class="order-bt">申请理赔</view>
-    
+    <navigator url='../lipei/index?baby_name={{baby_name}}&user_name={{user_name}}&insurance_name={{insurance_name}}&order_id={{order_id}}&user_id_card={{user_id_card}}'>
+        <view class="order-bt" >申请理赔</view>
+    </navigator>
 </view>

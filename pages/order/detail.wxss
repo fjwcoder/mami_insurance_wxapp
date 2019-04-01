@@ -32,7 +32,7 @@
 }
 
 .order-bt {
-  width: 94%;
+  width:90%;
   margin: 20px auto;
   border-radius: 999px;
   color: #fff;
