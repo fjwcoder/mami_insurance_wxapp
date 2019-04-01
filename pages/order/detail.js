@@ -91,16 +91,15 @@ Page({
     });
   },
 
-  /**
-   * 跳转到商品详情
-   */
-  goodsDetail: function (e) {
-    let goods_id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../goods/index?goods_id=' + goods_id
-    });
-  },
 
+  /**
+   * 跳转理赔页面
+   */
+  claimApplication:function(){
+    wx.navigateTo({
+      url: '../lipei/index',
+    })
+  },
   /**
    * 取消订单
    */

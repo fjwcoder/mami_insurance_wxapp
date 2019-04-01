@@ -1,7 +1,5 @@
 {
   "pages": [
-    
-
     "pages/index/index",
     "pages/category/index",
     "pages/category/list",
@@ -13,7 +11,7 @@
     "pages/user/index",
     "pages/user/help",
     "pages/user/detail",
-   "pages/order/index",
+    "pages/order/index",
     "pages/order/detail",
     "pages/order/preview",
     "pages/order/check",
@@ -27,8 +25,8 @@
     "pages/insurance/detail",
     "pages/defpolicy/index",
     "pages/defpolicy/create",
-    "pages/defpolicy/detail"
-    
+    "pages/defpolicy/detail",
+    "pages/lipei/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

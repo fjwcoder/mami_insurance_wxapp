@@ -33,7 +33,7 @@
       <view class='insurance_details'>与投保人关系：<text class='col_r'>{{relationship_to_baby[index_a]}}</text></view>
     </view>
 
-    <view class="footer-fixed f-34">
-        <view bindtap="createBaby" class="order-bt" style="width:100%">添加宝宝</view>
-    </view>
+    
+        <view bindtap="claimApplication" class="order-bt">申请理赔</view>
+    
 </view>

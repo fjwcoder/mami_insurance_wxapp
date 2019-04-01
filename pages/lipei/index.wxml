@@ -1,0 +1,17 @@
+<view class="container">
+  <view class='jiben_xinxi'>
+    <view class='box_a'>
+      <view class='title_details'>订单信息</view>
+      <view class='insurance_details'>保险名称:<text class='col_r'>{{insurance_name}}</text></view>
+      <view class='insurance_details'>投保人：<text class='col_r'>{{insurance_description}}</text></view>
+      <view class='insurance_details'>被保人：<text class='col_r'>{{insurance_order_id}}</text></view>
+      <view class='insurance_details'>保单号：<text class='col_r'>{{pay_money}}</text></view>
+      <view class='insurance_img'>保单预览图显示区域<text class='col_r'>{{pay_limit}}</text></view>
+    </view>
+  </view>
+
+  <view class='upload_box'>
+
+  </view>
+
+</view>

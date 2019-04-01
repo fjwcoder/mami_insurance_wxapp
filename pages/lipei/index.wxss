@@ -1,3 +1,4 @@
+/* pages/lipei/index.wxss */
 .insurance_details {
   font-size: 26rpx;
   line-height: 48rpx;
@@ -18,9 +19,6 @@
   margin-left: 10rpx;
 }
 
-.folding-box {
-  /* padding: 20rpx; */
-}
 
 .box_a {
   width: 88%;
@@ -29,15 +27,4 @@
   padding: 20rpx;
   border-radius: 20px;
   box-shadow: -10rpx 10rpx 5rpx rgba(0, 0, 0, 0.1);
-}
-
-.order-bt {
-  width: 94%;
-  margin: 20px auto;
-  border-radius: 999px;
-  color: #fff;
-  line-height: 46px;
-  text-align: center;
-  font-size: 34rpx;
-   box-shadow: 1px 5px 15px rgba(50, 50, 50, 0.3);
 }
