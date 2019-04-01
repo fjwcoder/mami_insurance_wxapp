@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    idfront: '../../images/shangchuan.png', // 身份证正面
+    idback: '../../images/shangchuan.png', // 身份证反面
+    bank: '../../images/shangchuan.png', // 银行卡正面
+    check: '../../images/shangchuan.png', // 检测单
   },
 
   /**
@@ -65,14 +68,23 @@ Page({
   },
 
   /**
-   * 上传照片
+   * 上传身份证正面照片
    */
 
-  uploadIdCardImageZ:function(){
-    App._img_upload('FileUpload/imgUpload?img=idfront')
+  uploadIdCardImageZ: function(){
+    let _this = this;
+    // console.log(App.path_root);
+    App._img_upload('Fileupload/imgUpload?img=', 'idfront', function(res){
+      // console.log(res);
+      _this.setData({
+        idfront: App.path_root + res,
+      });
+    });
   },
 
    uploadIdCardImageF: function () {
-    App._img_upload('FileUpload/imgUpload?img=idfront')
+    App._img_upload('Fileupload/imgUpload?img=', 'idback', function(res){
+
+    })
   }
 })
