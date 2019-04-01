@@ -1,15 +1,17 @@
 <view class="container">
 
+
   <scroll-view bindscroll="scroll" scroll-top="{{scrollTop}}" scroll-y="true" style="position:absolute; top:0; left:0; right:0; bottom:0;">
+  <view class="col_banner"></view>
     <block wx:for="{{items}}" wx:for-item="item" wx:for-index="item_key" wx:key="this">
       <!-- 搜索框 -->
       <block wx:if="{{item.type === 'search'}}">
         <include src="components/search/search.wxml" />
       </block>
       <!-- banner轮播 -->
-      <!-- <block wx:if="{{item.type === 'banner'}}">
+      <block wx:if="{{item.type === 'banner'}}">
         <include src="components/banner/banner.wxml" />
-      </block> -->
+      </block>
     </block>
     <!-- 商品推荐 -->
     <!-- <view class="recommended-index-list m-top20">
@@ -32,6 +34,10 @@
     </view> -->
 
     <!-- 全部保险 -->
+    <view class='chang_jx'>
+    
+    <!-- <image src='../../images/chang_jx.png'></image> -->
+    </view>
     <view class="title-hrbg" style="margin-top:10rpx">
       <text class="cont">
         <text class="iconfont icon-huo col-m"></text>全部保险
