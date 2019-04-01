@@ -16,6 +16,8 @@ App({
   access_token: null,
 
   api_root: '', // api地址
+  upload_root: '', // 上传地址
+  path_root: '',// 加载图片
   siteInfo: require('siteinfo.js'),
 
   /**
@@ -48,8 +50,16 @@ App({
    */
   setApiRoot: function() {
     // this.api_root = this.siteInfo.siteroot + 'index.php?s=/api/';
-    this.api_root = this.siteInfo.siteroot;
+    this.api_root = this.siteInfo.siteroot + 'api.php/';
+    this.upload_root = this.siteInfo.uploadroot + 'api.php/';
+    this.path_root = this.siteInfo.uploadroot;
   },
+  /**
+   * 获取地址
+   */
+  // getRoot: function(root_name){
+  //   return this.root_name;
+  // },
   /**
    * create by fjw in 19.3.21
    * 设置当前年月日
@@ -73,13 +83,7 @@ App({
     let api_key = 'l2V|gfZp{8`;jzR~6Y1_';
     const md5_Obj = require('./utils/hex_md5.js');
     this.access_token = md5_Obj.hexMD5('RuiTongMamiV2' + this.year + this.month + this.day + api_key);
-  },
-  /**
-   * 
-   */
-  objToArr: function(obj){
-    return Object.values(obj);
-  },
+  }, 
 
 
   /**
@@ -166,13 +170,14 @@ App({
    * create by fjw in 19.4.1
    * 定义公共的文件上传方法
    */
-  _img_upload: function(url){
+  _img_upload: function (url, name, success, fail, complete){
     let App = this;
     wx.chooseImage({
       count: 1, // 最多可选择的图片总数
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function(res) {
+
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths;
         //启动上传等待中...
@@ -182,10 +187,12 @@ App({
           mask: true,
           duration: 10000
         });
+        // console.log(App.upload_root + url); 
+        // return false;
         wx.uploadFile({
-          url: App.api_root + url,
+          url: App.upload_root + url + name,
           filePath: tempFilePaths[0],
-          name: 'uploadimg',
+          name: name,
           formData: {
           },
           header: {
@@ -193,11 +200,20 @@ App({
             'accept': 'application/json',
             'access_token': App.access_token,
           },
-          success: function (res) {
+          success: function (result) {
+            if (result.statusCode !== 200) {
+              App.showError('网络请求出错');
+              return false;
+            }
+            var res = JSON.parse(result.data);
             console.log(res);
-            // var data = JSON.parse(res.data);
-            //服务器返回格式: { "Catalog": "testFolder", "FileName": "1.jpg", "Url": "https://test.com/1.jpg" }
-            console.log(data);
+            
+            if(res.code !== 200){
+              App.showError('图片上传失败');
+              return false;
+            }
+            success && success(res.path);
+            wx.hideToast();
           },
           fail: function (res) {
             wx.hideToast();
@@ -284,7 +300,7 @@ App({
     wx.showNavigationBarLoading();
     let App = this;
     data.wxapp_id = App.siteInfo.uniacid;
-    // data.token = wx.getStorageSync('token');
+    
     data.user_token = App.getGlobalData('user_token'),
     wx.request({
       url: App.api_root + url,

@@ -9,7 +9,11 @@ Page({
     insurance_name: '',
     user_name: '',
     user_id_card: '',
-    insurance_order_id: ''
+    insurance_order_id: '',
+    idfront: '../../images/id_card0.png', // 身份证正面
+    idback: '../../images/id_card1.png', // 身份证反面
+    bank: '../../images/bank.png', // 银行卡正面
+    check: '../../images/baogao.png', // 检测单
   },
 
   /**
@@ -80,16 +84,25 @@ Page({
     this.setData({
       user_id_card: e.detail.value
     })
-  }
+  },
   /**
-   * 上传照片
+   * 上传身份证正面照片
    */
 
-  uploadIdCardImageZ: function() {
-    App._img_upload('FileUpload/imgUpload?img=idfront')
+  uploadIdCardImageZ: function(){
+    let _this = this;
+    // console.log(App.path_root);
+    App._img_upload('Fileupload/imgUpload?img=', 'idfront', function(res){
+      // console.log(res);
+      _this.setData({
+        idfront: App.path_root + res,
+      });
+    });
   },
 
-  uploadIdCardImageF: function() {
-    App._img_upload('FileUpload/imgUpload?img=idfront')
+   uploadIdCardImageF: function () {
+    App._img_upload('Fileupload/imgUpload?img=', 'idback', function(res){
+
+    })
   }
 })

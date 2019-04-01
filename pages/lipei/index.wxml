@@ -13,22 +13,22 @@
   <view class='upload_box'>
     <view class='upload_item'>
       <view class='upload_title'>请上传身份证人像面</view> 
-      <view class='upload_btn' bindtap='uploadIdCardImageZ'><image src='../../images/id_card0.png'mode='widthFix'></image> </view>
+      <view class='upload_btn' bindtap='uploadIdCardImageZ'><image src='{{idfront}}'mode='widthFix'></image> </view>
     </view>
 
     <view class='upload_item'>
       <view class='upload_title'>请上传身份证国徽面</view> 
-      <view class='upload_btn' bindtap='uploadIdCardImageF'><image src='../../images/id_card1.png' mode='widthFix'></image> </view>
+      <view class='upload_btn' bindtap='uploadIdCardImageF'><image src='{{idback}}'mode='widthFix'></image> </view>
     </view>
 
     <view class='upload_item'>
       <view class='upload_title'>请上传抗体检测报告</view> 
-      <view class='upload_btn'><image src='../../images/baogao.png'mode='widthFix'></image> </view>
+      <view class='upload_btn'><image src='{{check}}'mode='widthFix'mode='widthFix'></image> </view>
     </view>
 
     <view class='upload_item'>
       <view class='upload_title'>请上传银行卡正面</view> 
-      <view class='upload_btn'><image src='../../images/bank.png'mode='widthFix'></image> </view>
+      <view class='upload_btn'><image src='{{bank}}'mode='widthFix'></image> </view>
     </view>
 
     <form>
