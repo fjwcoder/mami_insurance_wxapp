@@ -11,7 +11,25 @@
   </view>
 
   <view class='upload_box'>
+    <view class='upload_item'>
+      <view class='upload_title'>请上传身份证人像面</view> 
+      <view class='upload_btn' bindtap='uploadIdCardImageZ'><image src='../../images/shangchuan.png'></image> </view>
+    </view>
 
+    <view class='upload_item'>
+      <view class='upload_title'>请上传身份证国徽面</view> 
+      <view class='upload_btn' bindtap='uploadIdCardImageF'><image src='../../images/shangchuan.png'></image> </view>
+    </view>
+
+    <view class='upload_item'>
+      <view class='upload_title'>请上传抗体检测报告</view> 
+      <view class='upload_btn'><image src='../../images/shangchuan.png'></image> </view>
+    </view>
+
+    <view class='upload_item'>
+      <view class='upload_title'>请上传银行卡正面</view> 
+      <view class='upload_btn'><image src='../../images/shangchuan.png'></image> </view>
+    </view>
   </view>
 
 </view>

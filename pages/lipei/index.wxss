@@ -28,3 +28,22 @@
   border-radius: 20px;
   box-shadow: -10rpx 10rpx 5rpx rgba(0, 0, 0, 0.1);
 }
+
+.upload_item{
+  width: 86%;
+  margin: 0 auto;
+  padding: 30rpx;
+  background-color: #fff;
+  margin-top: 20px;
+  border-radius: 50rpx;
+   box-shadow: -10rpx 10rpx 5rpx rgba(0, 0, 0, 0.1);
+}
+.upload_title{
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 30px;
+}
+.upload_btn image{
+  
+  
+}

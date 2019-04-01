@@ -1,4 +1,4 @@
-// pages/lipei/index.js
+let App = getApp();
 Page({
 
   /**
@@ -62,5 +62,17 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  /**
+   * 上传照片
+   */
+
+  uploadIdCardImageZ:function(){
+    App._img_upload('FileUpload/imgUpload?img=idfront')
+  },
+
+   uploadIdCardImageF: function () {
+    App._img_upload('FileUpload/imgUpload?img=idfront')
   }
 })
