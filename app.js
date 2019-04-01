@@ -36,10 +36,10 @@ App({
     // 获取小程序基础信息
     // this.getWxappBase(function(wxapp) { // 注释 by fjw
       // 设置navbar标题、颜色
-      wx.setNavigationBarColor({
-        frontColor: '#ffffff',//wxapp.navbar.top_text_color.text,
-        backgroundColor: '#ff664b',//wxapp.navbar.top_background_color
-      })
+      // wx.setNavigationBarColor({
+      //   frontColor: '#ffffff',//wxapp.navbar.top_text_color.text,
+      //   backgroundColor: '#ff664b',//wxapp.navbar.top_background_color
+      // })
     // });
   },
 

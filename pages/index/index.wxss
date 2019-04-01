@@ -3,3 +3,21 @@
 
 /* banner组件 */
 @import "components/banner/banner.wxss";
+.col_banner{
+  width: 100%;
+  height: 300rpx;
+  background-color: #9b00cf;
+}
+.chang_jx{
+ width: 100%;
+  height: 200rpx;
+  background-image: url(https://i.loli.net/2019/04/01/5ca175ac31c74.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%；
+ 
+}
+.chang_jx image{
+  width: 100%;
+  height: 200px;
+  
+}
