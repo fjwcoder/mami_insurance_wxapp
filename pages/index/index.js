@@ -18,7 +18,7 @@ Page({
     list: {},
     scrollTop: 0,
 
-    swiperList: [{ imgSrc: "https://i.loli.net/2019/04/02/5ca2c6168b83d.png" }, { imgSrc:" https://i.loli.net/2019/04/02/5ca2c6168b83d.png"}],
+    swiperList: [{ imgSrc: "https://i.loli.net/2019/04/03/5ca40ec299f37.png" }, { imgSrc:" https://i.loli.net/2019/04/03/5ca40ef11cc45.png"}],
    
   },
 

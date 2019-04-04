@@ -99,7 +99,7 @@
           <text class="f-30">详细地址</text>
         </view>
         <view class="right-cont dis-flex">
-          <input name="address_detail" placeholder="请输入街道小区楼层" type="text" value="{{detail}}"></input>
+          <input name="address_detail" placeholder="请输入街道小区楼层" type="text" value="{{detail}}" style='width:100%'></input>
         </view>
       </view>
     </view>

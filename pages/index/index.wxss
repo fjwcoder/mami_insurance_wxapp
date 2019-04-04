@@ -36,6 +36,7 @@
 .s_banner {
   width: 100%;
 border-radius: 20rpx;
+height: 280rpx;
 }
 
 .img_banner {
