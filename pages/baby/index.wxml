@@ -9,16 +9,24 @@
             <text>{{item.date}}<text class='shengri'>生日：{{item.baby_birthday}}</text></text>
           </view>
           <view class="flow-checkout-address">
-             疫苗接种点：{{item.baby_jiezhong}}
+            疫苗接种点：{{item.baby_jiezhong}}
           </view>
         </view>
       </view>
       <view class="address-list dis-flex b-f bianji">
         <view class="list address-right">
-          <text class="iconfont icon-edit1"></text>
-          <text bindtap="editBabyInfo" class="title" data-id="{{item.baby_id}}">编辑</text>
-          <!-- <text class="iconfont icon-lajixiang"></text>
-          <text bindtap="removeAddress" class="title" data-id="{{item.address_id}}">删除</text> -->
+          <view class='btn_right'>
+            <text class="iconfont icon-edit1"></text>
+            <text bindtap="editBabyInfo" class="title" data-id="{{item.baby_id}}">编辑</text>
+          </view>
+          <view class='btn_right'>
+            <text class="iconfont icon-zhushe"></text>
+            <text bindtap="toUrlVCaccination" class="title" data-id="{{item.address_id}}">疫苗接种</text>
+          </view>
+          <!-- <view class='btn_right'>
+            <text class="iconfont icon-zhushe"></text>
+            <text bindtap="removeAddress" class="title" data-id="{{item.address_id}}">删除</text>
+          </view> -->
         </view>
       </view>
     </custom-li>

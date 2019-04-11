@@ -29,6 +29,7 @@
 
 .address-right {
   flex: 3.2;
+  overflow: hidden;
 }
 
 .address-right .iconfont {
@@ -116,4 +117,7 @@
 }
 .order-bt{
   border-radius: 999px;
+}
+.btn_right{
+  float: right;
 }

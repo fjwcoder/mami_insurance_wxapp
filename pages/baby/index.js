@@ -47,6 +47,15 @@ Page({
   },
 
   /**
+     * 疫苗注射
+     */
+  toUrlVCaccination: function (e) {
+    wx.navigateTo({
+      url: "./detail?baby_id=" + e.currentTarget.dataset.id
+    });
+  },
+
+  /**
    * 移除收货baby
    */
   removeAddress: function (e) {
