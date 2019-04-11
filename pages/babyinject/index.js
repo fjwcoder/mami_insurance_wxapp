@@ -112,7 +112,7 @@ Page({
     }, function (result) {
       console.log(result)
       _this.setData({
-        already:result.data.ym_name
+        //already:result.data.ym_name
       })
     });
 
