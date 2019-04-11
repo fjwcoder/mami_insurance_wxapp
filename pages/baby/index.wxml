@@ -21,7 +21,7 @@
           </view>
           <view class='btn_right'>
             <text class="iconfont icon-zhushe"></text>
-            <text bindtap="toUrlVCaccination" class="title" data-id="{{item.address_id}}">疫苗接种</text>
+            <text bindtap="toUrlVCaccination" class="title" data-id="{{item.baby_id}}">疫苗接种</text>
           </view>
           <!-- <view class='btn_right'>
             <text class="iconfont icon-zhushe"></text>

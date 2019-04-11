@@ -41,6 +41,7 @@ Page({
    * 编辑baby
    */
   editBabyInfo: function (e) {
+   
     wx.navigateTo({
       url: "./detail?baby_id=" + e.currentTarget.dataset.id
     });
@@ -50,8 +51,9 @@ Page({
      * 疫苗注射
      */
   toUrlVCaccination: function (e) {
+    console.log(e);
     wx.navigateTo({
-      url: "./detail?baby_id=" + e.currentTarget.dataset.id
+      url: "../babyinject/index?baby_id=" + e.currentTarget.dataset.id
     });
   },
 

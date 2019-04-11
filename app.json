@@ -26,7 +26,8 @@
     "pages/defpolicy/index",
     "pages/defpolicy/create",
     "pages/defpolicy/detail",
-    "pages/lipei/index"
+    "pages/lipei/index",
+    "pages/babyinject/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

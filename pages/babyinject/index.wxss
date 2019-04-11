@@ -1,0 +1,55 @@
+.container{
+  padding: 20rpx;
+}
+.title_top{
+  width: 100%;
+  text-align: center;
+  color: #1ac189;
+  font-weight: bold;
+  font-size: 28rpx;
+  line-height: 28px;
+}
+.baby_info_box{
+  background-color: white;
+  padding: 20rpx;
+  box-shadow: -5rpx 8rpx 5rpx rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+.baby_name{
+  font-size: 30rpx;
+  line-height: 60rpx;
+}
+.baby_idcard{
+  font-size: 28rpx;
+  line-height: 60rpx;
+}
+.name_box{
+  margin-right: 50rpx;
+}
+.highlight{
+   color: #1ac189;
+   font-weight: bold;
+}
+.create_btn{
+  margin: 0 auto;
+  height: 46px;
+  box-shadow: 1px 5px 15px rgba(50, 50, 50, 0.3);
+  border-radius: 999px;
+  width: 200px;
+  background-color: #1ac189;
+  color: #fff;
+  text-align: center;
+  line-height: 46px;
+  font-size: 26rpx;
+}
+.choose{
+  width: 100%;
+}
+.picker_ym{
+  width: 80%;
+  margin: 0 auto;
+  padding-left: 20rpx;
+  color: #000;
+  line-height: 28rpx;
+
+}
