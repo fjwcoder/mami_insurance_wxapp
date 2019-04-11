@@ -6,7 +6,7 @@
 
       <view class="list address-box dis-flex b-b">
         <view class="left-name">
-          <text class="f-30">宝宝姓名</text>
+          <text class="f-30">姓名</text>
         </view>
         <view class="right-cont dis-flex">
           <input name="baby_name" value="{{baby_name}}" bindinput='getBabyName'></input>
@@ -15,7 +15,7 @@
 
       <view class="list address-box dis-flex  b-b">
         <view class="left-name">
-          <text class="f-30">宝宝性别</text>
+          <text class="f-30">性别</text>
         </view>
         <picker bindchange="chengeBabySex" value="{{index}}" range="{{gender_arrey}}" name="baby_sex" class='kuandu'>
           <text wx:if="{{gender_arrey[index]}}" class="f-30 kuandu">{{gender_arrey[index]}}</text>
@@ -23,6 +23,14 @@
         </picker>
       </view>
 
+      <view class="list address-box dis-flex b-b">
+        <view class="left-name">
+          <text class="f-30">身份证号</text>
+        </view>
+        <view class="right-cont dis-flex">
+          <input maxlength="18" name="id_card" placeholder="请输入身份证号" value="{{id_card}}" bindinput='getBabyIdCard'></input>
+        </view>
+      </view>
 
       <view class="list address-box dis-flex  b-b">
         <view class="left-name">

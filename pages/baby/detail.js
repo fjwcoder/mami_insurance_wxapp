@@ -9,6 +9,7 @@ Page({
     disabled: false,
     nav_select: false, // 快捷导航
     region: '',
+    id_card: '',
     date: '',
     baby_name: "请输入宝宝姓名",
     baby_sex: '',
@@ -18,9 +19,9 @@ Page({
     father_name: '请输入父亲姓名',
     exigence_name: '请输入紧急联系人姓名',
     exigence_mobile: '请输入紧急联系人电话',
-    baby_jiezhong:'请选择接种点',
+    baby_jiezhong: '请选择接种点',
     error: '',
-    babyId:''
+    babyId: ''
   },
 
   /**
@@ -31,17 +32,20 @@ Page({
     // return false;
     this.getBabyInfo(options.baby_id);
   },
-/**
- * 获取要修改的宝宝信息
- */
+  /**
+   * 获取要修改的宝宝信息
+   */
   getBabyInfo: function(baby_id) {
     let _this = this;
 
     // console.log(baby_id);
     // return false;
-    App._get('baby/getbabyinfo', {user_token: App.getGlobalData('user_token'), baby_id}, function (result) {
-      console.log(result.data);
+    App._get('baby/getbabyinfo', {
+      user_token: App.getGlobalData('user_token'),
+      baby_id
+    }, function(result) {
       _this.setData({
+        id_card: result.data.id_card,
         baby_name: result.data.baby_name,
         index: result.data.baby_sex - 1,
         mother_name: result.data.mother_name,
@@ -52,9 +56,27 @@ Page({
         date: result.data.baby_birthday,
         babyId: result.data.baby_id
       })
-      console.log(_this.data.babyId)
     });
   },
+
+  /**
+   * 填写宝宝身份证号码
+   */
+
+  getBabyIdCard: function(e) {
+    let _this = this;
+    _this.setData({
+      id_card: e.detail.value
+    })
+
+    //截取身份证号出生年月
+    if (e.detail.value.length > 17) {
+      var flg = "-"
+      _this.insert_flg(e.detail.value, flg)
+    }
+    console.log(_this.data.date)
+  },
+
 
   /**
    * 修改出生日期
@@ -121,9 +143,9 @@ Page({
   },
 
   /**
-    * 填写接种点信息
-    */
-  getBabyJieZhong: function (e) {
+   * 填写接种点信息
+   */
+  getBabyJieZhong: function(e) {
     this.setData({
       baby_jiezhong: e.detail.value
     })
@@ -136,11 +158,11 @@ Page({
 
     let _this = this,
       values = e.detail.value
-      
+
     values.date = this.data.date;
     values.baby_id = _this.data.babyId
     console.log(values);
-    
+
 
     // 处理性别
     values.baby_sex = (values.baby_sex === 0) ? 1 : 2;
@@ -177,6 +199,10 @@ Page({
   validation: function(values) {
     if (values.baby_name === '') {
       this.data.error = '宝宝姓名不能为空';
+      return false;
+    }
+    if (values.id_card === "" || values.id_card.length < 18) {
+      this.data.error = '宝宝身份证号码不合规范';
       return false;
     }
     if (values.exigence_mobile.length < 1) {
@@ -240,5 +266,21 @@ Page({
       url
     });
   },
+
+  /**
+   * 自定义处理身份证号截取拼接
+   */
+  insert_flg: function(input_str, flg) {
+    var str = input_str.substr(6, 8)
+    var newstr = "";
+    var nian = str.substr(0, 4)
+    var yue = str.substr(4, 2)
+    var ri = str.substr(6, 2)
+    newstr += nian + flg + yue + flg + ri;
+    this.setData({
+      date: newstr
+    })
+  },
+
 
 })

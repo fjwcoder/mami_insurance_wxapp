@@ -9,42 +9,57 @@ Page({
     disabled: false,
     nav_select: false, // 快捷导航
     region: '',
-    date:'',
-    baby_name:"请输入宝宝姓名",
-    baby_sex:'',
-    gender_arrey: ['男','女'],
-    index:0,
-    mother_name:'请输入母亲姓名',
+    id_card: '', //宝宝身份证号
+    date: '',
+    baby_name: "请输入宝宝姓名",
+    baby_sex: '',
+    gender_arrey: ['男', '女'],
+    index: 0,
+    mother_name: '请输入母亲姓名',
     father_name: '请输入父亲姓名',
-    exigence_name:'请输入紧急联系人姓名',
+    exigence_name: '请输入紧急联系人姓名',
     exigence_mobile: '请输入紧急联系人电话',
-    baby_jiezhong:'请选择接种点',
+    baby_jiezhong: '请选择接种点',
     error: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
-
-
   /**
-     * 修改出生日期
-     */
-  bindDateChange: function (e) {
+   * 填写宝宝身份证号码
+   */
+
+  getBabyIdCard: function(e) {
+    let _this = this;
+    _this.setData({
+      id_card: e.detail.value
+    })
+
+    //截取身份证号出生年月
+    if (e.detail.value.length > 17) {
+      var flg = "-"
+      _this.insert_flg(e.detail.value,flg)
+    }
+  },
+  /**
+   * 修改出生日期
+   */
+  bindDateChange: function(e) {
     this.setData({
       date: e.detail.value
-
     })
-    console.log(e)
+
+
   },
 
   /**
    * 填写宝宝姓名
    */
-  getBabyName: function (e) {
+  getBabyName: function(e) {
     this.setData({
       babyName: e.detail.value
     })
@@ -52,7 +67,7 @@ Page({
   /**
    * 修改宝宝性别
    */
-  chengeBabySex: function (e) {
+  chengeBabySex: function(e) {
     this.setData({
       index: e.detail.value
     })
@@ -60,34 +75,34 @@ Page({
   /**
    * 填写宝妈姓名
    */
-  getMotherName: function (e) {
+  getMotherName: function(e) {
     this.setData({
       mother_name: e.detail.value
     })
   },
 
   /**
- * 填写宝爸姓名
- */
-  getFatherName: function (e) {
+   * 填写宝爸姓名
+   */
+  getFatherName: function(e) {
     this.setData({
       father_name: e.detail.value
     })
   },
 
   /**
-  * 填写紧急联系人姓名
-  */
-  getExigenceName: function (e) {
+   * 填写紧急联系人姓名
+   */
+  getExigenceName: function(e) {
     this.setData({
       exigence_name: e.detail.value
     })
   },
 
   /**
-  * 填写紧急联系人手机号
-  */
-  getExigenceMobile: function (e) {
+   * 填写紧急联系人手机号
+   */
+  getExigenceMobile: function(e) {
     this.setData({
       exigence_mobile: e.detail.value
     })
@@ -96,7 +111,7 @@ Page({
   /**
    * 填写接种点信息
    */
-  getBabyJieZhong: function (e) {
+  getBabyJieZhong: function(e) {
     this.setData({
       baby_jiezhong: e.detail.value
     })
@@ -105,14 +120,14 @@ Page({
   /**
    * 表单提交
    */
-  saveData: function (e) {
-    
+  saveData: function(e) {
+
     let _this = this,
-    values = e.detail.value
+      values = e.detail.value
     values.date = this.data.date;
 
     // 处理性别
-    values.baby_sex = (values.baby_sex === 0)?1:2;
+    values.baby_sex = (values.baby_sex === 0) ? 1 : 2;
 
     // 表单验证
     if (!_this.validation(values)) {
@@ -127,12 +142,12 @@ Page({
     // console.log(values);
     // return false;
     // 提交到后端
-    App._post_form('baby/addbabyinfo', values, function (result) {
+    App._post_form('baby/addbabyinfo', values, function(result) {
 
-      App.showSuccess(result.msg, function () {
+      App.showSuccess(result.msg, function() {
         wx.navigateBack();
       });
-    }, false, function () {
+    }, false, function() {
       // 解除禁用
       _this.setData({
         disabled: false
@@ -143,10 +158,14 @@ Page({
   /**
    * 表单验证
    */
-  validation: function (values) {
+  validation: function(values) {
     console.log(values);
     if (values.baby_name === '') {
       this.data.error = '宝宝姓名不能为空';
+      return false;
+    }
+    if (values.id_card === "" || values.id_card.length < 18) {
+      this.data.error = '宝宝身份证号码不合规范';
       return false;
     }
     if (values.exigence_mobile.length < 1) {
@@ -162,7 +181,7 @@ Page({
       this.data.error = '手机号不符合要求';
       return false;
     }
-    if (values.father_name === ''){
+    if (values.father_name === '') {
       this.data.error = '父亲姓名不能为空';
       return false;
     }
@@ -177,11 +196,11 @@ Page({
     return true;
   },
 
-  
+
   /**
    * 快捷导航 显示/隐藏
    */
-  commonNav: function () {
+  commonNav: function() {
     this.setData({
       nav_select: !this.data.nav_select
     });
@@ -190,7 +209,7 @@ Page({
   /**
    * 快捷导航跳转
    */
-  nav: function (e) {
+  nav: function(e) {
     let url = '';
     switch (e.currentTarget.dataset.index) {
       case 'home':
@@ -209,6 +228,22 @@ Page({
     wx.switchTab({
       url
     });
+  },
+
+
+  /**
+   * 自定义处理身份证号截取拼接
+   */
+  insert_flg: function(input_str, flg) {
+    var str = input_str.substr(6, 8)
+    var newstr = "";
+    var nian = str.substr(0, 4)
+    var yue = str.substr(4, 2)
+    var ri = str.substr(6, 2)
+    newstr += nian + flg + yue + flg + ri;
+    this.setData({
+      date: newstr
+    })
   },
 
 })
