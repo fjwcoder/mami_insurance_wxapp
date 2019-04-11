@@ -198,7 +198,9 @@ Page({
     App._post_form('Insurance/insuranceOrderCreate', values, function (result) {
      console.log(values);
       App.showSuccess(result.msg, function () {
-        wx.navigateBack();
+        wx.redirectTo({
+          url:'index'
+        });
       });
     }, false, function () {
       // 解除禁用
