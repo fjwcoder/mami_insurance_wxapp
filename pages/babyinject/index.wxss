@@ -1,5 +1,6 @@
 .container{
   padding: 20rpx;
+  height: 100%;
 }
 .title_top{
   width: 100%;
@@ -41,6 +42,9 @@
   text-align: center;
   line-height: 46px;
   font-size: 26rpx;
+  position: absolute;
+  bottom: 20px;
+  left: calc(50% - 100px);
 }
 .choose{
   width: 100%;
@@ -52,4 +56,9 @@
   color: #000;
   line-height: 28rpx;
 
+}
+.already_item{
+  font-size: 28rpx;
+  color: #222;
+  
 }

@@ -51,7 +51,7 @@ Page({
      * 疫苗注射
      */
   toUrlVCaccination: function (e) {
-    console.log(e);
+   // console.log(e);
     wx.navigateTo({
       url: "../babyinject/index?baby_id=" + e.currentTarget.dataset.id
     });

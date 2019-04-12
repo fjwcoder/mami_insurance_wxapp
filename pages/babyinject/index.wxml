@@ -9,16 +9,17 @@
       <text>身份证号：<text class='highlight'>{{id_card}}</text></text>
     </view>
     <view class='title_top'>已接种疫苗</view>
-    <view class='already'>
-      <view class='already_item'>{{already}}</view>
+    <view class='already'wx:for= "{{already_name}}" wx:for-item="item" wx:key="this">
+      <view class='already_item'>{{item}}</view>
     </view>
-    <view class='create_btn' bindtap='popupModal'>添加已接种疫苗</view>
+   
   </view>
-  <modal hidden="{{hidden}}" title='请选择疫苗' bindcancel="cancelChoose">
-    <picker bindchange="selectVaccine" value="{{index}}" range="{{vaccine_arr}}" name="sex" style='width:100%' class='choose'>
-      <text wx:if="{{vaccine_arr[index]}}" class="picker_ym kuandu">{{vaccine_arr[index]}}</text>
+  <modal hidden="{{hidden}}" title='请选择疫苗' bindcancel="cancelChoose" bindconfirm = "addinjectVaccine">
+    <picker bindchange="selectVaccine" value="{{index}}" range="{{vaccine_name}}" name="sex" style='width:100%' class='choose'>
+      <text wx:if="{{vaccine_name[index]}}" class="picker_ym kuandu">{{vaccine_name[index]}}</text>
       <text wx:else class="picker_ym">选择疫苗 ＞</text>
     </picker>
   </modal>
 
 </view>
+ <view class='create_btn' bindtap='popupModal'>添加已接种疫苗</view>

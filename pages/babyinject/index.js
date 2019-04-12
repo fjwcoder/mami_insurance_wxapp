@@ -5,68 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
+    baby_id: '',
     hidden: true,
-    vaccine_arr: ['疫苗1', '疫苗2', '疫苗3', '疫苗4'],
+    vaccine_list: [],
+    vaccine_name: [],
     index: '',
-    already:'',//已经接种过的疫苗
+    ym_id: '',
+    already_name: '', //已经接种过的疫苗
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      baby_id: options.baby_id
+    })
     this.getBabyInfo(options.baby_id),
-    this.getVaccineAlready(options.baby_id)
+      this.getVaccineAlready(options.baby_id),
+      this.getCanInjectVaccine(options.baby_id)
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
 
   /**
    * 获取要修改的宝宝信息
@@ -80,7 +39,7 @@ Page({
       user_token: App.getGlobalData('user_token'),
       baby_id
     }, function (result) {
-      console.log(result)
+      //console.log(result)
       _this.setData({
         id_card: result.data.id_card,
         baby_name: result.data.baby_name,
@@ -99,9 +58,57 @@ Page({
   },
 
   /**
+   * 获取可注射疫苗
+   */
+  getCanInjectVaccine: function (baby_id) {
+    let _this = this;
+
+    // console.log(baby_id);
+    // return false;
+    App._get('baby/getCanInjectVaccine', {
+      user_token: App.getGlobalData('user_token'),
+      baby_id
+    }, function (result) {
+
+
+      _this.setData({
+        vaccine_list: result.data
+      })
+
+      _this.setData({
+        vaccine_name: _this.getVaccineName(result.data)
+      })
+      // console.log(_this.data.vaccine_list)
+    });
+
+  },
+
+  /**
+   * 自定义疫苗名称
+   */
+  getVaccineName: function (arr) {
+
+
+    let result = [];
+
+    arr.forEach(item => {
+
+      Object.keys(item).forEach(k => {
+        if (k === 'ym_name') {
+          result.push(item[k]);
+        }
+
+      });
+    })
+
+    return result;
+
+  },
+
+  /**
    * 获取已经接种过的疫苗
    */
-  getVaccineAlready : function (baby_id) {
+  getVaccineAlready: function (baby_id) {
     let _this = this;
 
     // console.log(baby_id);
@@ -110,9 +117,12 @@ Page({
       user_token: App.getGlobalData('user_token'),
       baby_id
     }, function (result) {
-      console.log(result)
+      // console.log(result)
       _this.setData({
-        //already:result.data.ym_name
+        already_list: result.data
+      })
+      _this.setData({
+        already_name: _this.getVaccineName(result.data)
       })
     });
 
@@ -126,16 +136,68 @@ Page({
       hidden: false
     })
   },
+
   /**
    * 选择疫苗
    */
 
   selectVaccine: function (e) {
-    this.setData({
-      index: e.detail.value
+    let _this = this;
+    //console.log(e)
+    _this.setData({
+      index: e.detail.value,
+      ym_id: _this.data.vaccine_list[e.detail.value].ym_id
     })
+    console.log(_this.data.ym_id)
   },
 
+  /**
+   * modal点击确定事件
+   */
+  addinjectVaccine: function () {
+    let _this = this
+    wx.showModal({
+      title: '提示',
+      content: '一旦提交不可删除和修改',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          App._post_form('baby/addinjectvaccine', {
+            user_token: App.getGlobalData('user_token'),
+            baby_id: _this.data.baby_id,
+            vaccine_id: _this.data.ym_id
+          }, function (result) {
+            if (result.code === 200) {
+              wx.showToast({
+                title: '添加成功',
+                icon: 'success',
+                duration: 1500,
+                mask: false,
+              });
+              wx.redirectTo({
+                url: 'index?baby_id=' + _this.data.baby_id,
+              });
+
+              _this.setData({
+                hidden: true
+              })
+
+            }
+          });
+        } else if (res.cancel) {
+          _this.setData({
+            hidden: true
+          })
+        }
+      },
+    });
+
+
+  },
   /**
    * modal 点击取消事件
    */
@@ -144,5 +206,7 @@ Page({
       hidden: true
     })
   },
+
+
 
 })
