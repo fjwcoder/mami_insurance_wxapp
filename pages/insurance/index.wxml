@@ -26,8 +26,10 @@
         </view>
         <view class="img_box"><image src="{{item.headimgurl}}" mode= "widthFix" style='width:100rpx;'/></view>
         <view class='text_box'>
-          <text class= "in_price">保费：{{item.price}}</text><text class= "in_p_price">保额：{{item.pay_limit}}</text>
-          <view class='xiangqing' catchtap="stop"><navigator>详情 ></navigator></view>
+          <text class= "in_price">保费：{{item.price}}</text>
+          <text class= "in_p_price">保额：{{item.pay_limit}}</text>
+          <text class= "in_p_price">保险详情：{{item.description}}</text>
+          <view class='xiangqing' catchtap="stop"><navigator>更多详情 ></navigator></view>
         </view>
         
       </view>
