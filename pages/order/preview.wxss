@@ -168,3 +168,7 @@
   color: #444;
   width: 100%;
 }
+.ipn_bor{
+  border-bottom: #999 1px solid;
+  width: 60%;
+}

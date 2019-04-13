@@ -10,7 +10,7 @@ Page({
     // order: {},
     img_width: 0,
     // img_height: 0,
-    disabled:'',
+    disabled: '',
 
     insurance_id: 0, // 保险ID
     insurance_name: '',
@@ -23,7 +23,7 @@ Page({
     index: '', //picker列表索引
 
     user_name: '',
-    user_sex:'',
+    user_sex: '',
     user_address: '',
     user_age: '',
     user_mobile: '',
@@ -31,27 +31,34 @@ Page({
     user_s_date: '', //投保人身份证开始时间
     user_o_date: '', //投保人身份证结束时间
     user_region: [], //投保人省市区
-    relationship_to_baby:["父子","父女","母子","母女"],//与被保人关系
+    relationship_to_baby: ["父子", "父女", "母子", "母女"], //与被保人关系
 
     baby_name: '',
-    baby_sex:'',
+    baby_sex: '',
     baby_age: '',
     baby_region: '',
     baby_address: '',
     baby_id_card: '',
     baby_s_date: '',
     baby_o_date: '',
-    relationship_to_user:'',//与投保人关系
+    relationship_to_user: '', //与投保人关系
+
+
+    //用户输入校验
+    in_us_name: '',
+    in_us_idcard: '',
+    in_baby_name: '',
+    in_baby_idcard: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     // 设置图片宽高：高度=宽度=屏幕宽度的1/5
-    this.setData({
-      img_width: wx.getSystemInfoSync().windowWidth * 0.2
-    });
+    // this.setData({
+    //   img_width: wx.getSystemInfoSync().windowWidth * 0.2
+    // });
 
     // 当前页面参数
 
@@ -59,134 +66,126 @@ Page({
 
     this.data.insurance_id = options.insurance_id; // 保险ID
 
+   
     // 获取商品（保险）详细信息
-    this.getInsuranceDetail(options.insurance_id);
+    var strs = new Array();
+    strs = options.list.split(",").map(Number);
+    this.getInsuranceDetail(parseInt(options.baby_id),strs);
     // console.log(options);
     // return false;
 
     //获取自定义保单列表
-    this.getInspolicyList()
+    this.getInspolicyList(parseInt(options.baby_id));
+   
+
   },
 
 
   /*
    * 获取保单列表
    */
-  getInspolicyList: function() {
+  getInspolicyList: function (baby_id) {
     let _this = this;
 
     App._get('baby/getDefInsuranceInfoList', {
-      user_token: App.getGlobalData('user_token')
-    }, function(result) {
-      console.log(result.data);
+      user_token: App.getGlobalData('user_token'),
+      baby_id: baby_id
+    }, function (result) {
+      //console.log(result.data);
 
       _this.setData({
         define_list: Object.values(result.data)
       });
-
       _this.setData({
-        baby__name: _this.getBabyName(result.data)
-      });
+        user_name: result.data[0].user_name,
+        user_address: result.data[0].user_address,
+        user_age: result.data[0].user_age,
+        user_mobile: result.data[0].user_mobile,
+        user_id_card: result.data[0].user_id_card,
+        user_s_date: result.data[0].user_id_card_begintime,
+        user_o_date: result.data[0].user_id_card_endtime,
+        user_sex: (result.data[0].user_sex === 1) ? "男" : "女",
+        index_a: result.data[0].relationship_to_baby - 1,
+
+        baby_name: result.data[0].baby_name,
+        baby_age: result.data[0].baby_age,
+        baby_address: result.data[0].baby_address,
+        baby_s_date: result.data[0].baby_id_card_begintime,
+        baby_o_date: result.data[0].baby_id_card_endtime,
+        baby_id_card: result.data[0].baby_id_card,
+        baby_sex: (result.data[0].baby_sex === 1) ? "男" : "女",
+
+      })
     });
-
-
-  },
-
-
-
-  /**
-   * 自定义获取被保人名称
-   */
-  getBabyName: function(arr) {
-
-
-    let result = [];
-
-    arr.forEach(item => {
-
-      Object.keys(item).forEach(k => {
-        if (k === 'baby_name') {
-          result.push(item[k]);
-        }
-
-      });
-    })
-
-    return result;
-
   },
   /**
-   * 修改picker中的被保人
+   * 暂存用户输入
    */
-  chengeBaby: function(e) {
+  getInputUsName: function (e) {
     this.setData({
-      index: e.detail.value
+      in_us_name: e.detail.value
     })
-    this.getInsuranceDetailInfo(e.detail.value);
-   
-    console.log(this.data.baby_name);
   },
+  getInputUsIdcard: function (e) {
+    this.setData({
+      in_us_idcard: e.detail.value
+    })
+  },
+  getInputBabyName: function (e) {
+    this.setData({
+      in_baby_name: e.detail.value
+    })
+  },
+  getInputBabyIdcard: function (e) {
+    this.setData({
+      in_baby_idcard: e.detail.value
+    })
+  },
+
   /**
-   * 获取详细信息显示
+   * 通过保险ID链获取保险信息
    */
-  getInsuranceDetailInfo: function(index) {
-    let _this = this;
-    _this.setData({
-      user_name: _this.data.define_list[index].user_name,
-      user_address: _this.data.define_list[index].user_address,
-      user_age: _this.data.define_list[index].user_age,
-      user_mobile: _this.data.define_list[index].user_mobile,
-      user_id_card: _this.data.define_list[index].user_id_card,
-      user_s_date: _this.data.define_list[index].user_id_card_begintime,
-      user_o_date: _this.data.define_list[index].user_id_card_endtime,
-      user_sex: (_this.data.define_list[index].user_sex === 1)?"男":"女",
-      index_a: _this.data.define_list[index].relationship_to_baby - 1,
-
-      baby_name: _this.data.define_list[index].baby_name,
-      baby_age: _this.data.define_list[index].baby_age,
-      baby_address: _this.data.define_list[index].baby_address,
-      baby_s_date: _this.data.define_list[index].baby_id_card_begintime,
-      baby_o_date: _this.data.define_list[index].baby_id_card_endtime,
-      baby_id_card: _this.data.define_list[index].baby_id_card,
-      baby_sex: (_this.data.define_list[index].baby_sex === 1) ? "男" : "女",
-
+ getInsuranceDetail:function(babyid,_list){
+   console.log(babyid);
+   console.log(_list);
+    App._post_form('insurance/getinsurancebylist',{baby_id:babyid,list:_list}, function (result) {
+        console.log(result)
     })
-  
-  },
- 
+ },
+
   /*
    * 获取保险详情
    */
-  getInsuranceDetail: function(insurance_id) {
-    let _this = this;
-    App._get('Insurance/wxappGetInsuranceInfo', {
-      insurance_id: insurance_id
-    }, function(result) {
-      console.log(result.data);
-      _this.setData({
-        insurance_img: result.data.headimgurl,
-        insurance_name: result.data.name,
-        insurance_price: result.data.price,
-        insurance_pay: result.data.pay_limit,
-        insurance_description: result.data.description,
-      });
-    });
-  },
+  // getInsuranceDetail: function (insurance_id) {
+  //   let _this = this;
+  //   App._get('Insurance/wxappGetInsuranceInfo', {
+  //     insurance_id: insurance_id
+  //   }, function (result) {
+  //     //console.log(result.data);
+  //     _this.setData({
+  //       insurance_img: result.data.headimgurl,
+  //       insurance_name: result.data.name,
+  //       insurance_price: result.data.price,
+  //       insurance_pay: result.data.pay_limit,
+  //       insurance_description: result.data.description,
+  //     });
+  //   });
+  // },
   /**
-     * 表单提交
-     */
+   * 表单提交
+   */
   saveData: function (e) {
 
     let _this = this,
       values = _this.data.define_list[_this.data.index]
 
-   //保险id赋值到values
+    //保险id赋值到values
     values.insurance_id = parseInt(_this.data.insurance_id)
     //user_token赋值到values
     values.user_token = App.getGlobalData('user_token');
 
     console.log(values);
- 
+
 
     // 按钮禁用
     _this.setData({
@@ -196,10 +195,10 @@ Page({
     // return false;
     // 提交到后端
     App._post_form('Insurance/insuranceOrderCreate', values, function (result) {
-     console.log(values);
+      console.log(values);
       App.showSuccess(result.msg, function () {
         wx.redirectTo({
-          url:'index'
+          url: 'index'
         });
       });
     }, false, function () {
@@ -222,7 +221,7 @@ Page({
   /**
    * 跳转到商品详情
    */
-  goodsDetail: function(e) {
+  goodsDetail: function (e) {
     let goods_id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../goods/index?goods_id=' + goods_id
@@ -251,7 +250,7 @@ Page({
   /**
    * 发起付款
    */
-  payOrder: function(e) {
+  payOrder: function (e) {
     let _this = this;
     let order_id = _this.data.order_id;
 
@@ -261,7 +260,7 @@ Page({
     });
     App._post_form('user.order/pay', {
       order_id
-    }, function(result) {
+    }, function (result) {
       if (result.code === -10) {
         App.showError(result.msg);
         return false;
@@ -273,10 +272,10 @@ Page({
         package: 'prepay_id=' + result.data.prepay_id,
         signType: 'MD5',
         paySign: result.data.paySign,
-        success: function(res) {
+        success: function (res) {
           _this.getOrderDetail(order_id);
         },
-        fail: function() {
+        fail: function () {
           App.showError('订单未支付');
         },
       });

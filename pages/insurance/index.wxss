@@ -1,1 +1,88 @@
-/* pages/insurance/index.wxss */
+.container {
+    padding: 20rpx;
+    height: 100%;
+    position: relative;
+    padding-bottom: 100rpx;
+}
+.left-name{
+    line-height: 24px;
+}
+.picker_text{
+    line-height: 24px;
+}
+.baby_info{
+   overflow: hidden;
+}
+.baby_name {
+    font-size: 30rpx;
+    float: left;
+    width: 50%;
+    line-height: 30px;
+}
+.baby_sex {
+    font-size: 30rpx;
+    float: left;
+    width: 50%;
+    line-height: 30px;
+}
+.baby_idcard {
+    clear: both;
+    font-size: 30rpx;
+    line-height: 30px;
+}
+.baby_birthday{
+    font-size: 30rpx;
+    line-height: 30px;
+}
+.insurance_title{
+    font-size: 32rpx;
+    color: #1ac189;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+}
+.in_name{
+    font-size: 32rpx;
+}
+.in_price{
+    display: block;
+    font-size: 28rpx;
+}
+.in_p_price{
+    display: block;
+    font-size: 28rpx;
+    
+}
+.item_box{
+    overflow: hidden;
+    background-color: #fff;
+    padding: 20rpx;
+    margin-bottom: 30rpx;
+    border-radius: 20px;
+    box-shadow: -5rpx 8rpx 5rpx rgba(0, 0, 0, 0.1); 
+}
+.xiangqing{
+    color: #1ac189;
+    font-size: 28rpx;
+    margin-top: 15px;
+}
+.img_box{
+    margin-top: 10px;
+    float: left;
+}
+.text_box{
+    float: left;
+    line-height: 30px;
+    margin-top: 10px;
+}
+.buy_btn{
+    border-radius: 999px;   
+}
+.footer-fixed{
+    height: 50px;
+    width: 50px;
+    left:80%;
+    font-size: 28rpx;
+    
+}

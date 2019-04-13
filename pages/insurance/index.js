@@ -1,66 +1,130 @@
-// pages/insurance/index.js
+let App = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    list: '',
+    baby_name: '',
+    index: '',
+    baby_sex: '',
+    baby_id: '',
+    insurance_list: '',
+    selected_list: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getBabyList();
+  },
+
+  /**
+   * 获取宝宝列表
+   */
+  getBabyList: function () {
+    let _this = this;
+
+    App._get('baby/getbabylist', {
+      user_token: App.getGlobalData('user_token')
+    }, function (result) {
+      // console.log(result.data);
+
+      _this.setData({
+        list: Object.values(result.data)
+
+      });
+
+      _this.setData({
+        baby__name: _this.getBabyName(result.data)
+      })
+      console.log(_this.data.baby_name)
+      console.log(_this.data.list)
+    });
+
+  },
+
+
+  /**
+   * 自定义获取被保人名称
+   */
+  getBabyName: function (arr) {
+
+
+    let result = [];
+
+    arr.forEach(item => {
+
+      Object.keys(item).forEach(k => {
+        if (k === 'baby_name') {
+          result.push(item[k]);
+        }
+
+      });
+    })
+
+    return result;
+
+  },
+  /**
+   * 修改picker中的被保人
+   */
+  chengeBaby: function (e) {
+    let _this = this
+    _this.setData({
+      index: e.detail.value,
+    })
+    _this.setData({
+      baby_sex: _this.data.list[_this.data.index].baby_sex === 1 ? "男" : "女",
+    })
+    _this.setData({
+      baby_id: _this.data.list[_this.data.index].baby_id
+    })
+
+    this.getInsuranceList()
 
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 获取可购买的保险
    */
-  onReady: function () {
+  getInsuranceList: function () {
+    let _this = this;
 
+    App._post_form('insurance/getcanbuyinsurance', {
+        user_token: App.getGlobalData('user_token'),
+        baby_id: _this.data.baby_id
+      },
+      function (result) {
+        console.log(result)
+        _this.setData({
+          insurance_list: result.data
+        })
+        console.log(_this.data.insurance_list[0].name)
+      })
   },
 
   /**
-   * 生命周期函数--监听页面显示
+   * 
+   * 选择保险
    */
-  onShow: function () {
-
+  checkboxChange: function (e) {
+    this.setData({
+      selected_list: e.detail.value
+    })
+    console.log(this.data.selected_list.map(Number))
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
+   * 点击购买按钮
    */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
-})
+buyJump:function(){
+  wx.navigateTo({
+    url: '../order/preview?list='+ this.data.selected_list + '&baby_id=' + this.data.baby_id,
+  });
+    
+}
+});

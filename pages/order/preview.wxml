@@ -6,33 +6,22 @@
 
       <view class="flow-checkout-header b-f dis-flex">
         <view class="flow-header-left padding-box" wx:if="{{define_list.length > 0}}">
-          <view class="list address-box dis-flex " style="padding:0rpx 0rpx 50rpx 10rpx">
-            <view class="left-name" style='width:40%'>
-              <text class="f-30" style='font-size:32rpx;'>请选择被保人：</text>
-            </view>
-            <view class="right-cont dis-flex kuandu">
-              <picker bindchange="chengeBaby" value="{{index}}" range="{{baby__name}}" name="?" style='width:100%'>
-                <text wx:if="{{baby__name[index]}}" class="f-30 kuandu">{{baby__name[index]}}</text>
-                <text wx:else class="f-30 col-7">选择被保人</text>
-              </picker>
-            </view>
-          </view>
           <view class='folding-box'>
             <view class='title_details'>投保人信息</view>
-            <view class='insurance_details'>投保人姓名:{{user_name}}</view>
+            <view class='insurance_details'><input type="text" placeholder="请校验投保人姓名" class='ipn_bor' bindinput='getInputUsName'/></view>
             <view class='insurance_details'>投保人性别：{{user_sex}}</view>
             <view class='insurance_details'>投保人年龄：{{user_age}}</view>
             <view class='insurance_details'>投保人电话：{{user_mobile}}</view>
             <view class='insurance_details'>投保人详细地址：{{user_address}}</view>
-            <view class='insurance_details'>投保人身份证号：{{user_id_card}}</view>
+            <view class='insurance_details'><input type="text" placeholder="请校验投保人身份证号" class='ipn_bor'  bindinput='getInputUsIdcard'/></view>
             <view class='insurance_details'>投保人身份证期限：{{user_s_date}}—{{user_o_date}}</view>
             <view class='insurance_details'>与被保人关系:{{relationship_to_baby[index_a]}}</view>
             <view class='title_details'>被保人信息</view>
-            <view class='insurance_details'>被保人姓名：{{baby_name}}</view>
+            <view class='insurance_details'><input type="text" placeholder="请校验被保人姓名" class='ipn_bor' bindinput='getInputBabyName'/></view>
             <view class='insurance_details'>被保人性别：{{baby_sex}}</view>
             <view class='insurance_details'>被保人年龄：{{baby_age}}</view>
             <view class='insurance_details'>投保人详细地址：{{baby_address}}</view>
-            <view class='insurance_details'>被保人身份证号：{{baby_id_card}}</view>
+            <view class='insurance_details'><input type="text" placeholder="请校验被保人身份证号" class='ipn_bor'  bindinput='getInputBabyIdcard'/></view>
             <view class='insurance_details'>被保人身份证期限：{{baby_s_date}}—{{baby_o_date}}</view>
             <view class='insurance_details'>与投保人关系：{{relationship_to_baby[index_a]}}</view>
           </view>
@@ -67,7 +56,7 @@
       </view>
 
 
-
+<view>
       <view class="padding-box b-f" style=' overflow: hidden'>
 
         <view class='baoxian'>
@@ -80,7 +69,7 @@
       </view>
 
     </view>
-
+</view>
 
     <!-- 订单金额 -->
     <view class="flow-all-money b-f padding-box m-top20">
