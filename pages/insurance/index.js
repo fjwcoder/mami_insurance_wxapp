@@ -13,6 +13,8 @@ Page({
     baby_id: '',
     insurance_list: '',
     selected_list: [],
+
+  
   },
 
   /**
@@ -93,7 +95,9 @@ Page({
    */
   getInsuranceList: function () {
     let _this = this;
-
+    wx.showLoading({
+      title: '加载中..',
+    })
     App._post_form('insurance/getcanbuyinsurance', {
         user_token: App.getGlobalData('user_token'),
         baby_id: _this.data.baby_id
@@ -122,6 +126,16 @@ Page({
    * 点击购买按钮
    */
 buyJump:function(){
+  if(this.data.selected_list.length < 1){
+    wx.showToast({
+      title: '您还没有选择购买的保险',
+      icon: 'none',
+      duration: 1500,
+      mask: false,
+    });
+    return false;  
+  }
+    
   wx.navigateTo({
     url: '../order/preview?list='+ this.data.selected_list + '&baby_id=' + this.data.baby_id,
   });

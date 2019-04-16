@@ -146,13 +146,14 @@
     font-size: 26rpx;
     line-height: 48rpx;
     color: #444;
+    overflow: hidden;
 }
 
 .title_details {
     width: 100%;
     text-align: center;
     line-height: 50rpx;
-    color: #ff495e;
+    color: #1ac189;
     font-weight: bold;
     font-size: 28rpx;
 }
@@ -177,8 +178,36 @@
     color: #444;
     width: 100%;
 }
-
+._age{
+    margin-left: 15px;
+}
+.xinghao{
+    float:left;
+   
+    color: #1ac189;
+    font-size: 14px;
+}
 .ipn_bor {
-    border-bottom: rgb(214, 213, 213) 1px solid;
-    width: 60%;
+    border-bottom:  #C7C7CD 1px solid;
+    width: 80%;
+    float: left;
+    color: #1ac189;
+}
+.flow-fixed-footer{
+    width: 340px;
+    margin: 0 auto;
+    left:calc(50% - 170px);
+    border-radius: 999px;
+    bottom: 20px;
+
+}
+.buy_btn{
+    width: 100%;
+    border-radius: 999px;
+    margin: 0 auto;
+    line-height: 46px;
+    background-color: #1ac189;
+    color: white;
+    text-align: center;
+    box-shadow: 1px 5px 15px rgba(50, 50, 50, 0.3);
 }

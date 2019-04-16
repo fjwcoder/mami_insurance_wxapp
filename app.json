@@ -51,8 +51,8 @@
       {
         "pagePath": "pages/insurance/index",
         "text": "投保",
-        "iconPath": "images/cate.png",
-        "selectedIconPath": "images/cate-active.png"
+        "iconPath": "images/baoxian.png",
+        "selectedIconPath": "images/abaoxian.png"
       },
       {
         "pagePath": "pages/user/index",

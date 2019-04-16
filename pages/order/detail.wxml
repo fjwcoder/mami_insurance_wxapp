@@ -39,8 +39,8 @@
       <view class='insurance_details'>保单预览图区域</view>
     </view>
 
-    <navigator class='mar' url='../lipei/index?baby_name={{baby_name}}&user_name={{user_name}}&insurance_name={{insurance_name}}&order_id={{insurance_order_id}}&user_id_card={{user_id_card}}'>
+    <!-- <navigator class='mar' url='../lipei/index?baby_name={{baby_name}}&user_name={{user_name}}&insurance_name={{insurance_name}}&order_id={{insurance_order_id}}&user_id_card={{user_id_card}}'>
         <view class="order-bt" >申请理赔</view>
         <view class='air_box'></view>
-    </navigator>
+    </navigator> -->
 </view>

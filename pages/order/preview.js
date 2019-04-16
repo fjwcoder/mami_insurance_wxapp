@@ -22,6 +22,8 @@ Page({
     baby__name: [],
     index: '', //picker列表索引
 
+    def_id:'',//预定义保单id
+
     user_name: '',
     user_sex: '',
     user_address: '',
@@ -60,6 +62,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+
+    //加载提示框
+    wx.showLoading({
+      title:"加载中" ,
+      mask: true,
+      
+    });
     // 设置图片宽高：高度=宽度=屏幕宽度的1/5
     // this.setData({
     //   img_width: wx.getSystemInfoSync().windowWidth * 0.2
@@ -67,6 +77,7 @@ Page({
 
     // 当前页面参数
 
+      
     this.data.options = options;
 
     this.data.insurance_id = options.insurance_id; // 保险ID
@@ -98,12 +109,14 @@ Page({
       user_token: App.getGlobalData('user_token'),
       baby_id: baby_id
     }, function (result) {
-      //console.log(result.data);
+      console.log(result.data);
 
       _this.setData({
         define_list: Object.values(result.data)
       });
       _this.setData({
+        def_id:result.data[0].id,
+
         user_name: result.data[0].user_name,
         user_address: result.data[0].user_address,
         user_age: result.data[0].user_age,
@@ -244,13 +257,37 @@ Page({
     // console.log(values);
     // return false;
     // 提交到后端
-    App._post_form('Insurance/insuranceOrderCreate', values, function (result) {
-      console.log(values);
-      App.showSuccess(result.msg, function () {
-        wx.redirectTo({
-          url: 'index'
-        });
-      });
+    App._post_form('Insurance/insuranceOrderCreate',{
+    user_token:App.getGlobalData('user_token'),
+    baby_id:parseInt( _this.data.baby_id),
+    def_id:_this.data.def_id,
+    insurance_id_list:_this.data.list,
+    user_name:_this.data.in_us_name,
+    user_id_card:_this.data.in_us_idcard,
+    baby_name:_this.data.in_baby_name,
+    baby_id_card:_this.data.in_baby_idcard,
+  }, function (result) {
+    console.log(result)
+      if(result.code === 200){
+        console.log(result.data.order_master_id)
+        App._post_form('payment/insurancepay',{user_token:App.getGlobalData('user_token'),order_id:result.data.order_master_id,master:1},function(res){
+          console.log(res);
+          wx.requestPayment({
+            timeStamp: res.data.timeStamp,
+            nonceStr: res.data.nonceStr,
+            package: res.data.package,
+            signType: 'MD5',
+            paySign: res.data.paySign,
+            success(resa) {
+              console.log(resa)
+             },
+            fail(res) {}
+          })
+        })
+      }else{
+        App.showError(result.msg);
+        return false;
+      }
     }, false, function () {
       // 解除禁用
       _this.setData({

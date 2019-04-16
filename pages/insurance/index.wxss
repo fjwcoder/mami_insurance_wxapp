@@ -46,13 +46,18 @@
     font-size: 32rpx;
 }
 .in_price{
-    display: block;
+    
     font-size: 28rpx;
 }
 .in_p_price{
+    margin-left: 10px;
+    font-size: 28rpx;
+    display: inline-block;
+}
+.jiehsao{
     display: block;
     font-size: 28rpx;
-    
+
 }
 .item_box{
     overflow: hidden;
@@ -65,7 +70,9 @@
 .xiangqing{
     color: #1ac189;
     font-size: 28rpx;
-    margin-top: 15px;
+    line-height: 28rpx;
+    float: right;
+    margin-right: 10px;
 }
 .img_box{
     margin-top: 10px;
@@ -75,6 +82,7 @@
     float: left;
     line-height: 30px;
     margin-top: 10px;
+    width: calc(100% - 80px);
 }
 .buy_btn{
     border-radius: 999px;   
