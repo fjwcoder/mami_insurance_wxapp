@@ -20,7 +20,7 @@
 }
 
 .wrapper {
-  margin-top: 54px;
+  /* margin-top: 54px; */
 }
 
 .order-box {
@@ -159,6 +159,7 @@
 .a_item{
   width: 94%;
   margin: 20rpx auto;
+  box-shadow: 1px 5px 10px rgba(145, 145, 145, 0.3);
  
 }
 .title{

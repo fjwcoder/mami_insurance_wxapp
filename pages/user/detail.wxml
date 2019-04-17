@@ -67,13 +67,13 @@
           <text class="f-30">证件期限</text>
         </view>
         <view class="right-cont dis-flex" style='width: 32%;'>
-          <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindIdCardSDateChange" name="id_card_begintime">
+          <picker mode="date" value="{{s_date}}" start="2010-10-01" end="2020-01-01" bindchange="bindIdCardSDateChange" name="id_card_begintime">
             <text wx:if="{{s_date}}" class="f-30">{{s_date}}</text>
             <text wx:else class="f-30 col-7">开始时间</text>
           </picker>
         </view>
         <view class="right-cont dis-flex" style='width: 32%;'>
-          <picker mode="date" value="{{date}}" start="2010-10-01" end="2020-01-01" bindchange="bindIdCardODateChange" name="id_card_endtime">
+          <picker mode="date" value="{{o_date}}" start="2010-10-01" end="2020-01-01" bindchange="bindIdCardODateChange" name="id_card_endtime">
             <text wx:if="{{o_date}}" class="f-30">{{o_date}}</text>
             <text wx:else class="f-30 col-7">结束时间</text>
           </picker>

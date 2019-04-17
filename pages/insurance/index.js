@@ -11,10 +11,10 @@ Page({
     index: '',
     baby_sex: '',
     baby_id: '',
-    insurance_list: '',
+    insurance_list: null,
     selected_list: [],
 
-  
+
   },
 
   /**
@@ -24,6 +24,13 @@ Page({
     this.getBabyList();
   },
 
+
+  onShow: function () {
+    this.setData({
+      index:'',
+      insurance_list:''
+    });
+  },
   /**
    * 获取宝宝列表
    */
@@ -125,20 +132,20 @@ Page({
   /**
    * 点击购买按钮
    */
-buyJump:function(){
-  if(this.data.selected_list.length < 1){
-    wx.showToast({
-      title: '您还没有选择购买的保险',
-      icon: 'none',
-      duration: 1500,
-      mask: false,
+  buyJump: function () {
+    if (this.data.selected_list.length < 1) {
+      wx.showToast({
+        title: '您还没有选择购买的保险',
+        icon: 'none',
+        duration: 1500,
+        mask: false,
+      });
+      return false;
+    }
+
+    wx.navigateTo({
+      url: '../order/preview?list=' + this.data.selected_list + '&baby_id=' + this.data.baby_id,
     });
-    return false;  
+
   }
-    
-  wx.navigateTo({
-    url: '../order/preview?list='+ this.data.selected_list + '&baby_id=' + this.data.baby_id,
-  });
-    
-}
 });

@@ -1,40 +1,50 @@
 .container {
-    padding: 20rpx;
+    padding: 15px;
     height: 100%;
     position: relative;
     padding-bottom: 100rpx;
 }
-.left-name{
+
+.left-name {
     line-height: 24px;
 }
-.picker_text{
+
+.picker_text {
     line-height: 24px;
 }
-.baby_info{
-   overflow: hidden;
+
+.baby_info {
+    overflow: hidden;
+    clear: both;
+    margin-top: 20px;
 }
+
 .baby_name {
     font-size: 30rpx;
     float: left;
     width: 50%;
     line-height: 30px;
 }
+
 .baby_sex {
     font-size: 30rpx;
     float: left;
     width: 50%;
     line-height: 30px;
 }
+
 .baby_idcard {
     clear: both;
     font-size: 30rpx;
     line-height: 30px;
 }
-.baby_birthday{
+
+.baby_birthday {
     font-size: 30rpx;
     line-height: 30px;
 }
-.insurance_title{
+
+.insurance_title {
     font-size: 32rpx;
     color: #1ac189;
     font-weight: bold;
@@ -42,55 +52,114 @@
     text-align: center;
     line-height: 50px;
 }
-.in_name{
+
+.in_name {
     font-size: 32rpx;
 }
-.in_price{
-    
+
+.in_price {
     font-size: 28rpx;
 }
-.in_p_price{
+
+.in_p_price {
     margin-left: 10px;
     font-size: 28rpx;
     display: inline-block;
 }
-.jiehsao{
+
+.jiehsao {
     display: block;
     font-size: 28rpx;
-
 }
-.item_box{
+
+.item_box {
     overflow: hidden;
     background-color: #fff;
     padding: 20rpx;
     margin-bottom: 30rpx;
     border-radius: 20px;
-    box-shadow: -5rpx 8rpx 5rpx rgba(0, 0, 0, 0.1); 
+    box-shadow: -5rpx 8rpx 5rpx rgba(0, 0, 0, 0.1);
 }
-.xiangqing{
+
+.xiangqing {
     color: #1ac189;
     font-size: 28rpx;
     line-height: 28rpx;
     float: right;
     margin-right: 10px;
 }
-.img_box{
+
+.img_box {
     margin-top: 10px;
     float: left;
 }
-.text_box{
+
+.text_box {
     float: left;
     line-height: 30px;
     margin-top: 10px;
     width: calc(100% - 80px);
 }
-.buy_btn{
-    border-radius: 999px;   
+
+.buy_btn {
+    border-radius: 999px;
 }
-.footer-fixed{
+
+.footer-fixed {
     height: 50px;
     width: 50px;
-    left:80%;
+    left: 80%;
     font-size: 28rpx;
-    
+}
+
+.kuandu {
+    width: 100%;
+}
+
+.left_cont {
+    overflow: hidden;
+    padding: 15px 0px 15px 20px;
+    background: #fff;
+    border-radius: 10x;
+    border: #f1f1f1 solid 1px;
+    box-shadow: 1px 5px 10px rgba(145, 145, 145, 0.3);
+    margin-bottom: 20px;
+}
+
+.left_name {
+    float: left;
+    font-size: 30rpx;
+    color: #222;
+}
+
+.right_cont {
+    text-align: center;
+    width: 100%;
+    line-height: 32rpx;
+    color: #1ac189;
+    margin: 0 auto;
+}
+
+.xiala {
+    line-height: 32rpx;
+    color: #666;
+    font-size: 30rpx;
+}
+
+.else_box {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 150px;
+    left: 0px;
+}
+
+.else_img {
+    width: 100px;
+    margin: 0 auto;
+}
+
+.else_text {
+    font-size: 18px;
+    color: #666;
 }

@@ -1,11 +1,11 @@
 <view class="container m-b5">
   <view class="goods-detail-box">
-    <view class="header f-28 col-3">
+    <!-- <view class="header f-28 col-3">
       <view catchtap="bindHeaderTap" class="{{dataType==='all'?'active':''}}" data-type="all">全部订单</view>
       <view bindtap="bindHeaderTap" class="{{dataType==='payment'?'active':''}}" data-type="payment">待付款</view>
       <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="delivery">待发货</view>
       <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">待收货</view>
-    </view>
+    </view> -->
     <scroll-view scroll-y="{{true}}">
       <view class="wrapper">
         <view wx:if="{{list.length}}">
@@ -75,7 +75,7 @@
                     <view class="flex-box" wx:if="{{item.step === 0}}">
                      
                       <view bindtap="payOrder" class="btn-main" data-id="{{item.order_id}}">付款</view>
-                      <view bindtap="cancelOrder" class="btn-default" data-id="{{item.order_id}}">取消</view>
+                      <!-- <view bindtap="cancelOrder" class="btn-default" data-id="{{item.order_id}}">取消</view> -->
                       <navigator url="detail?order_id={{item.order_id}}&o_id={{item.id}}"><view class="btn-default"  style="color:#555;margin-right:10rpx;">详情 </view></navigator>
                     </view>
                     

@@ -32,7 +32,7 @@
 }
 
 .address-right .iconfont {
-  color: #777;
+  /* color: #777; */
   font-size: 30rpx;
 }
 
@@ -109,6 +109,7 @@
 .a_item{
   width: 94%;
   margin: 0 auto;
+  box-shadow: 1px 5px 10px rgba(145, 145, 145, 0.3);
 }
 .bianji{
   width: 100%;
@@ -116,4 +117,7 @@
 }
 .order-bt{
   border-radius: 999px;
+}
+.bianji{
+  color: rgb(0, 197, 105);
 }

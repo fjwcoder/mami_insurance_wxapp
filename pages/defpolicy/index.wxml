@@ -15,7 +15,7 @@
       </view>
       <view class="address-list dis-flex b-f bianji">
         <view class="list address-right">
-          <text class="iconfont icon-edit1"></text>
+          <text class="iconfont icon-edit1 bianji"></text>
           <text bindtap="editInsuranceInfo" class="title" data-id="{{item.id}}">编辑</text>
           <!-- <text class="iconfont icon-lajixiang"></text>
           <text bindtap="removeAddress" class="title" data-id="{{item.address_id}}">删除</text> -->

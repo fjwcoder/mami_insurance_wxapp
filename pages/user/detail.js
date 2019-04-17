@@ -22,6 +22,7 @@ Page({
     index: 0,
 
     error: '',
+    area:[]
   },
 
   /**
@@ -46,45 +47,46 @@ Page({
     // });
   },
 
-  /**
-   * 表单提交
-   */
-  saveData: function(e) {
-    let _this = this,
-      values = e.detail.value
-    values.region = this.data.region;
+  // /**
+  //  * 表单提交
+  //  */
+  // saveData: function(e) {
+  //   let _this = this,
+  //     values = e.detail.value
+  //   values.region = this.data.region;
 
-    // 表单验证
-    if (!_this.validation(values)) {
-      App.showError(_this.data.error);
-      return false;
-    }
+  //   // 表单验证
+  //   if (!_this.validation(values)) {
+  //     App.showError(_this.data.error);
+  //     return false;
+  //   }
 
-    // 按钮禁用
-    _this.setData({
-      disabled: true
-    });
+  //   // 按钮禁用
+  //   _this.setData({
+  //     disabled: true
+  //   });
 
-    // 提交到后端
-    values.address_id = _this.data.detail.address_id;
-    App._post_form('address/edit', values, function(result) {
-      App.showSuccess(result.msg, function() {
-        wx.navigateBack();
-      });
-    }, false, function() {
-      // 解除禁用
-      _this.setData({
-        disabled: false
-      });
-    });
-  },
+  //   // 提交到后端
+  //   values.address_id = _this.data.detail.address_id;
+  //   App._post_form('address/edit', values, function(result) {
+  //     App.showSuccess(result.msg, function() {
+  //       wx.navigateBack();
+  //     });
+  //   }, false, function() {
+  //     // 解除禁用
+  //     _this.setData({
+  //       disabled: false
+  //     });
+  //   });
+  // },
 
   /**
    * 修改地区
    */
   bindRegionChange: function(e) {
     this.setData({
-      region: e.detail.value
+      region: e.detail.value,
+      area:e.detail.value
     })
   },
 
@@ -136,22 +138,25 @@ Page({
       user_token: App.getGlobalData('user_token'),
     }, function(result) {
        console.log(result.data);
+       var region = result.data.us_sheng + ',' + result.data.us_shi + ',' + result.data.us_qu;
       _this.setData({
         name: result.data.us_name,
         index: result.data.sex - 1,
         age: result.data.us_age,
-        o_date: result.data.id_card_begintime,
-        s_date: result.data.id_card_endtime,
+        o_date: result.data.id_card_endtime ,
+        s_date: result.data.id_card_begintime,
         id_card: result.data.id_card,
         detail: result.data.address_detail,
         mobile: result.data.mobile,
-        region: result.data.us_sheng + ',' + result.data.us_shi + ',' + result.data.us_qu
+        region: result.data.us_sheng + ',' + result.data.us_shi + ',' + result.data.us_qu,
+        area:region.split(",")
       })
       if (_this.data.region === "null,null,null") {
         _this.setData({
           region: "请选择地区"
         })
       }
+      console.log(_this.data.area)
     });
   },
 
@@ -165,9 +170,9 @@ Page({
       values = e.detail.value
 
     // values.date = this.data.date;
-    values.us_sheng = values.area[0];
-    values.us_shi = values.area[1];
-    values.us_qu = values.area[2];
+    values.us_sheng = _this.data.area[0];
+    values.us_shi =_this.data.area[1];
+    values.us_qu = _this.data.area[2];
     values.sex = (values.sex === 0) ? 1 : 2;
     values.user_token = App.getGlobalData('user_token');
     console.log(values);
