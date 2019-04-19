@@ -2,8 +2,8 @@
     <view class="left_cont">
         <view class="right_cont">
             <picker bindchange="chengeBaby" value="{{index}}" range="{{baby__name}}" name="?" style='width:100%'>
-                <text wx:if="{{baby__name[index]}}" class="f-30 kuandu">{{baby__name[index]}}<!-- <text class='iconfont icon-xiala xiala'></text> --></text>
-                <text wx:else class="f-30  picker_text">请选择被保人∨<!-- <text class='iconfont icon-xiala xiala'></text> --></text>
+                <text wx:if="{{baby__name[index]}}" class="f-30 kuandu">{{baby__name[index]}}<text class='iconfont icon-xiala xiala'></text> </text>
+                <text wx:else class="f-30  picker_text">请选择被保人<text class='iconfont icon-xiala xiala'></text></text>
             </picker>
         </view>
         <view class="baby_info" wx:if="{{index}}">

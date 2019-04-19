@@ -8,7 +8,7 @@ Page({
   data: {
     disabled: false,
     nav_select: false, // 快捷导航
-    region: '',
+    region: '', //用户省市区
     detail: {},
     name: '',
     sex: '',
@@ -22,13 +22,13 @@ Page({
     index: 0,
 
     error: '',
-    area:[]
+    area: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     // 获取当前地址信息
     // this.getAddressDetail(options.address_id);
     this.getUserInfo();
@@ -38,7 +38,7 @@ Page({
   /**
    * 获取当前地址信息
    */
-  getAddressDetail: function(address_id) {
+  getAddressDetail: function (address_id) {
     let _this = this;
     // App._get('address/detail', {
     //   address_id
@@ -83,17 +83,18 @@ Page({
   /**
    * 修改地区
    */
-  bindRegionChange: function(e) {
+  bindRegionChange: function (e) {
+    let _this = this;
     this.setData({
       region: e.detail.value,
-      area:e.detail.value
     })
+    console.log(this.data.region);
   },
 
   /**
    * 修改性别
    */
-  chengeSex: function(e) {
+  chengeSex: function (e) {
     this.setData({
       index: e.detail.value
     })
@@ -102,7 +103,7 @@ Page({
   /**
    * 修改身份证开始日期
    */
-  bindIdCardSDateChange: function(e) {
+  bindIdCardSDateChange: function (e) {
     this.setData({
       s_date: e.detail.value
 
@@ -112,7 +113,7 @@ Page({
   /**
    * 修改身份证结束日期
    */
-  bindIdCardODateChange: function(e) {
+  bindIdCardODateChange: function (e) {
     this.setData({
       o_date: e.detail.value
 
@@ -123,7 +124,7 @@ Page({
   /**
    * 填写姓名
    */
-  getName: function(e) {
+  getName: function (e) {
     this.setData({
       babyName: e.detail.value
     })
@@ -132,31 +133,30 @@ Page({
   /**
    * 获取用户信息
    */
-  getUserInfo: function() {
+  getUserInfo: function () {
     let _this = this;
     App._get('user/getuserdetail', {
       user_token: App.getGlobalData('user_token'),
-    }, function(result) {
-       console.log(result.data);
-       var region = result.data.us_sheng + ',' + result.data.us_shi + ',' + result.data.us_qu;
+    }, function (result) {
+      console.log(result.data);
+      var region = result.data.us_sheng + ',' + result.data.us_shi + ',' + result.data.us_qu;
       _this.setData({
         name: result.data.us_name,
         index: result.data.sex - 1,
         age: result.data.us_age,
-        o_date: result.data.id_card_endtime ,
+        o_date: result.data.id_card_endtime,
         s_date: result.data.id_card_begintime,
         id_card: result.data.id_card,
         detail: result.data.address_detail,
         mobile: result.data.mobile,
-        region: result.data.us_sheng + ',' + result.data.us_shi + ',' + result.data.us_qu,
-        area:region.split(",")
+        region: region.split(","),
       })
       if (_this.data.region === "null,null,null") {
         _this.setData({
           region: "请选择地区"
         })
       }
-      console.log(_this.data.area)
+      console.log(_this.data.region)
     });
   },
 
@@ -164,15 +164,15 @@ Page({
   /**
    * 表单提交
    */
-  saveData: function(e) {
+  saveData: function (e) {
 
     let _this = this,
       values = e.detail.value
 
     // values.date = this.data.date;
-    values.us_sheng = _this.data.area[0];
-    values.us_shi =_this.data.area[1];
-    values.us_qu = _this.data.area[2];
+    values.us_sheng = _this.data.region[0];
+    values.us_shi = _this.data.region[1];
+    values.us_qu = _this.data.region[2];
     values.sex = (values.sex === 0) ? 1 : 2;
     values.user_token = App.getGlobalData('user_token');
     console.log(values);
@@ -194,27 +194,33 @@ Page({
     // console.log(values);
     // return false;
     // 提交到后端
-    App._post_form('User/editUserDetail', 
-      values
-    , function(result) {
-
-      App.showSuccess(result.msg, function() {
-        wx.navigateBack();
+    App._post_form('User/editUserDetail',
+      values,
+      function (result) {
+        if (result.code === 200) {
+          App.showSuccess(result.msg, function () {
+            wx.navigateBack();
+          });
+        } else if (result.code === 40017) {
+          App.showError("您没有修改任何内容")
+        } else {
+          App.showError(result.msg)
+        }
+        console.log(result)
+      }, false,
+      function () {
+        // 解除禁用
+        _this.setData({
+          disabled: false
+        });
       });
-      console.log(result)
-    }, false, function() {
-      // 解除禁用
-      _this.setData({
-        disabled: false
-      });
-    });
   },
 
 
   /**
    * 表单验证
    */
-  validation: function(values) {
+  validation: function (values) {
     if (values.us_name === '') {
       this.data.error = '姓名不能为空';
       return false;

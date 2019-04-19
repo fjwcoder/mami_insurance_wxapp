@@ -144,6 +144,7 @@
     line-height: 32rpx;
     color: #666;
     font-size: 30rpx;
+    margin-left: 20px;
 }
 
 .else_box {
