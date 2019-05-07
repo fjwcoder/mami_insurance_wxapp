@@ -190,6 +190,6 @@ picker-view-column view {
   text-align: center;
   font-size: 28rpx;
   padding: 30rpx 0rpx;
-  color: #ff495e;
+  color: #1ac189;
   font-weight: bold;
 }

@@ -32,7 +32,6 @@ Page({
     // 获取当前地址信息
     // this.getAddressDetail(options.address_id);
     this.getUserInfo();
-    // console.log(this.data.name);
   },
 
   /**
