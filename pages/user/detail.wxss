@@ -183,6 +183,7 @@ picker-view-column view {
 .m-top35 {
   margin-top: 35rpx;
 }
-.kuandu{
+
+.kuandu {
   width: 60%;
 }

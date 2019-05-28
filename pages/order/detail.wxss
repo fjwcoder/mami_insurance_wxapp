@@ -1,46 +1,84 @@
 .insurance_details {
-  font-size: 26rpx;
-  line-height: 48rpx;
-  color: #444;
+    font-size: 28rpx;
+    line-height: 48rpx;
+    color: #444;
 }
 
 .title_details {
-  width: 100%;
-  text-align: center;
-  line-height: 50rpx;
-  color: #1ac189;
-  font-weight: bold;
-  font-size: 28rpx;
+    /* text-align: center; */
+    line-height: 50rpx;
+    color: #666;
+    font-weight: bold;
+    font-size: 28rpx;
+    display: block;
+    float: left;
+    margin-left: 10px;
+} 
+
+.titlebox {
+    width: 100%;
+    border-bottom: #f0f0f0 1px solid;
+    overflow: hidden;
 }
 
 .col_r {
-  color: #1ac189;
-  margin-left: 10rpx;
+    color: #1ac189;
+    margin-left: 10rpx;
 }
 
 .folding-box {
-  /* padding: 20rpx; */
+    /* padding: 20rpx; */
+    padding-bottom: 50px;
 }
 
 .box_a {
-  width: 88%;
-  margin: 20rpx auto;
-  background-color: #fff;
-  padding: 20rpx;
-  border-radius: 20px;
-  box-shadow: -5rpx 8rpx 5rpx rgba(0, 0, 0, 0.1);
+    width: 88%;
+    margin: 20rpx auto;
+    background-color: #fff;
+    padding: 20rpx;
+    /* border-radius: 20px; */
+    box-shadow: -5rpx 8rpx 10rpx rgba(104, 104, 104, 0.1);
 }
 
 .order-bt {
-  width:40%;
-  margin: 20px auto;
-  border-radius: 999px;
-  color: #fff;
-  line-height: 46px;
-  text-align: center;
-  font-size: 34rpx;
-   box-shadow: 1px 5px 15px rgba(50, 50, 50, 0.3);
+    width: 40%;
+    margin: 20px auto;
+    border-radius: 999px;
+    color: #fff;
+    line-height: 46px;
+    text-align: center;
+    font-size: 34rpx;
+    box-shadow: 1px 5px 15px rgba(50, 50, 50, 0.3);
 }
-.mar{
-  margin-bottom: 30rpx;
+
+.mar {
+    margin-bottom: 30rpx;
+}
+
+._age {
+    margin-left: 50px;
+}
+
+._icon_2 {
+    float: left;
+    color: rgb(3, 180, 32);
+    font-size: 30px;
+}
+
+._icon_3 {
+    float: left;
+    color: rgb(228, 15, 192);
+    font-size: 30px;
+}
+
+._icon_1 {
+    float: left;
+    color: rgb(11, 112, 243);
+    font-size: 22px;
+}
+
+._icon_4 {
+    float: left;
+    color: rgb(228, 231, 13);
+    font-size: 22px;
 }

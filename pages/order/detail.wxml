@@ -1,7 +1,7 @@
 <view class='folding-box'>
 
     <view class='box_a'>
-      <view class='title_details'>订单信息</view>
+     <view class='titlebox'><view class='iconfont icon-xiangqing _icon_1'></view><text class='title_details'>订单信息</text></view>
       <view class='insurance_details'>保险名称:<text class='col_r'>{{insurance_name}}</text></view>
       <view class='insurance_details'>保险详情：<text class='col_r'>{{insurance_description}}</text></view>
       <view class='insurance_details'>订单编号：<text class='col_r'>{{insurance_order_id}}</text></view>
@@ -10,32 +10,30 @@
     </view>
 
     <view class='box_a'>
-      <view class='title_details'>投保人信息</view>
+      <view class='titlebox'><view class='iconfont icon-tou _icon_2'></view><text class='title_details'>投保人信息</text></view>
       <view class='insurance_details'>姓名:<text class='col_r'>{{user_name}}</text></view>
-      <view class='insurance_details'>性别：<text class='col_r'>{{user_sex}}</text></view>
-      <view class='insurance_details'>年龄：<text class='col_r'>{{user_age}}</text></view>
-      <view class='insurance_details'>详细地址：<text class='col_r'>{{user_address}}</text></view>
-      <view class='insurance_details'>电话：<text class='col_r'>{{user_mobile}}</text></view>
+      <view class='insurance_details'>性别：<text class='col_r'>{{user_sex}}</text><text class='_age'>年龄：<text class='col_r'>{{user_age}} </text> 岁</text></view>
       <view class='insurance_details'>身份证号：<text class='col_r'>{{user_id_card}}</text></view>
+      <view class='insurance_details'>电话：<text class='col_r'>{{user_mobile}}</text></view>
       <view class='insurance_details'>身份证期限：<text class='col_r'>{{user_s_date}}—{{user_o_date}}</text></view>
       <view class='insurance_details'>与被保人关系:<text class='col_r'>{{relationship_to_baby[index_a]}}</text></view>
+      <view class='insurance_details'>详细地址：<text class='col_r'>{{user_address}}</text></view>
      
      </view>
 
      <view class='box_a'> 
-      <view class='title_details'>被保人信息</view>
+      <view class='titlebox'><view class='iconfont icon-bei _icon_3'></view><text class='title_details'>被保人信息</text></view>
       <view class='insurance_details'>姓名：<text class='col_r'>{{baby_name}}</text></view>
-      <view class='insurance_details'>性别：<text class='col_r'>{{baby_sex}}</text></view>
-      <view class='insurance_details'>年龄：<text class='col_r'>{{baby_age}}</text></view>
-      <view class='insurance_details'>详细地址：<text class='col_r'>{{baby_address}}</text></view>
+      <view class='insurance_details'>性别：<text class='col_r'>{{baby_sex}}</text><text class='_age'>年龄：<text class='col_r'>{{baby_age}} </text> 岁</text></view>
       <view class='insurance_details'>身份证号：<text class='col_r'>{{baby_id_card}}</text></view>
       <view class='insurance_details'>身份证期限：<text class='col_r'>{{baby_s_date}}—{{baby_o_date}}</text></view>
       <view class='insurance_details'>与投保人关系：<text class='col_r'>{{relationship_to_baby[index_a]}}</text></view>
+      <view class='insurance_details'>详细地址：<text class='col_r'>{{baby_address}}</text></view>
     </view>
 
 
     <view class='box_a'> 
-      <view class='title_details'>保单预览图</view>
+      <view class='titlebox'><view class='iconfont icon-yulan _icon_4'></view><text class='title_details'>保单预览</text></view>
       <view class='insurance_details'>保单预览图区域</view>
     </view>
 

@@ -1,123 +1,138 @@
 /* pages/addchildren/index.wxss */
+
 .address-list {
-  border-bottom: 1px solid #f6f6f9;
+    border-bottom: 1px solid #f6f6f9;
 }
 
 .address-list .list {
-  padding: 15rpx;
+    padding: 15rpx;
 }
 
 .address-list .list .title {
-  font-size: 30rpx;
-  padding: 0 24rpx 0 6rpx;
-  color: #666;
+    font-size: 30rpx;
+    padding: 0 24rpx 0 6rpx;
+    color: #666;
 }
 
 .address-list .list .cont {
-  font-size: 30rpx;
-  color: #333;
+    font-size: 30rpx;
+    color: #333;
 }
 
 .address-list .list navigator {
-  display: inline-block;
+    display: inline-block;
 }
 
 .address-list .list image {
-  width: 28rpx;
-  height: 28rpx;
+    width: 28rpx;
+    height: 28rpx;
 }
 
 .address-right {
-  flex: 3.2;
-  overflow: hidden;
+    flex: 3.2;
+    overflow: hidden;
 }
 
 .address-right .iconfont {
-  color: #777;
-  font-size: 30rpx;
+    /* color: #777; */
+    font-size: 30rpx;
 }
 
 .flow-fixed-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #f42424;
-  z-index: 4999;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #f42424;
+    z-index: 4999;
 }
 
 .flow-fixed-footer .chackout-left {
-  font-size: 32rpx;
-  line-height: 44px;
-  color: #777;
+    font-size: 32rpx;
+    line-height: 44px;
+    color: #777;
 }
 
 .flow-fixed-footer .chackout-right {
-  font-size: 34rpx;
+    font-size: 34rpx;
 }
 
 .flow-btn {
-  background-color: #ff495e;
-  color: #fff;
-  text-align: center;
-  line-height: 44px;
-  display: block;
+    background-color: #ff495e;
+    color: #fff;
+    text-align: center;
+    line-height: 44px;
+    display: block;
 }
 
 .address-header {
-  padding: 28rpx 0;
-  border-bottom: 1px solid #f6f6f9;
-  background-size: 120rpx auto;
-  font-size: 1.7rem;
+    padding: 28rpx 0;
+    border-bottom: 1px solid #f6f6f9;
+    background-size: 120rpx auto;
+    font-size: 1.7rem;
 }
 
 .flow-header-left {
-  flex: 14;
+    flex: 14;
 }
 
 .flow-header-right {
-  flex: 1;
+    flex: 1;
 }
 
 .flow-header-right image {
-  width: 34rpx;
-  height: 34rpx;
-  margin-top: 20rpx;
-  float: right;
+    width: 34rpx;
+    height: 34rpx;
+    margin-top: 20rpx;
+    float: right;
 }
 
 .address-header .flow-checkout-admin {
-  font-size: 34rpx;
-  color: #444;
+    font-size: 34rpx;
+    color: #444;
 }
 
 .address-header .flow-checkout-admin text {
-  padding: 0 10rpx;
+    padding: 0 10rpx;
 }
 
 .address-header .flow-checkout-address {
-  font-size: 26rpx;
-  color: #777;
-  margin-top: 20rpx;
+    font-size: 26rpx;
+    color: #777;
+    margin-top: 20rpx;
 }
 
 .radio-group raido {
-  color: #f42424;
+    color: #f42424;
 }
-.shengri{
-  margin-left: 100rpx;
-  font-size: 28rpx;
+
+.shengri {
+    margin-left: 100rpx;
+    font-size: 28rpx;
 }
-.a_item{
-  width: 94%;
-  margin: 0 auto;
+
+.a_item {
+    width: 94%;
+    margin: 0 auto;
+    box-shadow: 1px 5px 10px rgba(145, 145, 145, 0.3);
 }
-.bianji{
-  width: 100%;
-  text-align: center;
+
+.bianji {
+    width: 100%;
+    text-align: center;
 }
-.order-bt{
-  border-radius: 999px;
+
+.order-bt {
+    border-radius: 999px;
 }
-.btn_right{
-  float: right;
+
+.btn_right {
+    float: right;
+}
+
+._zhushe {
+    color: rgb(14, 154, 248);
+}
+
+.bianji {
+    color: rgb(0, 197, 105);
 }

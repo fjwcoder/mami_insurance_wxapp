@@ -1,25 +1,29 @@
 <view class="container">
-  <view class="list address-box dis-flex " style="padding:0rpx 0rpx 50rpx 0rpx">
-    <view class="left-name" style='width:40%'>
-      <text class="f-30" style='font-size:32rpx;'>请选择被保人：</text>
+    <view class="left_cont">
+        <view class="right_cont">
+            <picker bindchange="chengeBaby" value="{{index}}" range="{{baby__name}}" name="?" style='width:100%'>
+                <text wx:if="{{baby__name[index]}}" class="f-30 kuandu">{{baby__name[index]}}<text class='iconfont icon-xiala xiala'></text> </text>
+                <text wx:else class="f-30  picker_text">请选择被保人<text class='iconfont icon-xiala xiala'></text></text>
+            </picker>
+        </view>
+        <view class="baby_info" wx:if="{{index}}">
+            <view style="height:10px;"></view>
+            <view class="baby_name">姓名：{{list[index].baby_name}}</view>
+            <view class="baby_sex">性别：{{baby_sex}}</view>
+            <view class="baby_birthday">出生日期：{{list[index].baby_birthday}}</view>
+            <view class="baby_idcard">身份证号：{{list[index].id_card}}</view>
+        </view>
+        <view class="else_box" wx:else>
+            <image src="../../images/qiqiu.png" mode="widthFix" class="else_img" />
+            <view class="else_text">您还没有选择被保人哦～</view>
+        </view>
     </view>
-    <view class="right-cont dis-flex kuandu">
-      <picker bindchange="chengeBaby" value="{{index}}" range="{{baby__name}}" name="?" style='width:100%'>
-        <text wx:if="{{baby__name[index]}}" class="f-30 kuandu">{{baby__name[index]}}</text>
-        <text wx:else class="f-30 col-7 picker_text">选择被保人</text>
-      </picker>
-    </view>
-  </view>
+    
 
-  <view class="baby_info">
-    <view class="baby_name">姓名：{{list[index].baby_name}}</view>
-    <view class="baby_sex">性别：{{baby_sex}}</view>
-    <view class="baby_birthday">出生日期：{{list[index].baby_birthday}}</view>
-    <view class="baby_idcard">身份证号：{{list[index].id_card}}</view>
-  </view>
-  <view class= 'insurance_title' wx:if="{{insurance_list}}">以下为您可购买的保险种类↓</view>
-  <checkbox-group bindchange="checkboxChange">
-    <label class="checkbox" wx:for="{{insurance_list}}" wx:for-item="item" wx:key="index">
+
+    <view class='insurance_title' wx:if="{{insurance_list}}">以下为您可购买的保险种类↓</view>
+    <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox" wx:for="{{insurance_list}}" wx:for-item="item" wx:key="index">
       <view class='item_box'>
         <view class='name_box'>
           <checkbox value="{{item.insurance_id}}" checked="{{item.checked}}" /><text class= "in_name">{{item.name}}</text>
@@ -29,12 +33,12 @@
           <text class= "in_price">保费:{{item.price}}</text>
           <text class= "in_p_price">保额:{{item.pay_limit}}</text>
           <text class= "jiehsao">{{item.description}}</text>
-          <view class='xiangqing' catchtap="stop"><navigator>更多详情 </navigator></view>
+          <view class='xiangqing' catchtap="stop"><navigator>详情 </navigator></view>
         </view>
       </view>
     </label>
-  </checkbox-group>
-  <view wx:if="{{insurance_list}}" class= "footer-fixed">
-    <view class="order-bt buy_btn" style="width:100%;"bindtap="buyJump"> 购买</view>
-  </view>
+    </checkbox-group>
+    <view wx:if="{{insurance_list}}" class="footer-fixed">
+        <view class="order-bt buy_btn" style="width:100%;" bindtap="buyJump"> 购买</view>
+    </view>
 </view>
