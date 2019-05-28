@@ -46,7 +46,7 @@
       
      
     </view>
-    <view class="category-list">
+    <!-- <view class="category-list">
       <navigator class="list b-f" hover-class="none" url="../insurance/detail?insurance_id={{item.insurance_id}}" wx:for="{{list}}" wx:key="this">
         <view class="left">
           <view class="img">
@@ -60,7 +60,7 @@
           </view>
         </view>
       </navigator>
-    </view>
+    </view> -->
 
     <!-- 底线 -->
     <view class="title-footer p-r">
