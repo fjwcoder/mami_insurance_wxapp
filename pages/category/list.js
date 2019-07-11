@@ -10,8 +10,8 @@ Page({
     showView: false,
     arrange: "",
 
-    sortType: 'all',    // 排序类型
-    sortPrice: false,   // 价格从低到高
+    sortType: 'all', // 排序类型
+    sortPrice: false, // 价格从低到高
 
     option: {},
     list: {},
@@ -32,7 +32,9 @@ Page({
     _this.setListHeight();
 
     // 记录option
-    _this.setData({ option}, function () {
+    _this.setData({
+      option
+    }, function () {
       // 获取商品列表
       _this.getGoodsList(true);
     });
@@ -51,14 +53,19 @@ Page({
       category_id: this.data.option.category_id || 0,
       search: this.data.option.search || '',
     }, function (result) {
-        let resultList = result.data.list
-          , dataList = _this.data.list;
-        if (is_super === true || typeof dataList.data === 'undefined') {
-          // typeof dataList.data === 'undefined'
-          _this.setData({ list: resultList, noList: false });
-        } else {
-          _this.setData({ 'list.data': dataList.data.concat(resultList.data) });
-        }
+      let resultList = result.data.list,
+        dataList = _this.data.list;
+      if (is_super === true || typeof dataList.data === 'undefined') {
+        // typeof dataList.data === 'undefined'
+        _this.setData({
+          list: resultList,
+          noList: false
+        });
+      } else {
+        _this.setData({
+          'list.data': dataList.data.concat(resultList.data)
+        });
+      }
     });
   },
 
@@ -80,9 +87,9 @@ Page({
    * 切换排序方式
    */
   switchSortType: function (e) {
-    let _this = this
-      , newSortType = e.currentTarget.dataset.type
-      , newSortPrice = newSortType === 'price' ? !this.data.sortPrice : true;
+    let _this = this,
+      newSortType = e.currentTarget.dataset.type,
+      newSortPrice = newSortType === 'price' ? !this.data.sortPrice : true;
 
     this.setData({
       list: {},
@@ -121,7 +128,9 @@ Page({
   bindDownLoad: function () {
     // 已经是最后一页
     if (this.data.page >= this.data.list.last_page) {
-      this.setData({ no_more: true });
+      this.setData({
+        no_more: true
+      });
       return false;
     }
     this.getGoodsList(false, ++this.data.page);
@@ -134,7 +143,7 @@ Page({
     return {
       title: "全部分类",
       desc: "",
-      path: "/pages/category/index"
+      path: "/pages/category/.index"
     };
   },
 

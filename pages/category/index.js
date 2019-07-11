@@ -29,10 +29,10 @@ Page({
         list: result.data.list,
         curNav: result.data.list[0].category_id
       });
-    });
+    }); 
   },
 
-  /**
+  /**     
    * 选中分类
    */
   selectNav: function (t) {
